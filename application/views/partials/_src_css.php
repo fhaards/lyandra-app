@@ -8,8 +8,8 @@
 
 	<!-- endinject -->
 	<!-- Plugin css for this page -->
-	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/vendors/datatables.net-bs4/dataTables.bootstrap4.css'; ?>">
-	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/js/select.dataTables.min.css'; ?>">
+	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/vendors/datatables/css/dataTables.bootstrap4.css'; ?>">
+	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/vendors/datatables/plugins/select.dataTables.min.css'; ?>">
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/style.css'; ?>">
 	<!-- <link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/style.css'; ?>"> -->
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/custom-style.css'; ?>">
