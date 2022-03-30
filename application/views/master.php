@@ -13,8 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 
 <body>
-	<div class=" container-scroller">
-
+	<div class="container-scroller">
 		<?php $this->load->view('partials/_navbar.php'); ?>
 		<div class="container-fluid page-body-wrapper">
 			<?php $this->load->view('partials/_settings-panel.php'); ?>

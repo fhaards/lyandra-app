@@ -11,4 +11,6 @@
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/vendors/datatables.net-bs4/dataTables.bootstrap4.css'; ?>">
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/js/select.dataTables.min.css'; ?>">
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/style.css'; ?>">
+	<!-- <link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/style.css'; ?>"> -->
+	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/custom-style.css'; ?>">
 	<link rel="shortcut icon" href="<?php echo base_url() . 'assets/cms/images/app-img/favicon/favicon-32x32.png'; ?>">

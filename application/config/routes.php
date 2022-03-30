@@ -10,3 +10,6 @@ $route['auth'] = 'Auth';
 
 //Homepages or Dashboard
 $route['dashboard'] = 'HomepageUser';
+
+//About
+$route['settings/about'] = 'SettingsAbout';
