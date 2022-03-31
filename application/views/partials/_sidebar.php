@@ -16,7 +16,7 @@
       </a>
     </li>
 
-    <li class="nav-item nav-category">Settings</li>
+    <li class="nav-item nav-category">Administrator</li>
     <li class="nav-item">
       <a class="nav-link" href="<?= base_url() . 'settings/about'; ?>">
         <i class="mdi mdi-domain menu-icon"></i>

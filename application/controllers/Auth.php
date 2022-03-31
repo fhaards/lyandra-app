@@ -24,6 +24,7 @@ class Auth extends CI_Controller
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
 			if ($this->form_validation->run() === FALSE) {
+				// $this->session->set_flashdata('error', 'Data berhasil ditambahkan');
 				$this->load->view('auth', $data);
 			} else {
 				$username = $this->input->post('username');
@@ -37,12 +38,27 @@ class Auth extends CI_Controller
 					$this->session->set_flashdata('loginMsg', 'Data berhasil ditambahkan');
 					redirect(base_url("dashboard"));
 				} else {
-					$this->session->set_flashdata('errloginMsg', 'Data berhasil ditambahkan');
+					$this->session->set_flashdata('errorLogin', 'Data berhasil ditambahkan');
 					redirect(base_url("auth"));
 				}
 			}
 		}
 		// $this->load->view('auth');
+	}
+
+	public function insert()
+	{
+
+		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->session->set_flashdata('error', 'Data berhasil ditambahkan');
+			redirect(base_url("auth"));
+		} else {
+			$this->modelUser->add();
+			$this->session->set_flashdata('success', 'Data berhasil ditambahkan');
+			redirect(base_url("auth"));
+		}
 	}
 
 	public function authProccess()

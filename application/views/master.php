@@ -42,6 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 	<!-- Javascript Sources -->
 	<?php $this->load->view('partials/_src_js.php'); ?>
+	<?php $this->load->view('partials/_src_js_stack.php'); ?>
 </body>
 
 </html>

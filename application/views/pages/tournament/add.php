@@ -58,28 +58,31 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Rules</label>
+                        <label>Rules ( Recommended file : <strong>PDF Format</strong> )</label>
                         <div class="input-group">
                             <input type="file" name="rules" class="form-control" required>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Logo ( Recommend : Scale 1x1 )</label>
+                        <label>Logo ( Recommend : Scale 1x1 , <strong>JPG/JPEG/PNG Format</strong> )</label>
                         <div class="input-group">
                             <input type="file" name="logo" class="form-control" accept="image/png, image/gif, image/jpeg" required>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Banner ( Recommend : 1200 x 300 )</label>
+                        <label>Banner ( Recommend : 1200 x 300 , <strong>JPG/JPEG/PNG Format</strong> )</label>
                         <div class="input-group">
                             <input type="file" name="banner" class="form-control" accept="image/png, image/gif, image/jpeg" required>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-12">
                     <div class="form-group row">
                         <label>Description</label>

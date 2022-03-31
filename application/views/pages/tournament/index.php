@@ -46,11 +46,8 @@
                                                     <i class="ti-eye"></i>&nbsp;&nbsp; Detail</span>
                                                 </a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2" href="#">
-                                                    <i class="ti-pencil"></i>&nbsp;&nbsp; Edit Info</span>
-                                                </a>
-                                                <a class="dropdown-item py-2" href="#">
-                                                    <i class="ti-pencil"></i>&nbsp;&nbsp; Edit Image</span>
+                                                <a class="dropdown-item py-2" href="<?= base_url() . "tournament/edit/" . $x['tournament_id']; ?>">
+                                                    <i class="ti-pencil"></i>&nbsp;&nbsp; Edit</span>
                                                 </a>
                                                 <div class="dropdown-divider"></div>
                                                 <a data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteConfirm('<?php echo site_url('tournament/delete/' . $x['tournament_id']) ?>')" href="#!" class="delete-tourn dropdown-item py-2">

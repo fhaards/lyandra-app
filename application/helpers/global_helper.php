@@ -36,7 +36,7 @@ function getUserData()
 
 function setTimeDate($getDates)
 {
-    return date('d F Y [H:i]', strtotime($getDates));
+    return date('d F Y - H:i', strtotime($getDates));
 }
 
 function myDateInterval($dateToCompare)

@@ -22,20 +22,35 @@ class ModelUser extends CI_Model
 
     public function add()
     {
-        $nmU      = $this->input->post('name');
-        $emU      = $this->input->post('username');
-        $pwdU     = $this->input->post('password');
-        $levelU = 'operator';
-        $pwUb    = password_hash($pwdU, PASSWORD_DEFAULT);
+        $name       = $this->input->post('name');
+        $gender     = $this->input->post('gender');
+        $username   = $this->input->post('username');
+        $password   = $this->input->post('password');
+        $level      = 'user';
+        $passNew    = password_hash($password, PASSWORD_DEFAULT);
 
         $data = array(
-            'name' => $nmU,
-            'username' => $emU,
-            'password' => $pwUb,
-            'level' => $levelU
+            'name' => $name,
+            'username' => $username,
+            'password' => $passNew,
+            'created_at' => date("Y-m-d h:i:s"),
+            'user_status' => '1',
+            'level' => $level
         );
-        $this->db->insert('users', $data);
+        $query = $this->db->insert($this->table, $data);
+        $getIdRecents = $this->db->insert_id();
+        if ($query) {
+            $data2 = array(
+                'user_id' => $getIdRecents,
+                'gender' => $gender
+            );
+            $query2 = $this->db->insert('users_account', $data2);
+            return $query2;
+        } else {
+            return false;
+        }
     }
+
 
     public function getUbah($id)
     {
