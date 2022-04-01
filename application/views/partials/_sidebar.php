@@ -8,7 +8,7 @@
       </a>
     </li>
 
-    <li class="nav-item nav-category">Tournament</li>
+    <li class="nav-item nav-category "><span class="tracking-widest">Tournament</span></li>
     <li class="nav-item">
       <a class="nav-link" href="<?= base_url() . 'tournament'; ?>">
         <i class="mdi mdi-timetable menu-icon"></i>
@@ -16,13 +16,23 @@
       </a>
     </li>
 
-    <li class="nav-item nav-category">Administrator</li>
-    <li class="nav-item">
-      <a class="nav-link" href="<?= base_url() . 'settings/about'; ?>">
-        <i class="mdi mdi-domain menu-icon"></i>
-        <span class="menu-title">About</span>
-      </a>
-    </li>
+
+    <?php if (isSuperAdmin()) : ?>
+      <li class="nav-item nav-category"><span class="tracking-widest">Administrator</span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url() . 'contingent'; ?>">
+          <i class="mdi mdi-account-group menu-icon"></i>
+          <span class="menu-title">Contingent</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url() . 'settings/about'; ?>">
+          <i class="mdi mdi-domain menu-icon"></i>
+          <span class="menu-title">About</span>
+        </a>
+      </li>
+    <?php endif; ?>
+
     <!-- <li class="nav-item" id="settings-trigger">
       <a class="nav-link" href="javascript:void(0)" >
         <i class="mdi mdi-shape menu-icon"></i>

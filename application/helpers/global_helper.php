@@ -84,11 +84,35 @@ function setTournStatus($getStatus)
 {
     $setStyle = "";
     if ($getStatus == '1') :
-        $setStyle = '<span class="badge badge-pill badge-success">Registration</span>';
+        $setStyle = '<span class="badge badge-opacity-info">Registration</span>';
     elseif ($getStatus == '2') :
-        $setStyle = '<span class="badge badge-pill badge-primary">Ongoing</span>';
+        $setStyle = '<span class="badge badge-opacity-primary">Ongoing</span>';
     elseif ($getStatus == '3') :
-        $setStyle = '<span class="badge badge-pill badge-success">Closed/Done</span>';
+        $setStyle = '<span class="badge badge-opacity-success">Closed/Finish</span>';
+    endif;
+    return $setStyle;
+}
+
+// FOR CONTINGENT 
+function setContStatus($style, $getStatus)
+{
+    $setStyle = "";
+    if ($style == 'with-style') :
+        if ($getStatus == '1') :
+            $setStyle = '<span class="badge badge-opacity-secondary text-dark">Pending</span>';
+        elseif ($getStatus == '2') :
+            $setStyle = '<span class="badge badge-opacity-success">Accepted</span>';
+        elseif ($getStatus == '3') :
+            $setStyle = '<span class="badge badge-opacity-danger">Rejected</span>';
+        endif;
+    else :
+        if ($getStatus == '1') :
+            $setStyle = 'Pending';
+        elseif ($getStatus == '2') :
+            $setStyle = 'Accepted';
+        elseif ($getStatus == '3') :
+            $setStyle = 'Rejected';
+        endif;
     endif;
     return $setStyle;
 }

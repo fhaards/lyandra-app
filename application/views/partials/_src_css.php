@@ -13,4 +13,5 @@
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/style.css'; ?>">
 	<!-- <link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/style.css'; ?>"> -->
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/custom-style.css'; ?>">
+	<link rel="stylesheet" href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/custom-tails.css'; ?>">
 	<link rel="shortcut icon" href="<?php echo base_url() . 'assets/cms/images/app-img/favicon/favicon-32x32.png'; ?>">

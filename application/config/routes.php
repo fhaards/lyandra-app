@@ -26,3 +26,13 @@ $route['tournament/edit/(:any)'] = 'Tournament/edit/$1';
 $route['tournament/update/(:any)'] = 'Tournament/update/$1';
 $route['tournament/update-info/(:any)'] = 'Tournament/updateInfo/$1';
 $route['tournament/update-file/(:any)'] = 'Tournament/updateFile/$1';
+
+//Contingent
+$route['contingent'] = 'Contingent';
+$route['contingent/add'] = 'Contingent/add';
+$route['contingent/delete/(:any)'] = 'Contingent/delete/$1';
+$route['contingent/show/(:any)'] = 'Contingent/show/$1';
+$route['contingent/edit/(:any)'] = 'Contingent/edit/$1';
+$route['contingent/update/(:any)'] = 'Contingent/update/$1';
+$route['contingent/update-info/(:any)'] = 'Contingent/updateInfo/$1';
+$route['contingent/update-file/(:any)'] = 'Contingent/updateFile/$1';
