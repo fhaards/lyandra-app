@@ -1,9 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-$route['default_controller'] = 'homepageuser';
+$route['default_controller'] = 'homepagepublic';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+//Homepages or Dashboard
+$route['public'] = 'HomepagePublic';
+
 
 //Authenticate
 $route['auth'] = 'Auth';

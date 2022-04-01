@@ -1,5 +1,11 @@
 <?php
 
+function isLogin()
+{
+    $ci = &get_instance();
+    return $ci->session->level != null;
+}
+
 function isAdmin()
 {
     $ci = &get_instance();
@@ -32,6 +38,13 @@ function getUserData()
     $ci = &get_instance();
     $ci->load->model('modelUser');
     return $ci->modelUser->findBy('username', $ci->session->username);
+}
+
+function getCompanyData()
+{
+    $ci = &get_instance();
+    $ci->load->model('modelApp');
+    return $ci->modelApp->findBy('about', 'id', '1');
 }
 
 function setTimeDate($getDates)
