@@ -8,6 +8,14 @@
 
                 </div>
                 <div class="col-lg-4 mx-auto">
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <a href="<?= base_url().''; ?>" class="link-primary d-flex flex-row align-items-center text-decoration-none">
+                                <i class="mdi mdi-arrow-left m-0 p-0"></i>
+                                <div class="h4 m-0 p-0">&nbsp; Back to Homepage</div>
+                            </a>
+                        </div>
+                    </div>
                     <?php $this->load->view('partials/_alerts'); ?>
                     <div class="login-auth">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">

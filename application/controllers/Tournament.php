@@ -12,7 +12,6 @@ class Tournament extends CI_Controller
 		parent::__construct();
 		redirectIfNotLogin();
 		$this->load->model('modelApp');
-		$this->load->model('modelApp');
 		$this->load->helper('form');
 		$this->load->helper('date');
 		$this->load->helper('array');
@@ -145,6 +144,7 @@ class Tournament extends CI_Controller
 		$this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
 		redirect("tournament/edit/$id");
 	}
+	
 	public function show($id)
 	{
 		$data['title'] = APP_NAME;

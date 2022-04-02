@@ -24,6 +24,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url() . 'assets/public_assets/css/style.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/public_assets/css/style-custom.css'; ?>" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/cms/images/app-img/favicon/favicon-32x32.png'; ?>">
 </head>
 
 <body>
@@ -32,7 +34,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <main id="main">
         <?php $this->load->view($content); ?>
     </main>
-    <?php $this->load->view('partials/pub_footer.php'); ?>
 
     <!-- Javascript Sources -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -44,9 +45,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/purecounter/purecounter.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/isotope-layout/isotope.pkgd.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/glightbox/js/glightbox.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/public_assets/vendor/animejs/anime.min.js'; ?>"></script>
 
     <!-- Template Main JS File -->
     <script src="<?php echo base_url() . 'assets/public_assets/js/main.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'src/app-public.js'; ?>"></script>
 </body>
 
 </html>

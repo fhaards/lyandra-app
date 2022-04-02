@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2022 at 03:57 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Waktu pembuatan: 02 Apr 2022 pada 12.17
+-- Versi server: 10.4.19-MariaDB
+-- Versi PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `about`
+-- Struktur dari tabel `about`
 --
 
 CREATE TABLE `about` (
@@ -39,7 +39,7 @@ CREATE TABLE `about` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `about`
+-- Dumping data untuk tabel `about`
 --
 
 INSERT INTO `about` (`id`, `email`, `name`, `phone`, `address`, `vision`, `mission`, `about`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `about` (`id`, `email`, `name`, `phone`, `address`, `vision`, `missi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contingent`
+-- Struktur dari tabel `contingent`
 --
 
 CREATE TABLE `contingent` (
@@ -62,7 +62,7 @@ CREATE TABLE `contingent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `contingent`
+-- Dumping data untuk tabel `contingent`
 --
 
 INSERT INTO `contingent` (`contingent_id`, `created_by`, `contingent_createdat`, `contingent_name`, `contingent_phone`, `contingent_address`, `contingent_status`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `contingent` (`contingent_id`, `created_by`, `contingent_createdat`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `requests`
+-- Struktur dari tabel `requests`
 --
 
 CREATE TABLE `requests` (
@@ -98,7 +98,7 @@ CREATE TABLE `requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `requests`
+-- Dumping data untuk tabel `requests`
 --
 
 INSERT INTO `requests` (`req_id`, `uuid`, `name`, `passport_id`, `email`, `gender`, `phone`, `nationality`, `address_indonesia`, `passport_img`, `req_status`, `req_status_info`, `category`, `created_at`, `updated_at`, `extend_at`, `expired_at`, `visa_img`, `requests_type`, `img_letter`) VALUES
@@ -109,7 +109,7 @@ INSERT INTO `requests` (`req_id`, `uuid`, `name`, `passport_id`, `email`, `gende
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tournament`
+-- Struktur dari tabel `tournament`
 --
 
 CREATE TABLE `tournament` (
@@ -128,7 +128,7 @@ CREATE TABLE `tournament` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tournament`
+-- Dumping data untuk tabel `tournament`
 --
 
 INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `regist_date`, `closed_date`, `created_date`, `logo`, `banner`, `status`, `rules`, `description`, `max_participants`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `reg
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tournament_participant`
+-- Struktur dari tabel `tournament_participant`
 --
 
 CREATE TABLE `tournament_participant` (
@@ -152,7 +152,7 @@ CREATE TABLE `tournament_participant` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -167,7 +167,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_status`, `created_at`, `updated_at`) VALUES
@@ -178,7 +178,7 @@ INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_account`
+-- Struktur dari tabel `users_account`
 --
 
 CREATE TABLE `users_account` (
@@ -195,7 +195,7 @@ CREATE TABLE `users_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users_account`
+-- Dumping data untuk tabel `users_account`
 --
 
 INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `class`, `belt`, `weight`, `height`, `address`, `photo`) VALUES
@@ -206,72 +206,72 @@ INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `cla
 --
 
 --
--- Indexes for table `about`
+-- Indeks untuk tabel `about`
 --
 ALTER TABLE `about`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contingent`
+-- Indeks untuk tabel `contingent`
 --
 ALTER TABLE `contingent`
   ADD PRIMARY KEY (`contingent_id`);
 
 --
--- Indexes for table `requests`
+-- Indeks untuk tabel `requests`
 --
 ALTER TABLE `requests`
   ADD PRIMARY KEY (`req_id`);
 
 --
--- Indexes for table `tournament`
+-- Indeks untuk tabel `tournament`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`tournament_id`);
 
 --
--- Indexes for table `tournament_participant`
+-- Indeks untuk tabel `tournament_participant`
 --
 ALTER TABLE `tournament_participant`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `users_email_unique` (`username`);
 
 --
--- Indexes for table `users_account`
+-- Indeks untuk tabel `users_account`
 --
 ALTER TABLE `users_account`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `about`
+-- AUTO_INCREMENT untuk tabel `about`
 --
 ALTER TABLE `about`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `contingent`
+-- AUTO_INCREMENT untuk tabel `contingent`
 --
 ALTER TABLE `contingent`
   MODIFY `contingent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tournament_participant`
+-- AUTO_INCREMENT untuk tabel `tournament_participant`
 --
 ALTER TABLE `tournament_participant`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;

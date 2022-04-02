@@ -47,6 +47,11 @@ function getCompanyData()
     return $ci->modelApp->findBy('about', 'id', '1');
 }
 
+function setDate($getDates)
+{
+    return date('D , d F Y', strtotime($getDates));
+}
+
 function setTimeDate($getDates)
 {
     return date('d F Y - H:i', strtotime($getDates));
