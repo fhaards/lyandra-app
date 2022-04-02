@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class HomepagePublic extends CI_Controller
 {
 	protected $tourTable = 'tournament';
+	protected $tourId	 = 'tournament_id';
 
 	function __construct()
 	{
@@ -24,5 +25,12 @@ class HomepagePublic extends CI_Controller
 		$data['content'] = 'public/index';
 		$data['item']  = $this->modelApp->read($this->tourTable);
 		$this->load->view('master_public', $data);
+	}
+
+	public function show()
+	{
+		$id   = $this->input->post('id');
+		$data = $this->modelApp->getId($this->tourTable, $this->tourId, $id);
+		echo json_encode($data);
 	}
 }

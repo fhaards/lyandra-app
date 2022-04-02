@@ -24,7 +24,7 @@
 						<h3 class="post-title">
 							<?= $tourItem['tournament_name']; ?>
 						</h3>
-						<a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+						<a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 					</div>
 				</div>
 			<?php endforeach; ?>

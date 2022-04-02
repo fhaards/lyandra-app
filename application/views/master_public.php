@@ -24,22 +24,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url() . 'assets/public_assets/css/style.css'; ?>" rel="stylesheet">
-    <link href="<?php echo base_url() . 'assets/public_assets/css/style-custom.css'; ?>" rel="stylesheet">
     <link rel="shortcut icon" href="<?php echo base_url() . 'assets/cms/images/app-img/favicon/favicon-32x32.png'; ?>">
 </head>
 
-<body>
+<body class="body">
+
+
     <?php $this->load->view('partials/pub_header.php'); ?>
     <?php $this->load->view('partials/pub_hero.php'); ?>
     <main id="main">
         <?php $this->load->view($content); ?>
     </main>
 
+
     <!-- Javascript Sources -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <?php $this->load->view('public/event_detail.php'); ?>
 
     <!-- Vendor JS Files -->
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/bootstrap/js/bootstrap.bundle.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/cms/vendors/jquery/jquery.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/aos/aos.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/swiper/swiper-bundle.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/purecounter/purecounter.js'; ?>"></script>
@@ -47,9 +51,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/glightbox/js/glightbox.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/animejs/anime.min.js'; ?>"></script>
 
+    <script>
+        var BASEURL = '<?php echo base_url() ?>';
+    </script>
     <!-- Template Main JS File -->
     <script src="<?php echo base_url() . 'assets/public_assets/js/main.js'; ?>"></script>
     <script src="<?php echo base_url() . 'src/app-public.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/public_assets/js/animate.js'; ?>"></script>
 </body>
 
 </html>

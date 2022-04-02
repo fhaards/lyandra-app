@@ -7,7 +7,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Homepages or Dashboard
 $route['public'] = 'HomepagePublic';
-
+$route['public/event-detail/(:any)'] = 'HomepagePublic/show/$1';
 
 //Authenticate
 $route['auth'] = 'Auth';
