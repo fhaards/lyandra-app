@@ -16,6 +16,7 @@ class Contingent extends CI_Controller
 		$this->load->helper('form');
 		$this->load->helper('date');
 		$this->load->helper('array');
+		$this->load->library('crumbs');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 		$this->load->helper('string');
@@ -25,6 +26,9 @@ class Contingent extends CI_Controller
 
 	public function index()
 	{
+		$this->crumbs->add('Contingent', base_url() . 'contingent');
+		$data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelContingent->read($this->table);
 		$data['content'] = 'pages/contingent/index';
@@ -33,6 +37,10 @@ class Contingent extends CI_Controller
 
 	public function add()
 	{
+		$this->crumbs->add('Contingent', base_url() . 'contingent');
+		$this->crumbs->add('Add', base_url() . 'contingent/add');
+		$data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->read($this->table);
 		$data['content'] = 'pages/contingent/add';
@@ -66,6 +74,10 @@ class Contingent extends CI_Controller
 
 	public function edit($id)
 	{
+		$this->crumbs->add('Contingent', base_url() . 'contingent');
+		$this->crumbs->add('Edit', base_url() . 'contingent/edit');
+		$data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
 		$data['content'] = 'pages/contingent/edit';

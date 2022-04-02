@@ -55,13 +55,21 @@
 			sidebar.find(".collapse.show").collapse("hide");
 		});
 
-		// let selectHeader = select("#navbar");
+		// if ($document.scrollTop() >= 50) {
+		// 	// user scrolled 50 pixels or more;
+		// 	// do stuff
+		// 	$element.addClass(className);
+		// } else {
+		// 	$element.removeClass(className);
+		// }
+
+		// var selectHeader = $("#navbar");
 		// if (selectHeader) {
 		// 	const headerScrolled = () => {
 		// 		if (window.scrollY > 20) {
-		// 			selectHeader.classList.add("navbar-scrolled");
+		// 			selectHeader.addClass("navbar-scrolled");
 		// 		} else {
-		// 			selectHeader.classList.remove("navbar-scrolled");
+		// 			selectHeader.removeClass("navbar-scrolled");
 		// 		}
 		// 	};
 		// 	window.addEventListener("load", headerScrolled);
@@ -124,10 +132,13 @@
 		$(window).scroll(function () {
 			if (window.matchMedia("(min-width: 992px)").matches) {
 				var header = $(".horizontal-menu");
+				var navbar = $(".navbar");
 				if ($(window).scrollTop() >= 70) {
 					$(header).addClass("fixed-on-scroll");
+					$(navbar).addClass("navbar-scrolled");
 				} else {
 					$(header).removeClass("fixed-on-scroll");
+					$(navbar).removeClass("navbar-scrolled");
 				}
 			}
 		});

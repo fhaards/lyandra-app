@@ -13738,8 +13738,8 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 }
 
 .navbar.navbar-scrolled {
-  background-color: red !important;
-  padding: 15px 0;
+  padding: 5px 0;
+  border-bottom:1px solid #cbd5e1;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
 }
 
@@ -14498,7 +14498,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 .accordion-button:not(.collapsed) {
   color: #0c63e4;
   background-color: #e7f1ff;
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+  /* box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125); */
 }
 
 .accordion-button:not(.collapsed)::after {
@@ -14541,7 +14541,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 
 .accordion-item {
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
 }
 
 .accordion-item:first-of-type {
@@ -14584,7 +14584,8 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 .accordion-flush .accordion-item {
   border-right: 0;
   border-left: 0;
-  border-radius: 0;
+  border-radius: 10px;
+
 }
 
 .accordion-flush .accordion-item:first-child {
@@ -21851,7 +21852,7 @@ code {
 
 /* Footer */
 .footer {
-  background: #F4F5F7;
+  background: #f1f5f9;
   color: color(dark);
   padding: 30px 2.45rem;
   transition: all 0.25s ease;
@@ -22164,7 +22165,7 @@ code {
   padding-top: 16px;
   padding-bottom: 16px;
   z-index: 10;
-  background: #F4F5F7;
+  background: #f1f5f9;
 }
 
 .doc-content {
@@ -24553,16 +24554,16 @@ code {
 
 /* Cards */
 .card {
-  box-shadow: 0 0 0 0 rgba(90, 113, 208, 0.11), 0 4px 16px 0 rgba(167, 175, 183, 0.33);
+  /* box-shadow: 0 0 0 0 rgba(90, 113, 208, 0.11), 0 4px 16px 0 rgba(167, 175, 183, 0.33);
   -webkit-box-shadow: 0 0 0 0 rgba(90, 113, 208, 0.11), 0 4px 16px 0 rgba(167, 175, 183, 0.33);
   -moz-box-shadow: 0 0 0 0 rgba(90, 113, 208, 0.11), 0 4px 16px 0 rgba(167, 175, 183, 0.33);
   -ms-box-shadow: 0 0 0 0 rgba(90, 113, 208, 0.11), 0 4px 16px 0 rgba(167, 175, 183, 0.33);
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
   -moz-transition: background 0.25s ease;
-  -ms-transition: background 0.25s ease;
-  border: none;
-  border: none;
+  -ms-transition: background 0.25s ease; 
+  border: none;*/
+  border: 1px solid #e5e7eb;
 }
 
 .card.card-rounded {
@@ -30671,12 +30672,13 @@ div.tagsinput span.tag a {
   margin-bottom: 2rem;
 }
 
-.auth .brand-logo{
+.auth .brand-logo {
   height: 50px;
   object-fit: cover;
 }
-.auth .brand-logo img{
-  height:100%;
+
+.auth .brand-logo img {
+  height: 100%;
   object-fit: cover;
 }
 
@@ -30744,7 +30746,7 @@ div.tagsinput span.tag a {
 }
 
 .content-wrapper {
-  background: #F4F5F7;
+  background: #f1f5f9;
   padding: 1.5rem 2.187rem 1.5rem 3.5rem;
   width: 100%;
   -webkit-flex-grow: 1;
@@ -30760,7 +30762,7 @@ div.tagsinput span.tag a {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 97px);
-  background: #F4F5F7;
+  background: #f1f5f9;
   font-family: "Manrope", sans-serif;
   font-weight: 500;
   padding: 0;
@@ -31133,7 +31135,9 @@ div.tagsinput span.tag a {
   -moz-transition: background 0.25s ease;
   -ms-transition: background 0.25s ease;
   box-shadow: none;
-  background: #F4F5F7;
+  background: #f1f5f9;
+  /* background: #Fs4F5F7s; */
+  /* padding: 5px !important; */
   /* Navbar color variations */
 }
 
@@ -31142,7 +31146,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-brand-wrapper {
-  background: #F4F5F7;
+  background: #f1f5f9;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
@@ -31158,7 +31162,7 @@ div.tagsinput span.tag a {
 
 @media (max-width: 991px) {
   .sidebar-dark .navbar .navbar-brand-wrapper {
-    background: #F4F5F7;
+    background: #f1f5f9;
   }
 }
 
@@ -31246,7 +31250,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-menu-wrapper {
-  background: #F4F5F7;
+  background: #f1f5f9;
   transition: width 0.25s ease;
   -webkit-transition: width 0.25s ease;
   -moz-transition: width 0.25s ease;

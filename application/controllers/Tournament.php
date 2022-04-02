@@ -16,6 +16,7 @@ class Tournament extends CI_Controller
 		$this->load->helper('date');
 		$this->load->helper('array');
 		$this->load->library('form_validation');
+		$this->load->library('crumbs');
 		$this->load->helper('url');
 		$this->load->helper('string');
 		$this->load->helper('directory');
@@ -24,6 +25,9 @@ class Tournament extends CI_Controller
 
 	public function index()
 	{
+		$this->crumbs->add('Tournament', base_url() . 'tournament');
+        $data['breadcrumb'] = $this->crumbs->output();
+		
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->read($this->table);
 		$data['content'] = 'pages/tournament/index';
@@ -32,6 +36,10 @@ class Tournament extends CI_Controller
 
 	public function add()
 	{
+		$this->crumbs->add('Tournament', base_url() . 'tournament');
+		$this->crumbs->add('Add', base_url() . '');
+        $data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->read($this->table);
 		$data['content'] = 'pages/tournament/add';
@@ -147,6 +155,10 @@ class Tournament extends CI_Controller
 	
 	public function show($id)
 	{
+		$this->crumbs->add('Tournament', base_url() . 'tournament');
+		$this->crumbs->add('Detail', base_url() . '');
+		$data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
 		$data['content'] = 'pages/tournament/show';
@@ -155,6 +167,10 @@ class Tournament extends CI_Controller
 
 	public function edit($id)
 	{
+		$this->crumbs->add('Tournament', base_url() . 'tournament');
+		$this->crumbs->add('Edit', base_url() . '');
+		$data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
 		$data['content'] = 'pages/tournament/edit';

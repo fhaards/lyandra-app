@@ -83,7 +83,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-          <i class="icon-mail icon-lg"></i>
+          <i class="icon-mail"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
           <a class="dropdown-item py-3 border-bottom">
@@ -131,15 +131,15 @@
             <img class="img-xs rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_3.png'; ?>" alt="logo" />
             <!-- <img src="images/faces/face8.jpg" alt="Profile image" /> -->
           <?php else : ?>
-            <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="Profile image" />
+            <img class="img-xs rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_2.png'; ?>" alt="Profile image" />
           <?php endif; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <div class="dropdown-header text-center">
             <?php if (isSuperAdmin()) : ?>
-              <img class="img-md rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_1.svg'; ?>" width="80px" alt="logo" />
+              <img class="img-md rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_3.png'; ?>" width="80px" alt="logo" />
             <?php else : ?>
-              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image" />
+              <img class="img-md rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_2.png'; ?>" alt="Profile image" />
             <?php endif; ?>
 
             <p class="mt-3 font-weight-semibold">
@@ -155,8 +155,8 @@
         </div>
       </li>
     </ul>
-    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
-      <span class="mdi mdi-menu"></span>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center pt-2" type="button" data-bs-toggle="offcanvas">
+      <i class="mdi mdi-menu mdi-24px"></i>
     </button>
   </div>
 </nav>

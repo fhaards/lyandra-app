@@ -44,10 +44,6 @@
                                                 <i class="mdi mdi-dots-horizontal"></i>
                                             </button>
                                             <div class="dropdown-menu mx-2">
-                                                <a class="dropdown-item py-2" href="<?= base_url() . "contingent/show/" . $x['contingent_id']; ?>">
-                                                    <i class="ti-eye"></i>&nbsp;&nbsp; Detail</span>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2" href="<?= base_url() . "contingent/edit/" . $x['contingent_id']; ?>">
                                                     <i class="ti-pencil"></i>&nbsp;&nbsp; Edit</span>
                                                 </a>

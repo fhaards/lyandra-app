@@ -6,6 +6,12 @@ function isLogin()
     return $ci->session->level != null;
 }
 
+function isUser()
+{
+    $ci = &get_instance();
+    return $ci->session->level == 'user';
+}
+
 function isAdmin()
 {
     $ci = &get_instance();
@@ -102,7 +108,7 @@ function setTournStatus($getStatus)
 {
     $setStyle = "";
     if ($getStatus == '1') :
-        $setStyle = '<span class="badge badge-opacity-info">Registration</span>';
+        $setStyle = '<span class="badge badge-opacity-info">Open Registration</span>';
     elseif ($getStatus == '2') :
         $setStyle = '<span class="badge badge-opacity-primary">Ongoing</span>';
     elseif ($getStatus == '3') :
@@ -117,19 +123,19 @@ function setContStatus($style, $getStatus)
     $setStyle = "";
     if ($style == 'with-style') :
         if ($getStatus == '1') :
-            $setStyle = '<span class="badge badge-opacity-secondary text-dark">Pending</span>';
+            $setStyle = '<span class="badge badge-opacity-success">Active</span>';
         elseif ($getStatus == '2') :
-            $setStyle = '<span class="badge badge-opacity-success">Accepted</span>';
+            $setStyle = '<span class="badge badge-opacity-secondary text-dark">Inactive</span>';
         elseif ($getStatus == '3') :
-            $setStyle = '<span class="badge badge-opacity-danger">Rejected</span>';
+            $setStyle = '<span class="badge badge-opacity-danger">Disbanded</span>';
         endif;
     else :
         if ($getStatus == '1') :
-            $setStyle = 'Pending';
+            $setStyle = 'Active';
         elseif ($getStatus == '2') :
-            $setStyle = 'Accepted';
+            $setStyle = 'Inactive';
         elseif ($getStatus == '3') :
-            $setStyle = 'Rejected';
+            $setStyle = 'Disbanded';
         endif;
     endif;
     return $setStyle;

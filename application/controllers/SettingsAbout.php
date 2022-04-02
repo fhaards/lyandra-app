@@ -18,10 +18,14 @@ class SettingsAbout extends CI_Controller
 		$this->load->helper('date');
 		$this->load->helper('array');
 		$this->load->library('form_validation');
+		$this->load->library('crumbs');
 		$this->load->helper('url');
 	}
 	public function index()
 	{
+		$this->crumbs->add('About', base_url() . 'settings/about');
+		$data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $this->id);
 		$data['content'] = 'pages/about/show';

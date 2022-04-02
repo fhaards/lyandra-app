@@ -1,5 +1,18 @@
 <div class="home-tab">
-    <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+    <div class="row flex-grow p-0">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card card-rounded table-darkBGImg">
+                <div class="card-body">
+                    <div class="col-sm-8 p-3">
+                        <h3 class="text-white upgrade-info mb-0">
+                            Welcome back, <br> <span class="fw-bold"><?= getUserData()['name'];?></span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="d-sm-flex align-items-center justify-content-between border-bottom">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
@@ -21,10 +34,10 @@
                 <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="tab-content tab-content-basic">
         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-12">
                     <div class="statistics-details d-flex align-items-center justify-content-between">
                         <div>
@@ -59,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="col-lg-8 d-flex flex-column">
                     <div class="row flex-grow">
@@ -90,7 +103,7 @@
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <p class="status-summary-ight-white mb-1">Closed Value</p>
-                                            <h2 class="text-info">357</h2>
+                                            <h2 class="text-info">352117</h2>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="status-summary-chart-wrapper pb-4">
@@ -111,7 +124,7 @@
                                                     <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
                                                 </div>
                                                 <div>
-                                                    <p class="text-small mb-2">Total Visitors</p>
+                                                    <p class="text-small mb-2">Total Participants</p>
                                                     <h4 class="mb-0 fw-bold">26.80%</h4>
                                                 </div>
                                             </div>
@@ -122,7 +135,7 @@
                                                     <div id="visitperday" class="progressbar-js-circle pr-2"></div>
                                                 </div>
                                                 <div>
-                                                    <p class="text-small mb-2">Visits per day</p>
+                                                    <p class="text-small mb-2">Request By Day</p>
                                                     <h4 class="mb-0 fw-bold">9065</h4>
                                                 </div>
                                             </div>
@@ -135,7 +148,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 d-flex flex-column">
+                <!-- <div class="col-lg-8 d-flex flex-column">
                     <div class="row flex-grow">
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -532,8 +545,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 d-flex flex-column">
+                </div> -->
+                <!-- <div class="col-lg-4 d-flex flex-column">
                     <div class="row flex-grow">
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -543,7 +556,7 @@
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="card-title card-title-dash">Todo list</h4>
                                                 <div class="add-items d-flex mb-0">
-                                                    <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
+                                                    <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
                                                     <button class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i class="mdi mdi-plus"></i></button>
                                                 </div>
                                             </div>
@@ -727,7 +740,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

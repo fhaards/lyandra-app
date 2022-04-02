@@ -31,12 +31,17 @@
                         <tbody>
                             <?php foreach ($item as $x) : ?>
                                 <tr>
-                                    <td><?= $x['tournament_name']; ?></td>
+                                    <td>
+                                    <a class="btn btn-link" href="<?= base_url() . "tournament/show/" . $x['tournament_id']; ?>">
+                                        <?= $x['tournament_name']; ?>
+                                    </a>
+                                    </td>
                                     <td><?= setTimeDate($x['event_date']); ?></td>
                                     <td><?= setTimeDate($x['regist_date']); ?></td>
                                     <td><?= setTimeDate($x['closed_date']); ?></td>
                                     <td><?= setTournStatus($x['status']); ?></td>
                                     <td>
+                                        <?php if(isSuperAdmin()): ?>
                                         <div class="dropdown dropstart" id="act-tourn">
                                             <button class="badge badge-pill badge-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="mdi mdi-dots-horizontal"></i>
@@ -54,8 +59,8 @@
                                                     <i class="ti-trash"></i>&nbsp;&nbsp; Delete</span>
                                                 </a>
                                             </div>
-
                                         </div>
+                                        <?php endif;?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

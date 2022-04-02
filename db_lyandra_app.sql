@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Apr 2022 pada 12.17
+-- Waktu pembuatan: 02 Apr 2022 pada 22.53
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.7
 
@@ -66,7 +66,11 @@ CREATE TABLE `contingent` (
 --
 
 INSERT INTO `contingent` (`contingent_id`, `created_by`, `contingent_createdat`, `contingent_name`, `contingent_phone`, `contingent_address`, `contingent_status`) VALUES
-(3, 1, '2022-04-01 08:34:30', 'Contesting', '0811233456123', 'JawaBarat', 2);
+(3, 1, '2022-04-01 08:34:30', 'Tiger Clap', '0811233456123', 'JawaBarat', 3),
+(4, 1, '2022-04-02 11:17:33', 'Panda Kickers', '081217352815', 'Tangerang Selatan', 2),
+(5, 1, '2022-04-02 11:18:08', 'Bat Boxer', '081511556699', 'Bogor', 1),
+(6, 1, '2022-04-02 11:18:33', 'Maximous Tendencius', '081155668867', 'Jawa Barat', 1),
+(7, 1, '2022-04-02 11:19:37', 'Dragonfist Boxer', '0811223366887', 'Bogor', 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +137,21 @@ CREATE TABLE `tournament` (
 
 INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `regist_date`, `closed_date`, `created_date`, `logo`, `banner`, `status`, `rules`, `description`, `max_participants`) VALUES
 ('TRN31032022041752vRK', 'Moseur Platina', '2022-04-01 10:17:00', '2022-03-25 04:17:00', '2022-03-29 04:17:00', '2022-03-31 04:17:52', '54d0ebd756a2d90d7d0c1f609c5f2045.jpg', '5bc470882e2c3a33e5d6ebd4214992b6.jpg', 1, '097f0a2be9f9117de8d7eeafc358c018.pdf', '<p>Moseur Platina is Terrible Invovication</p>', 20),
-('TRN31032022050837EsX', 'Karate 1 Youth League Limassol', '2022-04-02 10:11:00', '2022-03-19 05:06:00', '2022-03-05 05:06:00', '2022-03-31 05:08:37', '048dc4cfdc2485da26f1ea5fb8504a66.jpg', '0f92b01f7258365ef4e77ea2645d72b9.jpg', 1, '8b53d8ad2ef44c3af310811073aa2a20.pdf', '<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: center;\"><span style=\"box-sizing: inherit; font-family: HelveticaNeue-CondensedBold, Arial, Helvetica, sans-serif; font-weight: bolder;\">The seconds Karate 1-Youth League event of the season will be held in Limassol (Cyprus). The tournament is scheduled from April 29 to May 01.</span></p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">After the opening competition in Acapulco (Mexico), the 2022 Karate 1-Youth League travels to Limassol (Cyprus) for an event that has become a solid fixture in the international calendar. The city of Limassol welcomes a major Karate event for the third time as it hosted competitions in 2019 and 2021, with the tournament in 2020 cancelled due to the coronavirus pandemic.<br />Youngsters from all over the world will be travelling to Limassol to showcase their abilities and will be participating in an event that usually attracts large numbers of competitors. Over 700 participants from 37 countries took part in the event in 2021, amid the COVID-19 epidemic, while over 1500 young competitors from 59 nations competed at the event in 2019.</p>', 100);
+('TRN31032022050837EsX', 'Karate 1 Youth League Limassol', '2022-04-02 10:11:00', '2022-03-19 05:06:00', '2022-03-05 05:06:00', '2022-03-31 05:08:37', '048dc4cfdc2485da26f1ea5fb8504a66.jpg', '0f92b01f7258365ef4e77ea2645d72b9.jpg', 1, '8b53d8ad2ef44c3af310811073aa2a20.pdf', '<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: center;\"><span style=\"box-sizing: inherit; font-family: HelveticaNeue-CondensedBold, Arial, Helvetica, sans-serif; font-weight: bolder;\">The seconds Karate 1-Youth League event of the season will be held in Limassol (Cyprus). The tournament is scheduled from April 29 to May 01.</span></p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">After the opening competition in Acapulco (Mexico), the 2022 Karate 1-Youth League travels to Limassol (Cyprus) for an event that has become a solid fixture in the international calendar. The city of Limassol welcomes a major Karate event for the third time as it hosted competitions in 2019 and 2021, with the tournament in 2020 cancelled due to the coronavirus pandemic.<br />Youngsters from all over the world will be travelling to Limassol to showcase their abilities and will be participating in an event that usually attracts large numbers of competitors. Over 700 participants from 37 countries took part in the event in 2021, amid the COVID-19 epidemic, while over 1500 young competitors from 59 nations competed at the event in 2019.</p>', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tournament_match`
+--
+
+CREATE TABLE `tournament_match` (
+  `match_id` int(10) NOT NULL,
+  `tournament_id` varchar(30) NOT NULL,
+  `player_1` int(10) NOT NULL,
+  `player_2` int(10) NOT NULL,
+  `player_winner` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -230,6 +248,12 @@ ALTER TABLE `tournament`
   ADD PRIMARY KEY (`tournament_id`);
 
 --
+-- Indeks untuk tabel `tournament_match`
+--
+ALTER TABLE `tournament_match`
+  ADD PRIMARY KEY (`match_id`);
+
+--
 -- Indeks untuk tabel `tournament_participant`
 --
 ALTER TABLE `tournament_participant`
@@ -262,7 +286,13 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT untuk tabel `contingent`
 --
 ALTER TABLE `contingent`
-  MODIFY `contingent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `contingent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `tournament_match`
+--
+ALTER TABLE `tournament_match`
+  MODIFY `match_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tournament_participant`

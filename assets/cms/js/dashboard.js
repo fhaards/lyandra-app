@@ -226,7 +226,7 @@
           labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI"],
           datasets: [{
               label: '# of Votes',
-              data: [50, 68, 70, 10, 12, 80],
+              data: [150, 2268, 170, 2100, 152, 2080],
               backgroundColor: "#ffcc00",
               borderColor: [
                   '#01B6A0',

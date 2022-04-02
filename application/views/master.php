@@ -13,7 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<?php $this->load->view('partials/_src_css.php'); ?>
 </head>
 
-<body>
+<body class="sidebar-icon-only sidebar-fixed">
 	<div class="container-scroller">
 		<?php $this->load->view('partials/_navbar.php'); ?>
 		<div class="container-fluid page-body-wrapper">
@@ -23,6 +23,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<!-- main-panel -->
 			<div class="main-panel my-0">
 				<div class="content-wrapper my-0 py-2">
+					<div class="row">
+						<div class="col-sm-12"> <?= $breadcrumb; ?></div>
+					</div>
 					<?php $this->load->view('partials/_alerts'); ?>
 					<div class="row mb-5">
 						<div class="col-sm-12">
@@ -32,7 +35,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<?php $this->load->view('partials/_footer.php'); ?>
 				</div>
 
-				
+
 			</div>
 			<!-- main-panel ends -->
 

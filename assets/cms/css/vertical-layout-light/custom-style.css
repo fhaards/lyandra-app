@@ -4,7 +4,7 @@
 
 .img-tour-banner {
     width: 100%;
-    height: 250px;
+    height: 230px;
     position: absolute;
     left: 0;
     top: 0;
@@ -14,7 +14,7 @@
 
 .img-tour-banner .overlay {
     width: 100%;
-    height: 250px;
+    height: 230px;
     position: absolute;
     left: 0;
     top: 0;
@@ -23,9 +23,6 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.4px);
-    -webkit-backdrop-filter: blur(3.4px);
-    border: 1px solid rgba(255, 255, 255, 0.32);
 }
 
 .img-tour-header {

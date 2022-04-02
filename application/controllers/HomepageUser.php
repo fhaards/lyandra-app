@@ -13,11 +13,15 @@ class HomepageUser extends CI_Controller
 		$this->load->helper('form');
 		$this->load->helper('date');
 		$this->load->helper('array');
+		$this->load->library('crumbs');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 	}
 	public function index()
 	{
+		// $this->crumbs->add('Dashboard', base_url() . 'settings/about');
+		$data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] 	 =  APP_NAME;
 		$data['content'] = 'dashboard';
 		$this->load->view('master', $data);
