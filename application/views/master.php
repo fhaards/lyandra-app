@@ -23,6 +23,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<!-- main-panel -->
 			<div class="main-panel my-0">
 				<div class="content-wrapper my-0 py-2">
+
+					<?php $this->load->view('partials/_alerts_user_status.php'); ?>
 					<div class="row">
 						<div class="col-sm-12"> <?= $breadcrumb; ?></div>
 					</div>

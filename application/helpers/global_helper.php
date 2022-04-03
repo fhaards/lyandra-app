@@ -46,6 +46,13 @@ function getUserData()
     return $ci->modelUser->findBy('username', $ci->session->username);
 }
 
+function getUserAccount()
+{
+    $ci = &get_instance();
+    $ci->load->model('modelUser');
+    return $ci->modelUser->findByUserAccount('user_id', $ci->session->userid);
+}
+
 function getCompanyData()
 {
     $ci = &get_instance();
@@ -103,7 +110,7 @@ function myDateInterval($dateToCompare)
 }
 
 // PROFILE 
-function loadProfileImg($getId, $getValue)
+function loadProfilePhoto($getId, $getValue)
 {
     $response = "";
     if ($getValue == NULL) :
@@ -118,9 +125,9 @@ function checkUserStatus($getStatus)
 {
     $setStyle = "";
     if ($getStatus == '0') :
-        $setStyle = '<span class="badge badge-danger d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-exclamation me-2"></i> <span> Inactive , Complete youre account Information</span> </span> ';
+        $setStyle = '<span class="badge badge-opacity-danger fw-bold d-flex align-items-center justify-content-center"><i class="mdi mdi-exclamation me-2"></i> <span> Inactive , Complete youre account Information</span> </span> ';
     else :
-        $setStyle = '<span class="badge badge-primary d-flex align-items-center justify-content-center"><i class="mdi mdi-check me-2"></i>  <span> Active </span> </span>';
+        $setStyle = '<span class="badge badge-opacity-primary fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-check me-2"></i>  <span> Active </span> , You can submit a competition </span>';
     endif;
     return $setStyle;
 }

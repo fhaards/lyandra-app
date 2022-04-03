@@ -27,6 +27,13 @@ class ModelApp extends CI_Model
     {
         return $this->db->get($table)->result_array();
     }
+    
+    function readLimit5($table, $orderValue, $orderType)
+    {
+        $this->db->order_by($orderValue, $orderType);
+        $this->db->limit(5);
+        return $this->db->get($table)->result_array();
+    }
 
     function readJoin1($table)
     {

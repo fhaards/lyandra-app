@@ -128,18 +128,17 @@
       <li class="nav-item dropdown d-none d-lg-block user-dropdown">
         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
           <?php if (isSuperAdmin()) : ?>
-            <img class="img-xs rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_3.png'; ?>" alt="logo" />
-            <!-- <img src="images/faces/face8.jpg" alt="Profile image" /> -->
+            <img class="img-xs rounded-circle" src="<?= base_url() . 'uploads/profile/default.png'; ?>" alt="logo" />
           <?php else : ?>
-            <img class="img-xs rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_2.png'; ?>" alt="Profile image" />
+            <img class="img-xs rounded-circle" src="<?= base_url() . 'uploads/profile/' . loadProfilePhoto(getUserData()['user_id'], getUserAccount()['photo']); ?>" alt="Profile image">
           <?php endif; ?>
         </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-          <div class="dropdown-header text-center">
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown " aria-labelledby="UserDropdown">
+          <div class="dropdown-header text-center pt-3">
             <?php if (isSuperAdmin()) : ?>
-              <img class="img-md rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_3.png'; ?>" width="80px" alt="logo" />
+              <img class="img-md rounded-2" src="<?= base_url() . 'uploads/profile/default.png'; ?>" width="80px" alt="logo" />
             <?php else : ?>
-              <img class="img-md rounded-circle" src="<?= base_url() . 'assets/cms/images/avatar/avatar_2.png'; ?>" alt="Profile image" />
+              <img class="img-md rounded-2" src="<?= base_url() . 'uploads/profile/' .loadProfilePhoto(getUserData()['user_id'], getUserAccount()['photo']); ?>" alt="Profile image">
             <?php endif; ?>
 
             <p class="mt-3 font-weight-semibold">

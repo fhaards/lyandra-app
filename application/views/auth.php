@@ -12,7 +12,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <?php $this->load->view('partials/_src_css.php'); ?>
 </head>
 
-<body>
+<body >
     <?php $this->load->view($content); ?>
     <?php $this->load->view('partials/_src_js.php'); ?>
 </body>

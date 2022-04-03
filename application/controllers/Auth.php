@@ -33,7 +33,7 @@ class Auth extends CI_Controller
 				$cek = $this->modelUser->cekLogin($username, $password);
 				if ($cek) {
 					$userData = $this->modelUser->findBy('username', $username);
-					$data_session = array('username' => $username, 'status' => "login", 'level' => $userData['level']);
+					$data_session = array('username' => $username, 'status' => "login", 'userid' => $userData['user_id'], 'level' => $userData['level']);
 					$this->session->set_userdata($data_session);
 					$this->session->set_flashdata('loginMsg', 'Data berhasil ditambahkan');
 					redirect(base_url("dashboard"));

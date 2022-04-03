@@ -136,4 +136,12 @@ class ModelUser extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
+    function findByUserAccount($fieldName, $value)
+    {
+        $this->db->select('*');
+        $this->db->from('users_account');
+        $this->db->where($fieldName, $value);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }
