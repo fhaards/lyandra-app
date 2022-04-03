@@ -52,10 +52,61 @@
     object-fit: cover;
 }
 
-.form-control{
-    border-radius:10px !important;
+
+.detail-header {
+    position: relative;
+    height: auto;
+    padding-bottom: 20px;
+    z-index: 1;
 }
 
-.alert{
+.detail-header .detail-header-title {
+    z-index: 999;
+    color: #fff;
+    position: relative;
+}
+
+.detail-header .detail-banner {
+    background: #1E283D url("../../images/dashboard/darkBG.png") repeat-y right top;
+    height: 140px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    z-index: 1;
+}
+
+.detail-header .detail-photo {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    border-radius: 15px;
+    z-index: 2;
+    object-fit: cover;
+    background: #fff;
+}
+
+.detail-header .detail-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 9px;
+    border: 5px solid #fff;
+}
+
+.detail-header .detail-photo .btn-edit{
+    position: absolute;
+    top:0;
+    right:0;
+    z-index:2;
+}
+
+.form-control {
+    border-radius: 10px !important;
+}
+
+.alert {
     transition: 5s;
 }

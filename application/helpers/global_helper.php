@@ -102,6 +102,30 @@ function myDateInterval($dateToCompare)
     return trim($dateInterval);
 }
 
+// PROFILE 
+function loadProfileImg($getId, $getValue)
+{
+    $response = "";
+    if ($getValue == NULL) :
+        $response = 'default.png';
+    else :
+        $response = $getId . '/' . $getValue;
+    endif;
+    return $response;
+}
+
+function checkUserStatus($getStatus)
+{
+    $setStyle = "";
+    if ($getStatus == '0') :
+        $setStyle = '<span class="badge badge-danger d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-exclamation me-2"></i> <span> Inactive , Complete youre account Information</span> </span> ';
+    else :
+        $setStyle = '<span class="badge badge-primary d-flex align-items-center justify-content-center"><i class="mdi mdi-check me-2"></i>  <span> Active </span> </span>';
+    endif;
+    return $setStyle;
+}
+
+
 
 // FOR TOURNAMENT 
 function setTournStatus($getStatus)
@@ -115,6 +139,17 @@ function setTournStatus($getStatus)
         $setStyle = '<span class="badge badge-opacity-success">Closed/Finish</span>';
     endif;
     return $setStyle;
+}
+
+function getDataIfNull($getData)
+{
+    $response = "";
+    if ($getData == NULL) :
+        $response = '<i class="text-secondary"> --- </i>';
+    else :
+        $response = $getData;
+    endif;
+    return $response;
 }
 
 // FOR CONTINGENT 

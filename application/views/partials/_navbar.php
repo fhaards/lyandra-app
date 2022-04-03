@@ -147,11 +147,16 @@
               <span class="fw-light text-muted mb-0"><?= getUserData()['username']; ?></span>
             </p>
           </div>
-          <a class="dropdown-item">
-            <i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>
-            My Profile <span class="badge badge-pill badge-danger">1</span>
+          <?php if (isUser()) : ?>
+            <a class="dropdown-item" href="<?= base_url() . 'profile'; ?>">
+              <i class="dropdown-item-icon mdi mdi-account-outline text-secondary me-3 mdi-18px"></i>
+              <strong>My Profile </strong>
+            </a>
+          <?php endif; ?>
+          <a href="<?php echo base_url('auth/logout'); ?>" class="dropdown-item">
+            <i class="dropdown-item-icon mdi mdi-power text-secondary me-3 mdi-18px"></i>
+            <strong>Sign Out</strong>
           </a>
-          <a href="<?php echo base_url('auth/logout'); ?>" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
         </div>
       </li>
     </ul>

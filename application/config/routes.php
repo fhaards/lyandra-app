@@ -13,6 +13,17 @@ $route['public/event-detail/(:any)'] = 'HomepagePublic/show/$1';
 $route['auth'] = 'Auth';
 $route['auth/register'] = 'Auth/insert';
 
+//Profile
+$route['profile'] = 'Profile';
+$route['profile/add'] = 'Profile/add';
+$route['profile/delete/(:any)'] = 'Profile/delete/$1';
+$route['profile/show/(:any)'] = 'Profile/show/$1';
+$route['profile/edit/(:any)'] = 'Profile/edit/$1';
+$route['profile/update/(:any)'] = 'Profile/update/$1';
+$route['profile/update-info/(:any)'] = 'Profile/updateInfo/$1';
+$route['profile/update-file/(:any)'] = 'Profile/updateFile/$1';
+
+
 //Homepages or Dashboard
 $route['dashboard'] = 'HomepageUser';
 
