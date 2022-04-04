@@ -5,13 +5,16 @@ class Tournament extends CI_Controller
 {
 
 	protected $table  = 'tournament';
+	protected $table2 = 'tournament_participant';
 	protected $tbId   = 'tournament_id';
+	protected $tb2Id  = 'participant_id';
 
 	function __construct()
 	{
 		parent::__construct();
 		redirectIfNotLogin();
 		$this->load->model('modelApp');
+		$this->load->model('modelTournament');
 		$this->load->helper('form');
 		$this->load->helper('date');
 		$this->load->helper('array');
@@ -26,8 +29,8 @@ class Tournament extends CI_Controller
 	public function index()
 	{
 		$this->crumbs->add('Tournament', base_url() . 'tournament');
-        $data['breadcrumb'] = $this->crumbs->output();
-		
+		$data['breadcrumb'] = $this->crumbs->output();
+
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->read($this->table);
 		$data['content'] = 'pages/tournament/index';
@@ -38,7 +41,7 @@ class Tournament extends CI_Controller
 	{
 		$this->crumbs->add('Tournament', base_url() . 'tournament');
 		$this->crumbs->add('Add', base_url() . '');
-        $data['breadcrumb'] = $this->crumbs->output();
+		$data['breadcrumb'] = $this->crumbs->output();
 
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->read($this->table);
@@ -106,6 +109,19 @@ class Tournament extends CI_Controller
 		}
 	}
 
+	public function addParticipant()
+	{
+		$insertData  = array(
+			'participant_tournament'  => $this->input->post('tournament_id'),
+			'participant_user'  => $this->input->post('user_id'),
+			'submit_at' => date("Y-m-d h:i:s"),
+			'participant_status' => 0
+		);
+		$this->modelApp->insert($this->table2, $insertData);
+		$this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+		redirect('tournament');
+	}
+
 	public function updateFile($id)
 	{
 		$insertData = [];
@@ -152,7 +168,7 @@ class Tournament extends CI_Controller
 		$this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
 		redirect("tournament/edit/$id");
 	}
-	
+
 	public function show($id)
 	{
 		$this->crumbs->add('Tournament', base_url() . 'tournament');
@@ -161,6 +177,7 @@ class Tournament extends CI_Controller
 
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
+		$data['participant']  = $this->modelTournament->readParticipant();
 		$data['content'] = 'pages/tournament/show';
 		$this->load->view('master', $data);
 	}
@@ -195,6 +212,23 @@ class Tournament extends CI_Controller
 			$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
 			$this->session->set_flashdata('successEdit', 'Success');
 			redirect("tournament/edit/$id");
+		}
+	}
+
+	public function updateParticipant($id)
+	{
+		$tourid = $this->input->get('tournament_id');
+		$insertData  = array(
+			
+			'participant_status' => $this->input->get('participant_status')
+		);
+		$update = $this->modelApp->update($this->table2, $this->tb2Id, $id, $insertData);
+		if ($update) {
+			$this->session->set_flashdata('successEdit', 'Success');
+			redirect("tournament/show/$tourid");
+		} else {
+			$this->session->set_flashdata('error', 'Error');;
+			redirect("tournament/show/$tourid");
 		}
 	}
 

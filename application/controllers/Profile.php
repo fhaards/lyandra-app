@@ -12,6 +12,7 @@ class Profile extends CI_Controller
 	{
 		parent::__construct();
 		redirectIfNotLogin();
+		redirectIfSuperadmin();
 		$this->load->model('modelApp');
 		$this->load->helper('form');
 		$this->load->helper('date');
@@ -32,6 +33,7 @@ class Profile extends CI_Controller
 		$id = getUserData()['user_id'];
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->getId($this->tableSecond, $this->tbId,  $id);
+		$data['contingent']  = $this->modelApp->read('contingent');
 		$data['recentEvents']  = $this->modelApp->readLimit5('tournament', 'event_date', 'DESC');
 		$data['content'] = 'pages/profile/index';
 		$this->load->view('master', $data);
@@ -188,9 +190,10 @@ class Profile extends CI_Controller
 				'class' => $this->input->post('class'),
 				'weight' => $this->input->post('weight'),
 				'height' => $this->input->post('height'),
+				'contingent_id' => $this->input->post('contingent_id'),
 			);
 			$insertData2  = array(
-				'user_status' => '1',
+				'user_status' => '2',
 				'updated_at' => date("Y-m-d h:i:s"),
 			);
 			$updateAccount = $this->modelApp->update($this->tableSecond, $this->tbId, $id, $insertData);

@@ -1,36 +1,72 @@
 <?php if ($this->session->flashdata('success')) : ?>
-    <div id="alert" class="alert alert-success" role="alert">
-        Success !
-    </div>
-
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Success',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('error')) : ?>
-    <div id="alert" class="alert alert-danger" role="alert">
-        Something Error !
-    </div>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Ops! Something Wrong',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('errorLogin')) : ?>
-    <div id="alert" class="alert alert-danger" role="alert">
-        Something Error ! <strong> Username or Password is Incorrect</strong>
-    </div>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Ops! Something Wrong',
+            text: 'Username or Password is Incorrect',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('successEdit')) : ?>
-    <div id="alert" class="alert alert-success" role="alert">
-        Edit Success , data has changed
-    </div>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Success',
+            text: 'Edit Data Success',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('successInput')) : ?>
-    <div id="alert" class="alert alert-success" role="alert">
-        Input Success , a new data was inserted
-    </div>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Success Add New Data',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('successDelete')) : ?>
-    <div id="alert" class="alert alert-success" role="alert">
-        Delete Success
-    </div>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Success Delete',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
 <?php endif; ?>

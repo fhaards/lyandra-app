@@ -84,6 +84,14 @@
                                             <option value="Female">Female</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Contingent</label>
+                                        <select class="form-control" name="contingent_id">
+                                            <?php foreach($item as $x) : ?>
+                                            <option value="<?= $x['contingent_id']; ?>"><?= $x['contingent_name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                     <div class="mt-3 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-dark btn-icon-text fw-bold d-flex align-items-center">
                                             <i class="mdi mdi-login-variant btn-icon-prepend"></i>

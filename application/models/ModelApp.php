@@ -27,7 +27,15 @@ class ModelApp extends CI_Model
     {
         return $this->db->get($table)->result_array();
     }
-    
+
+    function readExcept($table, $value, $setValue)
+    {
+        $names = array($setValue);
+        $query = $this->db->where_not_in($value, $setValue);
+        return $query->get($table)->result_array();
+    }
+
+
     function readLimit5($table, $orderValue, $orderType)
     {
         $this->db->order_by($orderValue, $orderType);

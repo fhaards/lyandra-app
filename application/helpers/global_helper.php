@@ -39,6 +39,14 @@ function redirectIfNotLogin()
     }
 }
 
+function redirectIfSuperadmin()
+{
+    $ci = &get_instance();
+    if ($ci->session->userdata('level') == "superadmin") {
+        return show_404();
+    }
+}
+
 function getUserData()
 {
     $ci = &get_instance();
@@ -124,10 +132,24 @@ function loadProfilePhoto($getId, $getValue)
 function checkUserStatus($getStatus)
 {
     $setStyle = "";
-    if ($getStatus == '0') :
-        $setStyle = '<span class="badge badge-opacity-danger fw-bold d-flex align-items-center justify-content-center"><i class="mdi mdi-exclamation me-2"></i> <span> Inactive , Complete youre account Information</span> </span> ';
+    $checkLevel = "";
+    $setStatus = $getStatus;
+    if (isSuperAdmin()) {
+        $checkLevel = '';
+    } else {
+        if ($getStatus == '2') :
+            $checkLevel = " , You can submit a competition ";
+        else :
+            $checkLevel = " , Complete youre account Information";
+        endif;
+    }
+
+    if ($setStatus == 0) :
+        $setStyle = '<span class="badge badge-pill badge-danger fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-exclamation me-2"></i> <span> Inactive </span> <span> ' . $checkLevel . '</span> ';
+    elseif ($setStatus == 1) :
+        $setStyle = '<span class="badge badge-pill badge-secondary text-dark fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-clock me-2"></i> <span> Pending </span> <span> ' . $checkLevel . '</span> ';
     else :
-        $setStyle = '<span class="badge badge-opacity-primary fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-check me-2"></i>  <span> Active </span> , You can submit a competition </span>';
+        $setStyle = '<span class="badge badge-opacity-primary fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-check me-2"></i>  <span> Active </span> <span>' . $checkLevel . '</span>';
     endif;
     return $setStyle;
 }
@@ -139,11 +161,11 @@ function setTournStatus($getStatus)
 {
     $setStyle = "";
     if ($getStatus == '1') :
-        $setStyle = '<span class="badge badge-opacity-info">Open Registration</span>';
+        $setStyle = '<span class="text-info fw-bolder">Open Registration</span>';
     elseif ($getStatus == '2') :
-        $setStyle = '<span class="badge badge-opacity-primary">Ongoing</span>';
+        $setStyle = '<span class="text-primary fw-bolder">Ongoing</span>';
     elseif ($getStatus == '3') :
-        $setStyle = '<span class="badge badge-opacity-success">Closed/Finish</span>';
+        $setStyle = '<span class="text-success fw-bolder">Closed/Finish</span>';
     endif;
     return $setStyle;
 }
@@ -157,6 +179,34 @@ function getDataIfNull($getData)
         $response = $getData;
     endif;
     return $response;
+}
+
+function checkJoinParticipant($tourid, $uid)
+{
+    $ci = &get_instance();
+    $ci->load->model('modelTournament');
+    return $ci->modelTournament->checkParticipant($tourid, $uid);
+}
+
+function setParticipantStatusCheck($tourid, $uid)
+{
+    $ci = &get_instance();
+    $ci->load->model('modelTournament');
+    return $ci->modelTournament->checkParticipantStatus($tourid, $uid);
+}
+
+
+function setParticipantStatus($setStatus)
+{
+    if ($setStatus == 0) :
+        $setStyle = '<span class="text-secondary fw-bold d-flex flex-row align-items-center"> <i class="mdi mdi-clock me-2"></i><p class="p-0 m-0">Pending </p> ';
+    elseif ($setStatus == 1) :
+        $setStyle = '<span class="text-success fw-bold d-flex flex-row align-items-center"> <i class="mdi mdi-check me-2"></i><p class="p-0 m-0">Approved</p> ';
+    elseif ($setStatus == 2) :
+        $setStyle = '<span class="text-danger fw-bold d-flex flex-row align-items-center"> <i class="mdi mdi-close me-2"></i><p class="p-0 m-0">Rejected</p> ';
+    else :
+    endif;
+    return $setStyle;
 }
 
 // FOR CONTINGENT 

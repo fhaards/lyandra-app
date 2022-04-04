@@ -27,9 +27,16 @@
                         <div class="mt-3 py-0 col-md-12 d-flex justify-content-center">
                             <div class="home-tab m-0 p-0">
                                 <div class="btn-wrapper">
-                                    <a href="<?= base_url() . "tournament/edit/" . $item->tournament_id; ?>" class="btn btn-primary btn-sm m-0 text-white rounded-2">
-                                        <i class="icon-plus"></i> Request Join
-                                    </a>
+                                    <?php if (checkJoinParticipant($item->tournament_id, getUserData()['user_id']) == 0) : ?>
+                                        <a href="<?= base_url() . "tournament/edit/" . $item->tournament_id; ?>" class="btn btn-primary btn-sm m-0 text-white rounded-2  
+                                        <?= (getUserData()['user_status'] == '2' ? '' : 'disabled'); ?> ">
+                                            <i class="icon-plus"></i> Request Join
+                                        </a>
+                                    <?php else : ?>
+                                        <a href="javascript:void(0)" class="btn btn-secondary px-2 py-2 disabled">
+                                            <i class="mdi mdi-file-check"></i> Subtmitted
+                                        </a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +122,7 @@
                 <div class=" card-body p-2 m-0">
                     <h2 class="accordion-header p-0" id="flush-heading2">
                         <button class="accordion-button collapsed rounded d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
-                            <h5 class="px-5 py-0 m-0">
+                            <h5 class="py-0 m-0">
                                 Participants
                             </h5>
                         </button>
@@ -123,7 +130,7 @@
                     <div id="flush-collapse2" class="accordion-collapse collapse py-5" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlushExample">
                         <div class="row justify-content-center">
                             <div class="col-md-11">
-                                <div class="accordion-body"><?= $item->description; ?></div>
+                                <?php $this->load->view('pages/participant/index.php'); ?>
                             </div>
                         </div>
                     </div>
@@ -136,7 +143,7 @@
             <div class=" card-body p-2 m-0">
                 <h2 class="accordion-header p-0" id="flush-heading3">
                     <button class="accordion-button collapsed rounded d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3">
-                        <h5 class="px-5 py-0 m-0">
+                        <h5 class="py-0 m-0">
                             Bracket
                         </h5>
                     </button>
@@ -157,7 +164,7 @@
             <div class="card-body p-2 m-0">
                 <h2 class="accordion-header p-0" id="flush-headingOne">
                     <button class="accordion-button collapsed rounded d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        <h5 class="px-5 py-0 m-0">Description</h5>
+                        <h5 class="py-0 m-0">Description</h5>
                     </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse py-5" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">

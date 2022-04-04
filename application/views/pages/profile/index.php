@@ -1,5 +1,5 @@
 <div class="row detail-pages">
-    <div class="col-md-8 grid-margin stretch-card">
+    <div class="col-md-12 grid-margin stretch-card">
         <div class="card" id="profile-pages">
             <div class="card-body detail-header">
                 <div class="detail-banner"></div>
@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-center align-items-center p-0">
                     <div class="detail-photo">
                         <a href="" class="btn btn-light btn-sm rounded-1 px-2 py-1 btn-edit edit-photo-profile-trigger"><i class="mdi mdi-pencil"></i></a>
-                        <img class="img-md" src="<?= base_url() . 'uploads/profile/' . loadProfilePhoto($item->user_id, $item->photo); ?>" alt="logo">
+                        <img src="<?= base_url() . 'uploads/profile/' . loadProfilePhoto($item->user_id, $item->photo); ?>" alt="logo">
                     </div>
                 </div>
                 <div class="detail-header-content my-4">
@@ -37,7 +37,7 @@
                     </div>
 
                     <?php echo validation_errors(); ?>
-
+                    <!-- EDIT PHOTO -->
                     <div class="profile-photo-forms d-none">
                         <?php echo form_open_multipart("profile/update-photo/" . $item->user_id, array('class' => 'form-sample')); ?>
                         <div class="row pt-2 px-0 align-items-center">
@@ -64,6 +64,7 @@
                         </div>
                     </div>
 
+                    <!-- EDIT ACCOUNT INFOMARTION -->
                     <div class="profile-account-forms">
                         <?php echo form_open("profile/update/" . $item->user_id, array('class' => 'form-sample')); ?>
                         <div class="row pt-2 px-0">
@@ -109,13 +110,25 @@
                         <div class="row py-1 px-0">
                             <div class="col-md-4 form-group d-flex flex-column">
                                 <label class="me-4">Wieght</label>
-                                <input type="text" class="form-control" name="weight" value="<?= $item->weight; ?>" />
+                                <input type="number" class="form-control" min="1" name="weight" value="<?= $item->weight; ?>" />
                             </div>
                             <div class="col-md-4 form-group d-flex flex-column">
                                 <label class="me-4">Height</label>
-                                <input type="text" class="form-control" name="height" value="<?= $item->height; ?>" />
+                                <input type="number" class="form-control"  min="1" name="height" value="<?= $item->height; ?>" />
                             </div>
                         </div>
+                        <div class="row"><div class="col-md-12"><hr></div></div>
+                        <div class="row py-1 px-0">
+                            <div class="col-md-6 form-group d-flex flex-column">
+                                <label>Contingent</label>
+                                <select class="form-control" name="contingent_id">
+                                    <?php foreach ($contingent as $c) : ?>
+                                        <option value="<?= $c['contingent_id']; ?>" <?= ($item->contingent_id == $c['contingent_id']) ? 'selected' : '' ;?>><?= $c['contingent_name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12"><hr></div></div>
                         <div class="row px-0 ">
                             <div class="col-md-12 d-flex justify-content-center">
                                 <button type="submit" class="btn fw-bold btn-primary d-flex flex-row align-items-center px-3 py-1"><i class="mdi mdi-pencil me-2"></i> Edit Account</button>
@@ -128,10 +141,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 grid-margin stretch-card d-flex flex-column">
+    <div class="col-md-12 grid-margin stretch-card d-flex flex-column">
         <div class="row flex-grow">
             <!-- RECENT EVENTS -->
-            <div class="col-md-12 col-lg-12 grid-margin stretch-card">
+            <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title  card-title-das mb-2h">Recent Events</h4>
@@ -162,7 +175,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-12 grid-margin stretch-card">
+            <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title  card-title-dash">Recent Events</h4>
@@ -227,30 +240,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-
-    <div class="col-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-header py-2">
-                <div class="card-title my-0 py-2">
-                    <div class="d-flex flex-row align-items-center justify-content-between">
-                        <h4 class="py-2 my-0">Profile <span class="card-description">Detail</span></h4>
-                        <a href="" class="btn btn-light btn-sm btn-edit d-flex flex-row align-items-center my-0"><i class="mdi mdi-pencil me-4"></i> Edit </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-
-
-                <div class="table-responsive py-5">
-                    <table class="table table-striped" id="dataTable">
-                    </table>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<?php if (getUserData()['user_status'] == 0) : ?>
+<?php if (isUser() && getUserData()['user_status'] == 1) : ?>
     <div class="jumbotron jumbotron-fluid bg-danger text-white w-100 p-2 rounded-2 mb-3">
         <div class="container d-flex align-items-center justify-content-between">
             <div>

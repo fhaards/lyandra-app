@@ -13,16 +13,14 @@ $route['public/event-detail/(:any)'] = 'HomepagePublic/show/$1';
 $route['auth'] = 'Auth';
 $route['auth/register'] = 'Auth/insert';
 
+//User
+$route['user'] = 'User';
+$route['user/update/(:any)'] = 'User/update/$1';
+
 //Profile
 $route['profile'] = 'Profile';
-// $route['profile/add'] = 'Profile/add';
-// $route['profile/delete/(:any)'] = 'Profile/delete/$1';
-// $route['profile/show/(:any)'] = 'Profile/show/$1';
-// $route['profile/edit/(:any)'] = 'Profile/edit/$1';
 $route['profile/update/(:any)'] = 'Profile/update/$1';
 $route['profile/update-photo/(:any)'] = 'Profile/updatePhoto/$1';
-// $route['profile/update-file/(:any)'] = 'Profile/updateFile/$1';
-
 
 //Homepages or Dashboard
 $route['dashboard'] = 'HomepageUser';
@@ -41,6 +39,10 @@ $route['tournament/edit/(:any)'] = 'Tournament/edit/$1';
 $route['tournament/update/(:any)'] = 'Tournament/update/$1';
 $route['tournament/update-info/(:any)'] = 'Tournament/updateInfo/$1';
 $route['tournament/update-file/(:any)'] = 'Tournament/updateFile/$1';
+
+// Tournament Participants
+$route['tournament/add-participant'] = 'Tournament/addParticipant';
+$route['tournament/participant-update/(:any)'] = 'Tournament/updateParticipant/$1';
 
 //Contingent
 $route['contingent'] = 'Contingent';

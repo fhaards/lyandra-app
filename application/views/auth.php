@@ -15,6 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body >
     <?php $this->load->view($content); ?>
     <?php $this->load->view('partials/_src_js.php'); ?>
+    <?php $this->load->view('partials/_alerts'); ?>
 </body>
 
 </html>

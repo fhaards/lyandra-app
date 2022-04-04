@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
+	
 	function __construct()
 	{
 		parent::__construct();
@@ -13,11 +14,13 @@ class Auth extends CI_Controller
 		$this->load->helper('url');
 		$this->load->library('form_validation');
 		$this->load->model('modelUser');
+		$this->load->model('modelApp');
 	}
 	public function index()
 	{
 		$data['title'] 	 =  APP_NAME;
 		$data['content'] = 'auth-login';
+		$data['item']  = $this->modelApp->read('contingent');
 		if ($this->session->userdata('status') == "login") {
 			redirect(base_url("dashboard"));
 		} else {
@@ -69,6 +72,6 @@ class Auth extends CI_Controller
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('');
+		redirect('auth');
 	}
 }

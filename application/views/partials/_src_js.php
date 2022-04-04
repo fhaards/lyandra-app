@@ -19,16 +19,7 @@
 <script src="<?php echo base_url() . 'assets/cms/vendors/sweetalert2/sweetalert2.all.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'assets/cms/vendors/tinymce/tinymce.min.js'; ?>"></script>
 <script>
-    tinymce.init({
-        selector: '.tinymce'
-    });
-    $('#dataTable').DataTable();
     var BASE_URL = "<?php echo base_url(); ?>";
     var SITE_URL = "<?php echo site_url(); ?>";
-    $('#alert').removeClass('d-none');
-
-    setTimeout(() => {
-        $('.alert').alert('close');
-    }, 4000);
 </script>
 <script src="<?php echo base_url() . 'src/app.js'; ?>"></script>

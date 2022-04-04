@@ -136,9 +136,9 @@
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown " aria-labelledby="UserDropdown">
           <div class="dropdown-header text-center pt-3">
             <?php if (isSuperAdmin()) : ?>
-              <img class="img-md rounded-2" src="<?= base_url() . 'uploads/profile/default.png'; ?>" width="80px" alt="logo" />
+              <img class="img-lg rounded-2" src="<?= base_url() . 'uploads/profile/default.png'; ?>" width="80px" alt="logo" />
             <?php else : ?>
-              <img class="img-md rounded-2" src="<?= base_url() . 'uploads/profile/' .loadProfilePhoto(getUserData()['user_id'], getUserAccount()['photo']); ?>" alt="Profile image">
+              <img class="img-lg rounded-2" src="<?= base_url() . 'uploads/profile/' .loadProfilePhoto(getUserData()['user_id'], getUserAccount()['photo']); ?>" alt="Profile image">
             <?php endif; ?>
 
             <p class="mt-3 font-weight-semibold">

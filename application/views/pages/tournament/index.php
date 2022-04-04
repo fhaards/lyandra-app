@@ -9,15 +9,17 @@
                                 Tournament List
                             </p>
                         </h4>
-                        <div>
-                            <a href="<?= base_url() . 'tournament/add'; ?>" type="button" class="btn btn-social-icon-text btn-primary"><i class="ti-plus"></i>Add Data</a>
-                        </div>
+                        <?php if (isSuperAdmin()) : ?>
+                            <div>
+                                <a href="<?= base_url() . 'tournament/add'; ?>" type="button" class="btn btn-social-icon-text btn-primary"><i class="ti-plus"></i>Add Data</a>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                 </div>
 
                 <div class="table-responsive py-5">
-                    <table class="table table-striped" id="dataTable">
+                    <table class="table table-striped dataTable" id="dataTable">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -32,35 +34,46 @@
                             <?php foreach ($item as $x) : ?>
                                 <tr>
                                     <td>
-                                    <a class="btn btn-link" href="<?= base_url() . "tournament/show/" . $x['tournament_id']; ?>">
-                                        <?= $x['tournament_name']; ?>
-                                    </a>
+                                        <a class="btn btn-link" href="<?= base_url() . "tournament/show/" . $x['tournament_id']; ?>">
+                                            <?= $x['tournament_name']; ?>
+                                        </a>
                                     </td>
                                     <td><?= setTimeDate($x['event_date']); ?></td>
                                     <td><?= setTimeDate($x['regist_date']); ?></td>
                                     <td><?= setTimeDate($x['closed_date']); ?></td>
                                     <td><?= setTournStatus($x['status']); ?></td>
                                     <td>
-                                        <?php if(isSuperAdmin()): ?>
-                                        <div class="dropdown dropstart" id="act-tourn">
-                                            <button class="badge badge-pill badge-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="mdi mdi-dots-horizontal"></i>
-                                            </button>
-                                            <div class="dropdown-menu mx-2">
-                                                <a class="dropdown-item py-2" href="<?= base_url() . "tournament/show/" . $x['tournament_id']; ?>">
-                                                    <i class="ti-eye"></i>&nbsp;&nbsp; Detail</span>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2" href="<?= base_url() . "tournament/edit/" . $x['tournament_id']; ?>">
-                                                    <i class="ti-pencil"></i>&nbsp;&nbsp; Edit</span>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteConfirm('<?php echo site_url('tournament/delete/' . $x['tournament_id']) ?>')" href="#!" class="delete-tourn dropdown-item py-2">
-                                                    <i class="ti-trash"></i>&nbsp;&nbsp; Delete</span>
-                                                </a>
+                                        <?php if (isSuperAdmin()) : ?>
+                                            <div class="dropdown dropstart" id="act-tourn">
+                                                <button class="badge badge-pill badge-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="mdi mdi-dots-horizontal"></i>
+                                                </button>
+                                                <div class="dropdown-menu mx-2">
+                                                    <a class="dropdown-item py-2" href="<?= base_url() . "tournament/show/" . $x['tournament_id']; ?>">
+                                                        <i class="ti-eye"></i>&nbsp;&nbsp; Detail</span>
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item py-2" href="<?= base_url() . "tournament/edit/" . $x['tournament_id']; ?>">
+                                                        <i class="ti-pencil"></i>&nbsp;&nbsp; Edit</span>
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteConfirm('<?php echo site_url('tournament/delete/' . $x['tournament_id']) ?>')" href="#!" class="delete-tourn dropdown-item py-2">
+                                                        <i class="ti-trash"></i>&nbsp;&nbsp; Delete</span>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <?php endif;?>
+                                        <?php else : ?>
+                                            <?php if (checkJoinParticipant($x['tournament_id'], getUserData()['user_id']) == 0) : ?>
+                                                <a data-bs-toggle="modal" data-bs-target="#joinTournamentModal" thisuid="" onclick="joinTournamentModal('<?= $x['tournament_id']; ?>','<?= getUserData()['user_id']; ?>')" href="javascript:void(0)" class="btn btn-primary px-2 py-2 <?= (getUserData()['user_status'] == '2' ? '' : 'disabled'); ?> ">
+                                                    <i class="icon-plus"></i> Request Join
+                                                </a>
+                                            <?php else : ?>
+                                                <?= setParticipantStatus(setParticipantStatusCheck($x['tournament_id'], getUserData()['user_id']));?>
+                                                <!-- <a href="javascript:void(0)" class="btn btn-secondary px-2 py-2 d-flex flex-row align-items-center justify-content-center disabled">
+                                                    <i class="mdi mdi-file-check"></i> <p class="p-0 m-0">Subtmitted</p>
+                                                </a> -->
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

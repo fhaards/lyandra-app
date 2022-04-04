@@ -26,6 +26,7 @@ class ModelUser extends CI_Model
         $gender     = $this->input->post('gender');
         $username   = $this->input->post('username');
         $password   = $this->input->post('password');
+        $contId     = $this->input->post('contingent_id');
         $level      = 'user';
         $passNew    = password_hash($password, PASSWORD_DEFAULT);
 
@@ -42,6 +43,7 @@ class ModelUser extends CI_Model
         if ($query) {
             $data2 = array(
                 'user_id' => $getIdRecents,
+                'contingent_id' => $contId,
                 'gender' => $gender
             );
             $query2 = $this->db->insert('users_account', $data2);

@@ -1,5 +1,30 @@
+$(".dataTable").DataTable();
+$("#alert").removeClass("d-none");
+
+tinymce.init({
+	selector: ".tinymce",
+});
+
+setTimeout(() => {
+	$(".alert").alert("close");
+}, 4000);
+
 function deleteConfirm(url) {
 	$("#btn-delete").attr("href", url);
+}
+
+function changeStatusUser(url) {
+	$("#changeStatusUserModal .form-sample").attr("action", url);
+}
+
+function updateParticipant(url, tourid) {
+	$("#updateParticipantModal .form-sample").attr("action", url);
+	$("#updateParticipantModal .tournamentId").val(tourid);
+}
+
+function joinTournamentModal(tourid, uid) {
+	$("#joinTournamentModal .tourId").val(tourid);
+	$("#joinTournamentModal .userId").val(uid);
 }
 
 // $("#auth-forms .regist-trigger").on('click',function(e){

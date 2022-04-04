@@ -28,7 +28,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="row">
 						<div class="col-sm-12"> <?= $breadcrumb; ?></div>
 					</div>
-					<?php $this->load->view('partials/_alerts'); ?>
 					<div class="row mb-5">
 						<div class="col-sm-12">
 							<?php $this->load->view($content); ?>
@@ -47,6 +46,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 	<!-- Javascript Sources -->
 	<?php $this->load->view('partials/_src_js.php'); ?>
+	<?php $this->load->view('partials/_alerts'); ?>
 	<?php $this->load->view('partials/_src_js_stack.php'); ?>
 </body>
 
