@@ -28,6 +28,7 @@
 .img-tour-header {
     z-index: 1;
     position: relative;
+    margin-top:65px !important;
 }
 
 .img-tour-banner img {
@@ -52,6 +53,15 @@
     object-fit: cover;
 }
 
+.card-tour-detail .button-information{
+    border:1px solid #e5e7eb;
+    background-color: #f9fafb;
+}
+
+.card-tour-detail .button-information:hover{
+    background-color: #e5e7eb;
+    color:#1d4ed8;
+}
 
 .detail-header {
     position: relative;

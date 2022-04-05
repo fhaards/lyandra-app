@@ -53,6 +53,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/isotope-layout/isotope.pkgd.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/glightbox/js/glightbox.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/vendor/animejs/anime.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/cms/vendors/moment/moment.min.js'; ?>"></script>
 
     <script>
         var BASEURL = '<?php echo base_url() ?>';

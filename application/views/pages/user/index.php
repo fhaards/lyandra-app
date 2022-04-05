@@ -25,8 +25,8 @@
                         <tbody>
                             <?php foreach ($item as $x) : ?>
                                 <tr>
-                                    <td width="20%"><?= $x['username']; ?></td>
-                                    <td width="20%"><?= $x['name']; ?></td>
+                                    <td width="30%"><?= $x['username']; ?></td>
+                                    <td width="30%"><?= $x['name']; ?></td>
                                     <td width="20%"><?= setTimeDate($x['created_at']); ?></td>
                                     <td width="10%">  <?= checkUserStatus($x['user_status']); ?></td>
                                     <td width="10%">

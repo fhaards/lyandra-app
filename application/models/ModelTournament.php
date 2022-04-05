@@ -30,11 +30,12 @@ class ModelTournament extends CI_Model
         return $stat;
     }
 
-    function readParticipant()
+    function readParticipant($id)
     {
         $this->db->select('*');
         $this->db->from('tournament_participant');
         $this->db->join('users', 'tournament_participant.participant_user = users.user_id');
+        $this->db->where('participant_tournament', $id);
         return $this->db->get()->result_array();
     }
     

@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-striped table-bordered dataTable">
+    <table class="table table-striped table-hover dataTable" width="100%">
         <thead>
             <tr>
                 <th>User</th>
@@ -10,13 +10,14 @@
         </thead>
         <tbody>
             <?php foreach ($participant as $tr) : ?>
-                <tr>
-                    <td width="50%"><?= $tr['name']; ?></td>
-                    <td width="20%"><?= setTimeDate($tr['submit_at']); ?></td>
-                    <td><?= setParticipantStatus($tr['participant_status']); ?></td>
-                    <td>
+                <tr >
+                    <td width="50%"  class="py-2"><?= $tr['name']; ?></td>
+                    <td width="20%"  class="py-2"><?= setTimeDate($tr['submit_at']); ?></td>
+                    <td  class="py-2"><?= setParticipantStatus($tr['participant_status']); ?></td>
+                    <td  class="py-2">
                         <div class="btn-wrapper justify-content-center d-flex">
-                            <button data-bs-toggle="modal" type="button" data-bs-target="#updateParticipantModal" onclick="updateParticipant('<?php echo site_url('tournament/participant-update/' . $tr['participant_id']) ?>', '<?= $tr['participant_tournament']; ?> ')" class="btn btn-success rounded-2 py-2 px-2 fw-bolder d-flex flex-row align-items-center">
+                            <button class="btn btn-success btn-sm rounded-2 py-1 px-1 fw-bolder d-flex flex-row align-items-center"
+                                data-bs-toggle="modal" type="button" data-bs-target="#updateParticipantModal" onclick="updateParticipant('<?php echo site_url('tournament/participant-update/' . $tr['participant_id']) ?>', '<?= $tr['participant_tournament']; ?> ')" >
                                 <i class="mdi mdi-refresh"></i> <span class="m-0 p-0"> Update </span>
                             </button>
                         </div>

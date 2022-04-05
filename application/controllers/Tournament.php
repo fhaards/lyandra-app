@@ -98,6 +98,8 @@ class Tournament extends CI_Controller
 				'closed_date' => $this->input->post('closed_date'),
 				'created_date' => date("Y-m-d h:i:s"),
 				'description' => $this->input->post('description'),
+				'venue' => $this->input->post('venue'),
+				'venue_map' => $this->input->post('venue_map'),
 				'logo' => $getProductImage1,
 				'banner' => $getProductImage2,
 				'rules' => $getProductImage3,
@@ -177,7 +179,7 @@ class Tournament extends CI_Controller
 
 		$data['title'] = APP_NAME;
 		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
-		$data['participant']  = $this->modelTournament->readParticipant();
+		$data['participant']  = $this->modelTournament->readParticipant($id);
 		$data['content'] = 'pages/tournament/show';
 		$this->load->view('master', $data);
 	}
@@ -207,7 +209,9 @@ class Tournament extends CI_Controller
 				'event_date' => $this->input->post('event_date'),
 				'regist_date' => $this->input->post('regist_date'),
 				'closed_date' => $this->input->post('closed_date'),
-				'description' => $this->input->post('description')
+				'description' => $this->input->post('description'),
+				'venue' => $this->input->post('venue'),
+				'venue_map' => $this->input->post('venue_map')
 			);
 			$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
 			$this->session->set_flashdata('successEdit', 'Success');

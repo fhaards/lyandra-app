@@ -3,7 +3,6 @@
         <div class="card-body">
             <h4 class="card-title mb-5">Edit : <?= $item->tournament_name; ?></h4>
             <?php echo validation_errors(); ?>
-
             <?php echo form_open("tournament/update-info/" . $item->tournament_id, array('class' => 'form-sample')); ?>
             <div class="row">
                 <div class="col-md-12">
@@ -15,11 +14,37 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group row">
+                        <label>Max Participants</label>
+                        <div>
+                            <input type="number" class="form-control" name="max_participants" min="1" value="<?= $item->max_participants; ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <label>Venue</label>
+                        <div>
+                            <input type="text" class="form-control" name="venue" value="<?= $item->venue; ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <label>Location / Map , Url</label>
+                        <div>
+                            <input type="text" class="form-control" name="venue_map" value="<?= $item->venue_map; ?>" />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <p class="card-description">
                 Date
             </p>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group row">
                         <label>Event Date</label>
                         <div>
@@ -27,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group row">
                         <label>Regist Date</label>
                         <div>
@@ -35,19 +60,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group row">
                         <label>Closed Date</label>
                         <div>
                             <input type="datetime-local" class="form-control" name="closed_date" value="<?= date('Y-m-d\TH:i:s', strtotime($item->closed_date)); ?>" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group row">
-                        <label>Max Participants</label>
-                        <div>
-                            <input type="number" class="form-control" name="max_participants" value="<?= $item->max_participants; ?>" />
                         </div>
                     </div>
                 </div>

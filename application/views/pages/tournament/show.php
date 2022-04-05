@@ -12,15 +12,15 @@
                     </div>
                 </div>
 
-                <div class="row mb-3 mt-4 img-tour-header">
-                    <div class="col-md-12 d-flex justify-content-center">
+                <div class="row mt-4 mb-0 img-tour-header">
+                    <div class="col-md-12 d-flex justify-content-center mb-3">
                         <div class="img-tour-logo">
                             <img class="img-responsive" src="<?= base_url() . 'uploads/tournaments/' . $item->tournament_id . '/' . $item->logo; ?>">
                         </div>
                     </div>
-                    <div class="mt-3 col-md-12 d-flex justify-content-center">
+                    <div class="my-3 col-md-12 d-flex justify-content-center">
                         <div class="text-center">
-                            <h2 class="page-title tracking-wide"><?= $item->tournament_name; ?></h2>
+                            <h2 class="page-title tracking-wide fw-bold text-uppercase tracking-wider"><?= $item->tournament_name; ?></h2>
                         </div>
                     </div>
                     <?php if (isUser()) : ?>
@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="col-md-6 grid-margin stretch-card">
-        <div class="card">
+        <div class="card card-tour-detail">
             <div class="card-title border-bottom d-flex flex-row justify-content-between py-2 px-3 align-items-center">
                 <h4 class="m-0">Tournament Detail </h4>
                 <?php if (isSuperAdmin()) : ?>
@@ -61,50 +61,60 @@
             <div class="card-body">
                 <div class="row mb-2  py-2 mx-0 align-items-center">
                     <div class="col-sm-4">
-                        <div>
-                            <p class="">Event Date : <br>
-                                <strong><?= setDate($item->event_date); ?></strong>
-                            </p>
+                        <div class="form-group">
+                            <label>Event Date : </label>
+                            <p class="p-0 fw-bold m-0"><?= setDate($item->event_date); ?></p>
+
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div>
-                            <p class="">Open Registration :<br>
-                                <strong><?= setDate($item->regist_date); ?></strong>
-                            </p>
+                        <div class="form-group">
+                            <label>Open Registration :</label>
+                            <p class="p-0 fw-bold m-0"><?= setDate($item->regist_date); ?></p>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div>
-                            <p class="">Closed Registration :<br>
-                                <strong><?= setDate($item->closed_date); ?></strong>
-                            </p>
+                        <div class="form-group">
+                            <label>Closed Registration :</label>
+                            <p class="p-0 fw-bold m-0"><?= setDate($item->closed_date); ?></p>
+
                         </div>
                     </div>
                 </div>
                 <div class="row mb-2 border-top pt-2 mx-0 align-items-center">
-                    <div class="col-sm-6">
-                        <div>
-                            <p class="">Max Participants: <br>
-                                <strong><?= setDate($item->event_date); ?></strong>
-                            </p>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Max Participants: </label>
+                            <p class="p-0 fw-bold m-0"><?= $item->max_participants; ?></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label>Venue:</label>
+                            <p class="p-0 fw-bold m-0"><?= $item->venue; ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="row border-top mb-2 py-4 mx-0 align-items-center">
-                    <div class="col-sm-6">
-                        <a href="<?= base_url() . 'uploads/tournaments/' . $item->tournament_id . '/' . $item->rules; ?>" target="_blank" class="btn btn-outline-dark d-flex flex-column align-items-center justify-content-center">
+                    <div class="col-sm-4">
+                        <a href="<?= base_url() . 'uploads/tournaments/' . $item->tournament_id . '/' . $item->rules; ?>" target="_blank" class="button-information btn btn-light text-primary d-flex flex-column align-items-center justify-content-center">
                             <i class="mdi mdi-printer mdi-48px"></i>
-                            <h4 class=" text-uppercase tracking-wide mt-2"><strong>Rules</strong></h4>
+                            <div class=" text-uppercase tracking-wide mt-2"><strong>Rules</strong></div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="<?= $item->venue_map; ?>" target="_blank" class="button-information btn btn-light text-success d-flex flex-column align-items-center justify-content-center">
+                            <i class="mdi mdi-map-marker mdi-48px"></i>
+                            <div class=" text-uppercase tracking-wide mt-2"><strong>Maps</strong></div>
                         </a>
                     </div>
                     <?php if (isSuperAdmin()) : ?>
-                        <div class="col-sm-6">
-                            <a href="" class="btn btn-outline-dark d-flex flex-column align-items-center justify-content-center" data-bs-toggle="collapse" data-bs-target="#flush-collapse2">
+                        <div class="col-sm-4">
+                            <a href="" class="button-information btn btn-light text-dark border-1 d-flex flex-column align-items-center justify-content-center" data-bs-toggle="collapse" data-bs-target="#flush-collapse2">
                                 <i class="mdi mdi-account mdi-48px"></i>
-                                <h4 class="text-uppercase tracking-widest mt-2">
+                                <div class="text-uppercase tracking-widest mt-2">
                                     <strong>Participants</strong>
-                                </h4>
+                                </div>
                             </a>
                         </div>
                     <?php endif; ?>
@@ -128,8 +138,8 @@
                         </button>
                     </h2>
                     <div id="flush-collapse2" class="accordion-collapse collapse py-5" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlushExample">
-                        <div class="row justify-content-center">
-                            <div class="col-md-11">
+                        <div class="row p-4">
+                            <div class="col-md-12">
                                 <?php $this->load->view('pages/participant/index.php'); ?>
                             </div>
                         </div>

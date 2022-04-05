@@ -15,11 +15,37 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group row">
+                        <label>Max Participants</label>
+                        <div>
+                            <input type="number" class="form-control" name="max_participants" min="1" value="8" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <label>Venue</label>
+                        <div>
+                            <input type="text" class="form-control" name="venue" placeholder="Venue Name" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <label>Location / Map , Url</label>
+                        <div>
+                            <input type="text" class="form-control" name="venue_map" placeholder="Google Maps Url " />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <p class="card-description">
                 Date
             </p>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group row">
                         <label>Event Date</label>
                         <div>
@@ -27,31 +53,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group row">
-                        <label>Regist Date</label>
+                        <label>Start Date</label>
                         <div>
                             <input type="datetime-local" class="form-control" name="regist_date" />
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group row">
-                        <label>Closed Date</label>
+                        <label>End Date</label>
                         <div>
                             <input type="datetime-local" class="form-control" name="closed_date" />
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group row">
-                        <label>Max Participants</label>
-                        <div>
-                            <input type="number" class="form-control" name="max_participants" />
-                        </div>
-                    </div>
-                </div>
             </div>
+
+
             <p class="card-description">
                 Public Information
             </p>
@@ -82,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-12">
                     <div class="form-group row">
                         <label>Description</label>
