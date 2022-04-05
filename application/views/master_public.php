@@ -24,6 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url() . 'assets/public_assets/css/style.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/cms/css/vertical-layout-light/custom-tails.css'; ?>" rel="stylesheet">
     <link rel="shortcut icon" href="<?php echo base_url() . 'assets/cms/images/app-img/favicon/favicon-32x32.png'; ?>">
 </head>
 
@@ -31,7 +32,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
     <?php $this->load->view('partials/pub_header.php'); ?>
-    <?php $this->load->view('partials/pub_hero.php'); ?>
+    <?php
+    $this->load->view('partials/pub_hero.php');
+    ?>
     <main id="main">
         <?php $this->load->view($content); ?>
     </main>
@@ -58,6 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/public_assets/js/main.js'; ?>"></script>
     <script src="<?php echo base_url() . 'src/app-public.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/public_assets/js/animate.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/public_assets/js/timeCountdown.js'; ?>"></script>
 </body>
 
 </html>

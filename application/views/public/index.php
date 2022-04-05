@@ -24,7 +24,11 @@
 						<h3 class="post-title">
 							<?= $tourItem['tournament_name']; ?>
 						</h3>
-						<a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+						<!-- Button trigger modal -->
+						<a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" class="stretched-link mt-auto readmore-event-trigger" data-bs-toggle="modal" data-bs-target="#eventDetailModal">
+							<span>Read More</span><i class="bi bi-arrow-right"></i>
+						</a>
+						<!-- <a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a> -->
 					</div>
 				</div>
 			<?php endforeach; ?>
@@ -136,3 +140,5 @@
 		</div>
 	</div>
 </section>
+
+

@@ -13733,13 +13733,14 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  /* padding-top: 0.5rem;
+  padding-bottom: 0.5rem; */
 }
 
 .navbar.navbar-scrolled {
-  padding: 5px 0;
-  border-bottom:1px solid #cbd5e1;
+  /* padding: 5px 0; */
+  /* border-bottom:1px solid #cbd5e1; */
+  background:#fff !important;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
 }
 
@@ -30719,7 +30720,7 @@ div.tagsinput span.tag a {
   flex-direction: row;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 97px;
+  padding-top: 70px;
 }
 
 .page-body-wrapper.full-page-wrapper {
@@ -30761,7 +30762,7 @@ div.tagsinput span.tag a {
 
 /* Sidebar */
 .sidebar {
-  min-height: calc(100vh - 97px);
+  min-height: calc(100vh - 70px);
   background: #f1f5f9;
   font-family: "Manrope", sans-serif;
   font-weight: 500;
@@ -30772,13 +30773,14 @@ div.tagsinput span.tag a {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
+  /* overflow:scroll; */
 }
 
 .sidebar .nav {
   overflow: hidden;
   flex-wrap: nowrap;
   flex-direction: column;
-  margin-bottom: 60px;
+  margin-bottom: 70px;
 }
 
 .sidebar .nav .nav-item {
@@ -31112,8 +31114,8 @@ div.tagsinput span.tag a {
 @media screen and (max-width: 991px) {
   .sidebar-offcanvas {
     position: fixed;
-    max-height: calc(100vh - 97px);
-    top: 97px;
+    max-height: calc(100vh - 70px);
+    top: 69px;
     bottom: 0;
     overflow: auto;
     right: -220px;
@@ -31136,6 +31138,7 @@ div.tagsinput span.tag a {
   -ms-transition: background 0.25s ease;
   box-shadow: none;
   background: #f1f5f9;
+  height:70px;
   /* background: #Fs4F5F7s; */
   /* padding: 5px !important; */
   /* Navbar color variations */
@@ -31146,14 +31149,14 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-brand-wrapper {
-  background: #f1f5f9;
+  /* background: #f1f5f9; */
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
   width: 220px;
-  height: 97px;
-  padding: 20px 35px;
+  height:70px;
+  padding:30px;
 }
 
 .sidebar-dark .navbar .navbar-brand-wrapper {
@@ -31250,7 +31253,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-menu-wrapper {
-  background: #f1f5f9;
+  /* background: red; */
   transition: width 0.25s ease;
   -webkit-transition: width 0.25s ease;
   -moz-transition: width 0.25s ease;
@@ -31258,16 +31261,16 @@ div.tagsinput span.tag a {
   color: #6C7383;
   padding-left: 3.5rem;
   padding-right: 2.187rem;
-  padding-top: 30px;
-  padding-bottom: 25px;
+  /* padding-top: 30px;
+  padding-bottom: 25px; */
   width: calc(100% - 220px);
-  height: 97px;
+  height: 70px;
 }
 
 @media (max-width: 991px) {
   .navbar .navbar-menu-wrapper {
     width: calc(100% - 55px);
-    padding-top: 12px;
+    /* padding-top: 12px; */
     padding-left: 15px;
     padding-right: 11px;
     height: auto;

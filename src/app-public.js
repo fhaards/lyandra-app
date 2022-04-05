@@ -1,21 +1,15 @@
-let eventDetail = $("#event-detail");
-var eventTitle = eventDetail.find(".title");
+var eventDetail   = $("#eventDetailModal");
+var eventTitle 	  = eventDetail.find(".title");
 var eventSubtitle = eventDetail.find(".subtitle");
 var eventDescript = eventDetail.find(".description");
-var bannerImg = eventDetail.find(".banner-img");
+var bannerImg 	  = eventDetail.find(".banner-img");
+var logoImg 	  = eventDetail.find(".logo-img");
+var eventDate 	  = eventDetail.find(".event-date");
 
-$("#events .readmore").on("click", function (e) {
+$("#events .readmore-event-trigger").on("click", function (e) {
 	e.preventDefault();
-	$(".event-detail").removeClass("d-none");
-	$("body").addClass("overflow-hidden");
 	var thisId = $(this).attr("atid");
 	getEventDetails(thisId);
-});
-
-$("#event-detail").on("click", ".close-detail", function (e) {
-	e.preventDefault();
-	$(".event-detail").addClass("d-none");
-	$("body").removeClass("overflow-hidden");
 });
 
 function getEventDetails(param) {
@@ -27,9 +21,11 @@ function getEventDetails(param) {
 		success: function (response) {
 			// console.log(response.tournament_name);
 			// var imgSource = bannerImg.attr("src");
+			logoImg.attr("src",'uploads/tournaments/'+response.tournament_id + '/' + response.logo);
 			bannerImg.attr("src",'uploads/tournaments/'+response.tournament_id + '/' + response.banner);
-			eventSubtitle.html(response.tournament_name);
+			eventTitle.html(response.tournament_name);
 			eventDescript.html(response.description);
+			eventDate.html(response.event_date);
 			// eventTitle.html(response[0].tournament_name);
 		},
 	});

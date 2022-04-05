@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-top">
-    <ul class="navbar-nav ms-auto">
+    <ul class="navbar-nav ms-auto p-0">
       <li class="nav-item dropdown d-none d-lg-block">
         <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
           Select Category

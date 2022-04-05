@@ -232,3 +232,13 @@ function setContStatus($style, $getStatus)
     endif;
     return $setStyle;
 }
+
+
+// GLOBAL
+function longText($text, $count)
+{
+    $print = "";
+    $print = (strlen($text) > $count) ? substr($text, 0, $count) . '...' : $text;
+    // $print = strlen($text) > $count ? substr($text, 0, 50) . "..." : $text;
+    return $print;
+}

@@ -24,8 +24,8 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Event Date</th>
-                                <th>Regist Date</th>
-                                <th>Closed Date</th>
+                                <th>Start</th>
+                                <th>End</th>
                                 <th>Status</th>
                                 <th>Act</th>
                             </tr>
@@ -35,12 +35,12 @@
                                 <tr>
                                     <td>
                                         <a class="btn btn-link" href="<?= base_url() . "tournament/show/" . $x['tournament_id']; ?>">
-                                            <?= $x['tournament_name']; ?>
+                                            <?= longText($x['tournament_name'], 25); ?>
                                         </a>
                                     </td>
-                                    <td><?= setTimeDate($x['event_date']); ?></td>
-                                    <td><?= setTimeDate($x['regist_date']); ?></td>
-                                    <td><?= setTimeDate($x['closed_date']); ?></td>
+                                    <td><?= setDate($x['event_date']); ?></td>
+                                    <td><?= setDate($x['regist_date']); ?></td>
+                                    <td><?= setDate($x['closed_date']); ?></td>
                                     <td><?= setTournStatus($x['status']); ?></td>
                                     <td>
                                         <?php if (isSuperAdmin()) : ?>
@@ -68,7 +68,7 @@
                                                     <i class="icon-plus"></i> Request Join
                                                 </a>
                                             <?php else : ?>
-                                                <?= setParticipantStatus(setParticipantStatusCheck($x['tournament_id'], getUserData()['user_id']));?>
+                                                <?= setParticipantStatus(setParticipantStatusCheck($x['tournament_id'], getUserData()['user_id'])); ?>
                                                 <!-- <a href="javascript:void(0)" class="btn btn-secondary px-2 py-2 d-flex flex-row align-items-center justify-content-center disabled">
                                                     <i class="mdi mdi-file-check"></i> <p class="p-0 m-0">Subtmitted</p>
                                                 </a> -->
