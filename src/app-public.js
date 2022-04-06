@@ -8,7 +8,12 @@ var eventDate = eventDetail.find(".event-date");
 var eventDateHidden = eventDetail.find(".event-date-hidden");
 var startDate = eventDetail.find(".start-date");
 var endDate = eventDetail.find(".end-date");
+var eventRules = eventDetail.find(".event-rules");
+var eventMap = eventDetail.find(".event-map");
+var eventRegist = eventDetail.find(".event-regist");
 var countdownHandlerId = undefined;
+
+// var eventRegist = eventDetail.find(".event-regist");
 
 $("#events .readmore-event-trigger").on("click", function (e) {
 	e.preventDefault();
@@ -31,8 +36,12 @@ function getEventDetails(param) {
 
 			logoImg.attr("src","uploads/tournaments/" + response.tournament_id + "/" + response.logo);
 			bannerImg.attr("src","uploads/tournaments/" + response.tournament_id + "/" + response.banner);
+			eventRules.attr("href","uploads/tournaments/" + response.tournament_id + "/" + response.rules);
+			eventRegist.attr("href",BASEURL + "tournament/show/" + response.tournament_id);
+			eventMap.attr("href", response.venue_map);
 			eventTitle.html(response.tournament_name);
 			eventDescript.html(response.description);
+
 			eventDate.html(moment(response.event_date).format("LL"));
 			startDate.html(moment(response.regist_date).format("LL"));
 			endDate.html(moment(response.closed_date).format("LL"));
@@ -42,7 +51,6 @@ function getEventDetails(param) {
 			var countDownDate = time.valueOf();
 
 			countdownHandlerId = setInterval(function () {
-				console.log("kepanggil");
 				var now = new Date().getTime();
 				var distance = countDownDate - now;
 				var days    = Math.floor(distance / (1000 * 60 * 60 * 24));

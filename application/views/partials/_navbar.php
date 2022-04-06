@@ -147,6 +147,10 @@
             </p>
           </div>
           <?php if (isUser()) : ?>
+            <a class="dropdown-item" href="<?= base_url() . ''; ?>">
+              <i class="dropdown-item-icon mdi mdi-home-outline text-secondary me-3 mdi-18px"></i>
+              <strong>Homepage </strong>
+            </a>
             <a class="dropdown-item" href="<?= base_url() . 'profile'; ?>">
               <i class="dropdown-item-icon mdi mdi-account-outline text-secondary me-3 mdi-18px"></i>
               <strong>My Profile </strong>

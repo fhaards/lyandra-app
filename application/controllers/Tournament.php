@@ -219,12 +219,11 @@ class Tournament extends CI_Controller
 		}
 	}
 
-	public function updateParticipant($id)
+	public function updateParticipant($id, $tourid, $status)
 	{
-		$tourid = $this->input->get('tournament_id');
+		// $tourid = $this->input->get('tournament_id');
 		$insertData  = array(
-			
-			'participant_status' => $this->input->get('participant_status')
+			'participant_status' => $status
 		);
 		$update = $this->modelApp->update($this->table2, $this->tb2Id, $id, $insertData);
 		if ($update) {

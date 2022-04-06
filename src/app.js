@@ -17,9 +17,8 @@ function changeStatusUser(url) {
 	$("#changeStatusUserModal .form-sample").attr("action", url);
 }
 
-function updateParticipant(url, tourid) {
-	$("#updateParticipantModal .form-sample").attr("action", url);
-	$("#updateParticipantModal .tournamentId").val(tourid);
+function updateParticipants(url) {
+	$("#updateParticipantModal .submit-update").attr("href", url);
 }
 
 function joinTournamentModal(tourid, uid) {

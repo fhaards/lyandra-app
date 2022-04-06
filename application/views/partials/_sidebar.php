@@ -3,7 +3,7 @@
 
     <li class="nav-item">
       <a class="nav-link fw-bold" href="<?= base_url() . 'dashboard'; ?>">
-        <i class="mdi mdi-home-outline menu-icon"></i>
+        <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>

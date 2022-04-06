@@ -42,7 +42,7 @@ $route['tournament/update-file/(:any)'] = 'Tournament/updateFile/$1';
 
 // Tournament Participants
 $route['tournament/add-participant'] = 'Tournament/addParticipant';
-$route['tournament/participant-update/(:any)'] = 'Tournament/updateParticipant/$1';
+$route['tournament/participant-update/(:any)/(:any)/(:any)'] = 'Tournament/updateParticipant/$1/$2/$3';
 
 //Contingent
 $route['contingent'] = 'Contingent';

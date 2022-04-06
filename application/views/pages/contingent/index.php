@@ -16,8 +16,8 @@
 
                 </div>
 
-                <div class="table-responsive py-5">
-                    <table class="table table-striped" id="dataTable">
+                <div class="table-responsive">
+                    <table class="table table-striped dataTable" width="100%">
                         <thead>
                             <tr>
                                 <th>Name</th>

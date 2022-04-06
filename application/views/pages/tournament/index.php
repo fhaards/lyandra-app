@@ -5,9 +5,8 @@
                 <div class="card-title">
                     <div class="d-flex flex-row justify-content-between">
                         <h4 class="pb-3">Tournament
-                            <p class="card-description">
-                                Tournament List
-                            </p>
+                            <span class="card-description"> List
+                            </span>
                         </h4>
                         <?php if (isSuperAdmin()) : ?>
                             <div>
@@ -65,13 +64,10 @@
                                         <?php else : ?>
                                             <?php if (checkJoinParticipant($x['tournament_id'], getUserData()['user_id']) == 0) : ?>
                                                 <a data-bs-toggle="modal" data-bs-target="#joinTournamentModal" thisuid="" onclick="joinTournamentModal('<?= $x['tournament_id']; ?>','<?= getUserData()['user_id']; ?>')" href="javascript:void(0)" class="btn btn-primary px-2 py-2 <?= (getUserData()['user_status'] == '2' ? '' : 'disabled'); ?> ">
-                                                    <i class="icon-plus"></i> Request Join
+                                                    <i class="mdi mdi-file-plus"></i> Register
                                                 </a>
                                             <?php else : ?>
                                                 <?= setParticipantStatus(setParticipantStatusCheck($x['tournament_id'], getUserData()['user_id'])); ?>
-                                                <!-- <a href="javascript:void(0)" class="btn btn-secondary px-2 py-2 d-flex flex-row align-items-center justify-content-center disabled">
-                                                    <i class="mdi mdi-file-check"></i> <p class="p-0 m-0">Subtmitted</p>
-                                                </a> -->
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </td>

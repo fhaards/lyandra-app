@@ -65,7 +65,7 @@
                             <div class="col-md-8 row justify-content-center px-0 pt-3 pb-5 g-0">
                                 <div class="col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="200">
                                     <div class="detail-information-box blue">
-                                        <a href="" class="m-0 p-0">
+                                        <a href="" class="m-0 p-0 event-rules" target="_blank">
                                             <i class="ri-download-line icon mb-4"></i>
                                             <h3 class="m-0">
                                                 <div class="read-more tracking-wide"><span>Rules</span></div>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="200">
                                     <div class="detail-information-box green">
-                                        <a href="" class="m-0 p-0">
+                                        <a href="" class="m-0 p-0 event-map" target="_blank">
                                             <i class="ri-map-pin-line icon mb-4"></i>
                                             <h3 class="m-0">
                                                 <div class="read-more tracking-wide"><span>Map</span></div>
@@ -86,13 +86,14 @@
                                 <div class="col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="200">
                                     <div class="detail-information-box orange">
                                         <?php if (isLogin()) : ?>
-                                            <a 
-                                            <?php if (isUser()) : ?>
-                                                    href="tournament/add" 
-                                                <?php else : ?>
-                                                    href="javascript:void(0)" 
-                                                <?php endif; ?>
-                                            class="m-0 p-0">
+                                            <?php
+                                            if (isUser()) :
+                                                $cls = "event-regist";
+                                            else :
+                                                $cls = "";
+                                            endif;
+                                            ?>
+                                            <a href="" class="m-0 p-0 <?= $cls?>">
                                             <?php else : ?>
                                                 <a href="<?= base_url() . 'auth'; ?>" class="m-0 p-0">
                                                 <?php endif; ?>
@@ -100,7 +101,7 @@
                                                 <h3 class="m-0">
                                                     <div class="read-more tracking-wide"><span>Regist</span></div>
                                                 </h3>
-                                                </a>
+                                            </a>
 
                                     </div>
                                 </div>

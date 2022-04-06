@@ -49,8 +49,6 @@
 <!-- Change Status Participants -->
 <div class="modal fade" id="updateParticipantModal" tabindex="-1" aria-labelledby="updateParticipantModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <?php echo validation_errors(); ?>
-        <form method="get" action="" class="form-sample">
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -59,21 +57,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Change Status Participant To </label>
-                        <input type="hidden" name="tournament_id" class="tournamentId">
-                        <select name="participant_status" class="form-control">
-                            <option value="0"> Pending </option>
-                            <option value="1"> Approved </option>
-                            <option value="2"> Rejected </option>
-                        </select>
+                        <label>Change Status Participants </label>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</a>
+                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                    <a href="" class="btn btn-primary submit-update">Submit</a>
                 </div>
             </div>
-        </form>
     </div>
 </div>
 

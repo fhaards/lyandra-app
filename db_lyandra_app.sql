@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Apr 2022 pada 23.25
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 8.0.7
+-- Generation Time: Apr 06, 2022 at 04:00 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `about`
+-- Table structure for table `about`
 --
 
 CREATE TABLE `about` (
@@ -39,7 +39,7 @@ CREATE TABLE `about` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `about`
+-- Dumping data for table `about`
 --
 
 INSERT INTO `about` (`id`, `email`, `name`, `phone`, `address`, `vision`, `mission`, `about`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `about` (`id`, `email`, `name`, `phone`, `address`, `vision`, `missi
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `contingent`
+-- Table structure for table `contingent`
 --
 
 CREATE TABLE `contingent` (
@@ -62,7 +62,7 @@ CREATE TABLE `contingent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `contingent`
+-- Dumping data for table `contingent`
 --
 
 INSERT INTO `contingent` (`contingent_id`, `created_by`, `contingent_createdat`, `contingent_name`, `contingent_phone`, `contingent_address`, `contingent_status`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `contingent` (`contingent_id`, `created_by`, `contingent_createdat`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `requests`
+-- Table structure for table `requests`
 --
 
 CREATE TABLE `requests` (
@@ -100,7 +100,7 @@ CREATE TABLE `requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `requests`
+-- Dumping data for table `requests`
 --
 
 INSERT INTO `requests` (`req_id`, `uuid`, `name`, `passport_id`, `email`, `gender`, `phone`, `nationality`, `address_indonesia`, `passport_img`, `req_status`, `req_status_info`, `category`, `created_at`, `updated_at`, `extend_at`, `expired_at`, `visa_img`, `requests_type`, `img_letter`) VALUES
@@ -111,7 +111,7 @@ INSERT INTO `requests` (`req_id`, `uuid`, `name`, `passport_id`, `email`, `gende
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tournament`
+-- Table structure for table `tournament`
 --
 
 CREATE TABLE `tournament` (
@@ -132,7 +132,7 @@ CREATE TABLE `tournament` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tournament`
+-- Dumping data for table `tournament`
 --
 
 INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `regist_date`, `closed_date`, `created_date`, `logo`, `banner`, `status`, `rules`, `description`, `max_participants`, `venue`, `venue_map`) VALUES
@@ -142,7 +142,23 @@ INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `reg
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tournament_participant`
+-- Table structure for table `tournament_match`
+--
+
+CREATE TABLE `tournament_match` (
+  `match_id` int(10) NOT NULL,
+  `match_tournament` varchar(30) NOT NULL,
+  `match_name` varchar(30) NOT NULL,
+  `match_player_1` int(10) DEFAULT NULL,
+  `match_player_2` int(10) DEFAULT NULL,
+  `match_winner` int(10) DEFAULT NULL,
+  `match_null` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournament_participant`
 --
 
 CREATE TABLE `tournament_participant` (
@@ -154,17 +170,18 @@ CREATE TABLE `tournament_participant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tournament_participant`
+-- Dumping data for table `tournament_participant`
 --
 
 INSERT INTO `tournament_participant` (`participant_id`, `participant_tournament`, `participant_user`, `submit_at`, `participant_status`) VALUES
 (3, 'TRN31032022050837EsX', 20, '2022-04-05 03:28:17', 0),
-(4, 'TRN31032022050837EsX', 21, '2022-04-05 04:45:29', 1);
+(4, 'TRN31032022050837EsX', 21, '2022-04-05 04:45:29', 1),
+(5, 'TRN06042022120715JFX', 20, '2022-04-06 07:53:41', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -179,7 +196,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_status`, `created_at`, `updated_at`) VALUES
@@ -190,7 +207,7 @@ INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_s
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users_account`
+-- Table structure for table `users_account`
 --
 
 CREATE TABLE `users_account` (
@@ -207,7 +224,7 @@ CREATE TABLE `users_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users_account`
+-- Dumping data for table `users_account`
 --
 
 INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `class`, `belt`, `weight`, `height`, `address`, `photo`) VALUES
@@ -219,72 +236,84 @@ INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `cla
 --
 
 --
--- Indeks untuk tabel `about`
+-- Indexes for table `about`
 --
 ALTER TABLE `about`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `contingent`
+-- Indexes for table `contingent`
 --
 ALTER TABLE `contingent`
   ADD PRIMARY KEY (`contingent_id`);
 
 --
--- Indeks untuk tabel `requests`
+-- Indexes for table `requests`
 --
 ALTER TABLE `requests`
   ADD PRIMARY KEY (`req_id`);
 
 --
--- Indeks untuk tabel `tournament`
+-- Indexes for table `tournament`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`tournament_id`);
 
 --
--- Indeks untuk tabel `tournament_participant`
+-- Indexes for table `tournament_match`
+--
+ALTER TABLE `tournament_match`
+  ADD PRIMARY KEY (`match_id`);
+
+--
+-- Indexes for table `tournament_participant`
 --
 ALTER TABLE `tournament_participant`
   ADD PRIMARY KEY (`participant_id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `users_email_unique` (`username`);
 
 --
--- Indeks untuk tabel `users_account`
+-- Indexes for table `users_account`
 --
 ALTER TABLE `users_account`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `about`
+-- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `contingent`
+-- AUTO_INCREMENT for table `contingent`
 --
 ALTER TABLE `contingent`
   MODIFY `contingent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tournament_participant`
+-- AUTO_INCREMENT for table `tournament_match`
 --
-ALTER TABLE `tournament_participant`
-  MODIFY `participant_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `tournament_match`
+  MODIFY `match_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `tournament_participant`
+--
+ALTER TABLE `tournament_participant`
+  MODIFY `participant_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
