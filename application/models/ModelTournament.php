@@ -30,6 +30,27 @@ class ModelTournament extends CI_Model
         return $stat;
     }
 
+    function checkParticipantAsMax($id)
+    {
+        $array = array('tournament_id' => $id);
+        $query = $this->db->get_where($this->table, $array);
+        $maxp  = intval($query->row_array()['max_participants']);
+
+        $array2 = array('participant_tournament' => $id, 'participant_status' => '1');
+        $this->db->select('*');
+        $this->db->from('tournament_participant');
+        $this->db->join('users', 'tournament_participant.participant_user = users.user_id');
+        $this->db->where($array2);
+        $query = $this->db->get();
+        $count = $query->num_rows();
+
+        if ($maxp === $count) {
+            return '0';
+        } else {
+            return '1';
+        }
+    }
+
     function readParticipant($id)
     {
         $this->db->select('*');
@@ -38,7 +59,43 @@ class ModelTournament extends CI_Model
         $this->db->where('participant_tournament', $id);
         return $this->db->get()->result_array();
     }
-    
+
+    function approvedParticipant($id)
+    {
+        $array = array('participant_tournament' => $id, 'participant_status' => '1');
+        $this->db->select('*');
+        $this->db->from('tournament_participant');
+        $this->db->join('users', 'tournament_participant.participant_user = users.user_id');
+        $this->db->where($array);
+        return $this->db->get()->result_array();
+    }
+
+    function match4Final($table, $id, $fieldName, $value)
+    {
+
+        $this->db->select('tournament_match.*');
+        $this->db->select('users.user_id, users.name as usersname1, users2.name as usersname2');
+        $this->db->from($table);
+        $this->db->join('users', 'tournament_match.match_player_1 = users.user_id', 'LEFT');
+        $this->db->join('users as users2', 'tournament_match.match_player_2 = users2.user_id', 'LEFT');
+        $this->db->where('match_tournament_id', $id);
+        $this->db->where($fieldName, $value);
+        return $this->db->get()->result_array();
+    }
+
+    function match4Round($table, $id, $fieldName, $value)
+    {
+
+        $this->db->select('tournament_match.*');
+        $this->db->select('users.user_id, users.name as usersname1, users2.name as usersname2');
+        $this->db->from($table);
+        $this->db->join('users', 'tournament_match.match_player_1 = users.user_id', 'LEFT');
+        $this->db->join('users as users2', 'tournament_match.match_player_2 = users2.user_id', 'LEFT');
+        $this->db->where('match_tournament_id', $id);
+        $this->db->like($fieldName, $value);
+        return $this->db->get()->result_array();
+    }
+
     // function read()
     // {
     //     $this->db->order_by('tournament_id', 'ASC');

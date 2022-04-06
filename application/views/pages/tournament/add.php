@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <label>Rules ( Recommended file : <strong>PDF Format</strong> )</label>
                         <div class="input-group">
-                            <input type="file" name="rules" class="form-control" required>
+                            <input type="file" name="rules" class="form-control"    >
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <label>Logo ( Recommend : Scale 1x1 , <strong>JPG/JPEG/PNG Format</strong> )</label>
                         <div class="input-group">
-                            <input type="file" name="logo" class="form-control" accept="image/png, image/gif, image/jpeg" required>
+                            <input type="file" name="logo" class="form-control" accept="image/png, image/gif, image/jpeg" >
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                     <div class="form-group">
                         <label>Banner ( Recommend : 1200 x 300 , <strong>JPG/JPEG/PNG Format</strong> )</label>
                         <div class="input-group">
-                            <input type="file" name="banner" class="form-control" accept="image/png, image/gif, image/jpeg" required>
+                            <input type="file" name="banner" class="form-control" accept="image/png, image/gif, image/jpeg" >
                         </div>
                     </div>
                 </div>

@@ -62,10 +62,20 @@ class ModelApp extends CI_Model
         return $this->db->insert($table,  $insertData);
     }
 
+    function insertBatch($table, $data)
+    {
+        return $this->db->insert_batch($table,  $data);
+    }
+
     function update($table, $tbId, $id, $data)
     {
         $this->db->where($tbId, $id);
         return $this->db->update($table, $data);
+    }
+
+    function updateBatch($table, $result, $valName)
+    {
+        return $this->db->update_batch($table, $result, $valName);
     }
 
     function delete($table, $tbId, $id)

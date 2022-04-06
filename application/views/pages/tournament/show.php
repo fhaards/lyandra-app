@@ -24,6 +24,19 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12 d-flex flex-row align-items-center justify-content-center">
+                        <?php if (isSuperAdmin()) : ?>
+                            <div class="home-tab m-0 p-0">
+                                <div class="btn-wrapper">
+                                    <a href="<?= base_url() . "tournament/edit/" . $item->tournament_id; ?>" class="btn btn-outline-primary btn-sm m-0 rounded-2"><i class="icon-pencil"></i> Edit</a>
+                                    <a href="<?= base_url() . "tournament/show-bracket/" . $item->tournament_id; ?>" class="btn btn-outline-primary btn-sm m-0 rounded-2"><i class="icon-pencil"></i> Edit Bracket</a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -31,13 +44,6 @@
         <div class="card card-tour-detail">
             <div class="card-title border-bottom d-flex flex-row justify-content-between py-2 px-3 align-items-center">
                 <h4 class="m-0">Tournament Detail </h4>
-                <?php if (isSuperAdmin()) : ?>
-                    <div class="home-tab m-0 p-0">
-                        <div class="btn-wrapper">
-                            <a href="<?= base_url() . "tournament/edit/" . $item->tournament_id; ?>" class="btn btn-outline-primary btn-sm m-0 rounded-2"><i class="icon-pencil"></i> Edit</a>
-                        </div>
-                    </div>
-                <?php endif; ?>
             </div>
             <div class="card-body">
                 <div class="row mb-2  py-2 mx-0 align-items-center">
@@ -50,13 +56,13 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Start  :</label>
+                            <label>Start :</label>
                             <p class="p-0 fw-bold m-0"><?= setDate($item->regist_date); ?></p>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>End  :</label>
+                            <label>End :</label>
                             <p class="p-0 fw-bold m-0"><?= setDate($item->closed_date); ?></p>
 
                         </div>
@@ -128,7 +134,7 @@
                 <div class=" card-body p-2 m-0">
                     <h2 class="accordion-header p-0" id="flush-heading2">
                         <button class="accordion-button collapsed rounded d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
-                            <h5 class="py-0 m-0 fw-bold text-uppercase tracking-wide">
+                            <h5 class="py-0 m-0 fw-bold text-uppercase tracking-widest">
                                 Participants
                             </h5>
                         </button>
@@ -149,7 +155,7 @@
             <div class=" card-body p-2 m-0">
                 <h2 class="accordion-header p-0" id="flush-heading3">
                     <button class="accordion-button collapsed rounded d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3">
-                        <h5 class="py-0 m-0 fw-bold text-uppercase tracking-wide">
+                        <h5 class="py-0 m-0 fw-bold text-uppercase tracking-widest">
                             Bracket
                         </h5>
                     </button>
@@ -170,7 +176,7 @@
             <div class="card-body p-2 m-0">
                 <h2 class="accordion-header p-0" id="flush-headingOne">
                     <button class="accordion-button collapsed rounded d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        <h5 class="py-0 m-0 fw-bold text-uppercase tracking-wide">Description</h5>
+                        <h5 class="py-0 m-0 fw-bold text-uppercase tracking-widest">Description</h5>
                     </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse py-5" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
