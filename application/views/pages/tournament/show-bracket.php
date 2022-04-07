@@ -21,14 +21,15 @@
                 </div>
 
                 <div class="table-responsive text-center">
-                    <form class="" action="<?= base_url().'tournament/update-match-round/'; ?>" method="post">
+                    <form class="" action="<?= base_url().'tournament/update-match-round/'; ?>" method="post" id="form-match-round">
                         <input type="hidden" value="<?= $item->tournament_id; ?>" name="match_tournament_id">
                         <table class="table table-bordered" width="100%">
                             <thead>
                                 <tr>
-                                    <td>Match</td>
-                                    <td>Player 1</td>
-                                    <td>Player 2</td>
+                                    <th>Match</th>
+                                    <th>Player 1</th>
+                                    <th>Player 2</th>
+                                    <th>Winner</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,7 +42,7 @@
                                             <p><?= $round['match_name']; ?> </p>
                                         </td>
                                         <td>
-                                            <select class="form-control" name="match_player_1[]">
+                                            <select class="form-control" class="player_1[]" name="match_player_1[]">
                                                 <option value="">Select Player</option>
                                                 <?php foreach ($approved as $a) : ?>
                                                     <option value="<?= $a['user_id']; ?>" <?= ($round['match_player_1'] == $a['user_id']) ? 'selected' : '';?>><?= $a['name']; ?></option>
@@ -54,6 +55,11 @@
                                                 <?php foreach ($approved as $b) : ?>
                                                     <option value="<?= $b['user_id']; ?>" <?= ($round['match_player_2'] == $b['user_id']) ? 'selected' : '';?>><?= $b['name']; ?></option>
                                                 <?php endforeach; ?>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" name="match_player_2[]">
+                                                <option value="">Select Player</option>
                                             </select>
                                         </td>
                                     </tr>

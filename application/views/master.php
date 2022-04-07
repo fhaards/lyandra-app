@@ -38,11 +38,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
 			</div>
+			<?php $this->load->view('partials/_modals.php'); ?>
 			<!-- main-panel ends -->
 
 		</div>
 	</div>
-	<?php $this->load->view('partials/_modals.php'); ?>
 
 	<!-- Javascript Sources -->
 	<?php $this->load->view('partials/_src_js.php'); ?>

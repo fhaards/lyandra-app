@@ -29,9 +29,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 
 <body class="body">
-    <?php 
-        $this->load->view('partials/pub_header.php');
-    // $this->load->view('partials/pub_hero.php');
+    <?php
+    $this->load->view('partials/pub_header.php');
+    $this->load->view('partials/pub_hero.php');
     ?>
     <main id="main">
         <?php $this->load->view($content); ?>

@@ -15400,6 +15400,28 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   outline: 0;
 }
 
+/* width */
+.modal::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.modal::-webkit-scrollbar-track {
+  background:transparent;
+}
+
+/* Handle */
+.modal::-webkit-scrollbar-thumb {
+  background: transparent;
+  width:5px;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.modal::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
 .modal-dialog {
   position: relative;
   width: auto;
@@ -26618,7 +26640,8 @@ dl li {
 
 /* Modals */
 .modal .modal-dialog {
-  margin-top: 100px;
+  /* margin-top: 100px; */
+  margin-top:100px;
 }
 
 .modal .modal-dialog .modal-content .modal-header {

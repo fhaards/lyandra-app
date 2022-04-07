@@ -6,13 +6,14 @@ class User extends CI_Controller
 
     protected $table        = 'users';
     protected $tableSecond  = 'users_account';
-    protected $tbId           = 'user_id';
+    protected $tbId         = 'user_id';
 
     function __construct()
     {
         parent::__construct();
         redirectIfNotLogin();
         $this->load->model('modelApp');
+        $this->load->model('modelUser');
         $this->load->helper('form');
         $this->load->helper('date');
         $this->load->helper('array');
@@ -48,5 +49,11 @@ class User extends CI_Controller
             $this->session->set_flashdata('error', 'Error');;
             redirect("user");
         }
+    }
+
+    public function show($id)
+    {
+        $data = $this->modelUser->readAccount($this->table, $id);
+        echo json_encode($data);
     }
 }

@@ -479,6 +479,7 @@ section {
   height: 100vh;
   background: url(../img/lyandra_bg.jpg) top center no-repeat;
   background-size: cover;
+  transition: 0.3s ease-in;
 }
 
 .hero::before {
@@ -492,6 +493,8 @@ section {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
+  transition: 0.3s;
+  transition: 0.3s ease-in;
 }
 
 .hero .container {

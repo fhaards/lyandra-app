@@ -109,7 +109,7 @@
                         </div>
                         <div class="row py-1 px-0">
                             <div class="col-md-4 form-group d-flex flex-column">
-                                <label class="me-4">Wieght</label>
+                                <label class="me-4">Weight</label>
                                 <input type="number" class="form-control" min="1" name="weight" value="<?= $item->weight; ?>" />
                             </div>
                             <div class="col-md-4 form-group d-flex flex-column">

@@ -64,8 +64,14 @@ class Tournament extends CI_Controller
 			$forSemiFinals = $countRound / 2;
 
 			$uploadPath = './uploads/tournaments/' . $setId;
-			$config = array('upload_path' => $uploadPath, 'allowed_types' =>
-			'jpg|jpeg|gif|png|webp|pdf', 'max_size' => '5000', 'encrypt_name' => true);
+
+			$config = array(
+				'upload_path' => $uploadPath,
+				'allowed_types' => 'jpg|jpeg|gif|png|webp|pdf',
+				'max_size' => '5000',
+				'encrypt_name' => true
+			);
+
 			$this->load->library('upload', $config);
 
 			if (!is_dir('uploads/tournaments/' . $setId)) {
@@ -258,6 +264,42 @@ class Tournament extends CI_Controller
 		$this->load->view('master', $data);
 	}
 
+	public function uploadBracket($id)
+	{
+		$insertData = [];
+		$tourName = $this->input->post('tournament_name');
+
+		$uploadPath = './uploads/tournaments/' . $id;
+		$newName = $tourName."Bracket.".pathinfo($_FILES["bracket"]['name'], PATHINFO_EXTENSION);
+		$config = array(
+			'upload_path' => $uploadPath,
+			'allowed_types' => 'xlsx|xls',
+			'max_size' => '5000',
+			'file_name' => $newName,
+		);
+		$this->load->library('upload', $config);
+
+		$bracketFile = $this->input->post('bracket_old');
+		
+
+		if ($this->upload->do_upload("bracket")) {
+			unlink($uploadPath . '/' . $bracketFile);
+			$upBracketFile  = array('upload_data' => $this->upload->data());
+			$setBracketFile = $upBracketFile['upload_data']['file_name'];
+		} else {
+			$setBracketFile = $bracketFile;
+		}
+
+		$insertData = [
+			'bracket' => $setBracketFile,
+		];
+
+		$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
+		$this->session->set_flashdata('successEdit', 'Data berhasil ditambahkan');
+		redirect("tournament/show/$id");
+	}
+
+
 	public function updateBracketMatchRound()
 	{
 		$tourid  = $this->input->post('match_tournament_id');
@@ -265,14 +307,14 @@ class Tournament extends CI_Controller
 		$mp1     = $this->input->post('match_player_1');
 		$mp2     = $this->input->post('match_player_2');
 
-		$result  = array();		
+		$result  = array();
 		foreach ($getId as $key => $val) {
 			$result[$key]  = array(
 				'match_id' => $getId[$key],
 				'match_player_1' => $mp1[$key],
 				'match_player_2' => $mp2[$key],
 			);
-		}         
+		}
 
 		// var_dump($result);
 		// exit;

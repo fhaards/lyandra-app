@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Apr 2022 pada 00.19
+-- Waktu pembuatan: 07 Apr 2022 pada 23.41
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.7
 
@@ -128,16 +128,17 @@ CREATE TABLE `tournament` (
   `description` text NOT NULL,
   `max_participants` int(3) NOT NULL,
   `venue` varchar(100) DEFAULT NULL,
-  `venue_map` text DEFAULT NULL
+  `venue_map` text DEFAULT NULL,
+  `bracket` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tournament`
 --
 
-INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `regist_date`, `closed_date`, `created_date`, `logo`, `banner`, `status`, `rules`, `description`, `max_participants`, `venue`, `venue_map`) VALUES
-('TRN070420220128573ST', 'Karateka Matchday Tangcit', '2022-04-30 01:27:00', '2022-04-01 01:28:00', '2022-04-21 01:28:00', '2022-04-07 01:28:57', '2e21735d08c400b032779e9248032369.jpg', 'ced044a9c75c4443b90ae409bf5485a1.jpg', 1, 'dab5716c0d054c32932ad5243cdd0b74.pdf', '<p>Matchday</p>', 8, 'GOR Bulungan', 'https://www.google.com/maps/place/GOR+Bulungan/@-6.2419549,106.7942041,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69f16c6112ce35:0x94daaeefc30aaddc!8m2!3d-6.2419602!4d106.7963928'),
-('TRN0704202202395694F', 'Jakarta Kickbox Matchday', '2022-04-30 02:38:00', '2022-04-01 02:38:00', '2022-04-20 02:38:00', '2022-04-07 02:39:56', '83cd1ab3c9a95e14bfc3b8baf6181d5f.jpg', '447de66c89e2a8815d06fc1957e55a1b.jpg', 1, 'f12016dac792d2f8a4c85b60b3dc0733.pdf', '<p>Jakarta Open Tournaments</p>', 4, 'GOR Jakarta Timur', 'https://www.google.com/maps/place/GOR+Jakarta+Timur/@-6.2349047,106.8656913,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69f3751fb97561:0x48b90b1824e8055e!8m2!3d-6.23491!4d106.86788');
+INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `regist_date`, `closed_date`, `created_date`, `logo`, `banner`, `status`, `rules`, `description`, `max_participants`, `venue`, `venue_map`, `bracket`) VALUES
+('TRN070420220128573ST', 'Karateka Matchday Tangcit', '2022-04-30 01:27:00', '2022-04-01 01:28:00', '2022-04-21 01:28:00', '2022-04-07 01:28:57', '2e21735d08c400b032779e9248032369.jpg', 'ced044a9c75c4443b90ae409bf5485a1.jpg', 1, 'dab5716c0d054c32932ad5243cdd0b74.pdf', '<p>Matchday</p>', 8, 'GOR Bulungan', 'https://www.google.com/maps/place/GOR+Bulungan/@-6.2419549,106.7942041,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69f16c6112ce35:0x94daaeefc30aaddc!8m2!3d-6.2419602!4d106.7963928', NULL),
+('TRN0704202202395694F', 'Jakarta Kickbox Matchday', '2022-04-30 02:38:00', '2022-04-01 02:38:00', '2022-04-20 02:38:00', '2022-04-07 02:39:56', '83cd1ab3c9a95e14bfc3b8baf6181d5f.jpg', '447de66c89e2a8815d06fc1957e55a1b.jpg', 1, 'f12016dac792d2f8a4c85b60b3dc0733.pdf', '<p>Jakarta Open Tournaments</p>', 4, 'GOR Jakarta Timur', 'https://www.google.com/maps/place/GOR+Jakarta+Timur/@-6.2349047,106.8656913,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69f3751fb97561:0x48b90b1824e8055e!8m2!3d-6.23491!4d106.86788', 'Jakarta_Kickbox_Matchday_Bracket1.xlsx');
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,8 @@ INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_s
 (21, 'Lia Hermawati', 'lookatmars2', '$2y$10$e9543sF8Phv2wh0Vf9oPeO0hPo1ax9i5Kyg5R2.nEBQmvovAN1jsS', 'user', '2', '2022-04-04 19:57:08', '2022-04-04 21:44:21'),
 (22, 'Faris Salahuddin', 'lookatmars3', '$2y$10$AKeegLrXrOGD.LRmjHugl..E3FkzqnYryJX2lEP0YHAqYMaNkwY.2', 'user', '2', '2022-04-06 19:40:40', '2022-04-06 19:43:16'),
 (23, 'Ibnu Zakaria', 'lookatmars4', '$2y$10$ptbQeKIpVE3GoWJSwN.K0.4JT3VL16wmqNhaqlLQUnl98fgS5GAc2', 'user', '2', '2022-04-06 19:40:59', '2022-04-06 19:44:35'),
-(24, 'Yayan Majalengka', 'lookatmars5', '$2y$10$6TkNbfah.LeY/MvucctQ3uOrqV903ES27jxib8gjcVy0SNhvrKZ0G', 'user', '2', '2022-04-06 19:41:21', '2022-04-06 19:45:42');
+(24, 'Yayan Majalengka', 'lookatmars5', '$2y$10$6TkNbfah.LeY/MvucctQ3uOrqV903ES27jxib8gjcVy0SNhvrKZ0G', 'user', '2', '2022-04-06 19:41:21', '2022-04-06 19:45:42'),
+(25, 'Galih Purwadadi', 'lookatmars10', '$2y$10$VJp8YSBWw8h7fgyzVUXQZeLY4rIp7NHb21nUJwUeXr9c0QNRacpT2', 'user', '1', '2022-04-07 21:12:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -254,7 +256,8 @@ INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `cla
 (21, 4, 'Female', '081155669987', 'HeavyWeight', 1, 65, 180, 'Desa Mundak Jaya RT/RW 003/004 , Kecamatan Mundakjaya, Indramayu', '2085b42db22ccc8e7e703467a61229b5.jpg'),
 (22, 5, 'Male', '081388998845', 'Heavy', 1, 56, 180, 'Bogor', '0aacd4ddda414e0503433ba9f7fd5533.jpg'),
 (23, 5, 'Male', '081388998866', 'Heavy', 1, 56, 175, 'Jakarta Selatan', '033f9bb56c79a1bb7dd06df925fc7f47.jpg'),
-(24, 5, 'Male', '081388998841', 'Heavy', 1, 55, 170, 'Serpong', '911b4959efbc6f48642c476460160dca.jpg');
+(24, 5, 'Male', '081388998841', 'Heavy', 1, 55, 170, 'Serpong', '911b4959efbc6f48642c476460160dca.jpg'),
+(25, 4, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -341,7 +344,7 @@ ALTER TABLE `tournament_participant`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

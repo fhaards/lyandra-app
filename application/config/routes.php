@@ -16,6 +16,7 @@ $route['auth/register'] = 'Auth/insert';
 //User
 $route['user'] = 'User';
 $route['user/update/(:any)'] = 'User/update/$1';
+$route['user/detail/(:any)'] = 'User/show/$1';
 
 //Profile
 $route['profile'] = 'Profile';
@@ -45,6 +46,7 @@ $route['tournament/add-participant'] = 'Tournament/addParticipant';
 $route['tournament/participant-update/(:any)/(:any)/(:any)'] = 'Tournament/updateParticipant/$1/$2/$3';
 
 // Tournament Bracket
+$route['tournament/upload-bracket/(:any)'] = 'Tournament/uploadBracket/$1';
 $route['tournament/show-bracket/(:any)'] = 'Tournament/showBracket/$1';
 $route['tournament/update-match-round'] = 'Tournament/updateBracketMatchRound';
 

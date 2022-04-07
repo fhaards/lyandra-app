@@ -20,6 +20,17 @@ class ModelUser extends CI_Model
         return $query->result_array();
     }
 
+    function readAccount($table, $id)
+    {
+
+        $this->db->select('users.user_id as uid,users.username,users.name,users.user_status,users_account.*,contingent.contingent_id,contingent.contingent_name,contingent.contingent_address');
+        $this->db->from($table);
+        $this->db->join('users_account', 'users.user_id = users_account.user_id', 'INNER');
+        $this->db->join('contingent', 'users_account.contingent_id = contingent.contingent_id','INNER');
+        $this->db->where('users.user_id', $id);
+        return $this->db->get()->row_array();
+    }
+
     public function add()
     {
         $name       = $this->input->post('name');
@@ -138,6 +149,7 @@ class ModelUser extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
+
     function findByUserAccount($fieldName, $value)
     {
         $this->db->select('*');
@@ -146,4 +158,6 @@ class ModelUser extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
+
+
 }

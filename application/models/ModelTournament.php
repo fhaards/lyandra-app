@@ -53,9 +53,11 @@ class ModelTournament extends CI_Model
 
     function readParticipant($id)
     {
-        $this->db->select('*');
+        $this->db->select('tournament_participant.*,users.user_id,users.name,users_account.*,contingent.contingent_id,contingent.contingent_name');
         $this->db->from('tournament_participant');
-        $this->db->join('users', 'tournament_participant.participant_user = users.user_id');
+        $this->db->join('users', 'tournament_participant.participant_user = users.user_id','INNER');
+        $this->db->join('users_account', 'tournament_participant.participant_user = users_account.user_id','INNER');
+        $this->db->join('contingent', 'users_account.contingent_id = contingent.contingent_id','INNER');
         $this->db->where('participant_tournament', $id);
         return $this->db->get()->result_array();
     }

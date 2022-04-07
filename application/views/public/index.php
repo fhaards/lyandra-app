@@ -25,8 +25,10 @@
 							<?= $tourItem['tournament_name']; ?>
 						</h3>
 						<!-- Button trigger modal -->
-						<a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" class="stretched-link mt-auto readmore-event-trigger" data-bs-toggle="modal" data-bs-target="#eventDetailModal">
-							<span>Read More</span><i class="bi bi-arrow-right"></i>
+						<a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" 
+							class="stretched-link mt-auto readmore-event-trigger d-flex gx-2 align-items-center" data-bs-toggle="modal" data-bs-target="#eventDetailModal">
+							<span class="me-2">Read More</span>
+							<i class="bi bi-arrow-right"></i>
 						</a>
 						<!-- <a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a> -->
 					</div>
@@ -109,20 +111,8 @@
 					<div class="col-lg-8 text-center">
 						<h3>Who We Are</h3>
 						<h2 class="pt-5">
-							Expedita voluptas omnis cupiditate totam eveniet nobis sint iste.
-							Dolores est repellat corrupti reprehenderit.
+							<?= htmlspecialchars_decode(getCompanyData()['about']);?> 
 						</h2>
-						<p>
-							Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et.
-							Inventore et et dolor consequatur itaque ut voluptate sed et.
-							Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
-						</p>
-						<div class="text-center text-lg-center">
-							<a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-								<span>Read More</span>
-								<i class="bi bi-arrow-right"></i>
-							</a>
-						</div>
 					</div>
 
 					<footer id="footer" class="footer">
