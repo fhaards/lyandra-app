@@ -15394,7 +15394,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   z-index: 1055;
   display: none;
   width: 100%;
-  height: 100%;
+  max-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
@@ -15412,7 +15412,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 
 /* Handle */
 .modal::-webkit-scrollbar-thumb {
-  background: transparent;
+  background: red;
   width:5px;
   border-radius: 10px;
 }
@@ -15425,7 +15425,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 10px;
+  margin: 50px 0px;
   pointer-events: none;
 }
 
@@ -15453,7 +15453,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 }
 
 .modal-dialog-scrollable .modal-content {
-  max-height: 100%;
+  max-height: 80%;
   overflow: hidden;
 }
 
@@ -15544,7 +15544,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 @media (min-width: 576px) {
   .modal-dialog {
     max-width: 500px;
-    margin: 30px auto;
+    margin: 0px auto;
   }
 
   .modal-dialog-scrollable {
@@ -26641,7 +26641,7 @@ dl li {
 /* Modals */
 .modal .modal-dialog {
   /* margin-top: 100px; */
-  margin-top:100px;
+  margin-top:50px;
 }
 
 .modal .modal-dialog .modal-content .modal-header {

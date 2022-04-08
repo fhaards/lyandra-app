@@ -24,7 +24,11 @@
         <tbody>
             <?php foreach ($participant as $tr) : ?>
                 <tr>
-                    <td class="py-2"><?= $tr['name']; ?></td>
+                    <td class="py-2">
+                        <a href="javascript:void(0)" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#detailUserModal" onclick="detailUser(<?= $tr['user_id']; ?>)">
+                            <?= $tr['name']; ?>
+                        </a>
+                    </td>
                     <td class="py-2"><?= $tr['contingent_name']; ?></td>
                     <td class="py-2"><?= $tr['gender']; ?></td>
                     <td class="py-2"><?= $tr['weight']; ?> Kg</td>

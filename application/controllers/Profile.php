@@ -187,7 +187,6 @@ class Profile extends CI_Controller
 				'gender' => $this->input->post('gender'),
 				'address' => $this->input->post('address'),
 				'belt' => $this->input->post('belt'),
-				'class' => $this->input->post('class'),
 				'weight' => $this->input->post('weight'),
 				'height' => $this->input->post('height'),
 				'contingent_id' => $this->input->post('contingent_id'),

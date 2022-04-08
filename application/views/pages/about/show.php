@@ -29,12 +29,8 @@
                     <input type="text" class="form-control" name="address"  value="<?= $item->address; ?>">
                 </div>
                 <div class="form-group">
-                    <label>Vision</label>
-                    <textarea class="tinymce form-control" name="vision"><?= $item->vision; ?></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Mission</label>
-                    <textarea class="tinymce form-control" name="mission" ><?= $item->mission; ?></textarea>
+                    <label>About Us</label>
+                    <textarea class="tinymce form-control" name="about"><?= $item->about; ?></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary me-2">Submit</button>

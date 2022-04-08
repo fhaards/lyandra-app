@@ -44,8 +44,7 @@ class SettingsAbout extends CI_Controller
 				'phone' => $this->input->post('phone'),
 				'email' => $this->input->post('email'),
 				'address' => $this->input->post('address'),
-				'vision' => $this->input->post('vision'),
-				'mission' => $this->input->post('mission')
+				'about' => $this->input->post('about'),
 			);
 			$this->modelApp->update($this->table, $this->tbId, $id, $data);
 			$this->session->set_flashdata('successEdit', 'Success');

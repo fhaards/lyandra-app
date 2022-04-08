@@ -4,6 +4,7 @@
 <?php endif; ?>
 
 <?php if (($this->uri->segment(1) === 'tournament') && ($this->uri->segment(2) === 'show')) : ?>
+    <script src="<?php echo base_url() . 'src/app-user.js'; ?>"></script>
     <script src="<?php echo base_url() . 'src/app-tournament.js'; ?>"></script>
 <?php endif; ?>
 

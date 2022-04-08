@@ -68,22 +68,14 @@
                     <div class="profile-account-forms">
                         <?php echo form_open("profile/update/" . $item->user_id, array('class' => 'form-sample')); ?>
                         <div class="row pt-2 px-0">
-                            <div class="col-md-6 form-group d-flex flex-column ">
+                            <div class="col-md-4 form-group d-flex flex-column ">
                                 <label class="me-4">Username</label>
                                 <input type="text" class="form-control bg-light" disabled name="phone" value="<?= getUserData()['username']; ?>" />
                             </div>
-                            <div class="col-md-6 form-group d-flex flex-column">
+                            <div class="col-md-4 form-group d-flex flex-column">
                                 <label class="me-4">Phone</label>
-                                <input type="text" class="form-control" name="phone" value="<?= $item->phone; ?>" />
+                                <input type="text" class="form-control" name="phone" value="<?= $item->phone; ?>" placeholder="Phone Number" />
                             </div>
-                        </div>
-                        <div class="row py-1 px-0">
-                            <div class="col-md-12 form-group d-flex flex-column">
-                                <label class=" me-4">Address</label>
-                                <input type="text" class="form-control" name="address" value="<?= $item->address; ?>" />
-                            </div>
-                        </div>
-                        <div class="row py-1 px-0">
                             <div class="col-md-4 form-group d-flex flex-column">
                                 <label class="me-4">Gender</label>
                                 <select class="form-control" name="gender">
@@ -93,42 +85,52 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="col-md-4 form-group d-flex flex-column">
-                                <label class="me-4">Belt</label>
-                                <?php $bArr = ['1' => 'Red', '2' => 'Blue']; ?>
-                                <select class="form-control" name="belt">
-                                    <?php foreach ($bArr as $kBarr => $belts) : ?>
-                                        <option value="<?= $kBarr; ?>" <?= ($kBarr == $item->belt) ? 'selected' : ''; ?>><?= $belts; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-md-4 form-group d-flex flex-column">
-                                <label class="me-4">Class</label>
-                                <input type="text" class="form-control" name="class" value="<?= $item->class; ?>" />
+                        </div>
+                        <div class="row py-1 px-0">
+                            <div class="col-md-12 form-group d-flex flex-column">
+                                <label class=" me-4">Address</label>
+                                <input type="text" class="form-control" name="address" value="<?= $item->address; ?>" placeholder="Input Address"/>
                             </div>
                         </div>
                         <div class="row py-1 px-0">
                             <div class="col-md-4 form-group d-flex flex-column">
-                                <label class="me-4">Weight</label>
-                                <input type="number" class="form-control" min="1" name="weight" value="<?= $item->weight; ?>" />
+                                <label class="me-4">Belt</label>
+                                <?php $bArr = ['Red', 'Blue']; ?>
+                                <select class="form-control" name="belt">
+                                    <?php foreach ($bArr as  $belts) : ?>
+                                        <option value="<?= $belts; ?>" <?= ($belts == $item->belt) ? 'selected' : ''; ?>><?= $belts; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="col-md-4 form-group d-flex flex-column">
-                                <label class="me-4">Height</label>
-                                <input type="number" class="form-control"  min="1" name="height" value="<?= $item->height; ?>" />
+                                <label class="me-4">Weight <strong>( cm )</strong> </label>
+                                <input type="number" class="form-control" min="1" name="weight" placeholder="Input Weight" value="<?= $item->weight; ?>" />
+                            </div>
+                            <div class="col-md-4 form-group d-flex flex-column">
+                                <label class="me-4">Height <strong>( kg )</strong></label>
+                                <input type="number" class="form-control" min="1" name="height" placeholder="Input Height" value="<?= $item->height; ?>" />
                             </div>
                         </div>
-                        <div class="row"><div class="col-md-12"><hr></div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                        </div>
                         <div class="row py-1 px-0">
                             <div class="col-md-6 form-group d-flex flex-column">
                                 <label>Contingent</label>
                                 <select class="form-control" name="contingent_id">
                                     <?php foreach ($contingent as $c) : ?>
-                                        <option value="<?= $c['contingent_id']; ?>" <?= ($item->contingent_id == $c['contingent_id']) ? 'selected' : '' ;?>><?= $c['contingent_name']; ?></option>
+                                        <option value="<?= $c['contingent_id']; ?>" <?= ($item->contingent_id == $c['contingent_id']) ? 'selected' : ''; ?>><?= $c['contingent_name']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
-                        <div class="row"><div class="col-md-12"><hr></div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                        </div>
                         <div class="row px-0 ">
                             <div class="col-md-12 d-flex justify-content-center">
                                 <button type="submit" class="btn fw-bold btn-primary d-flex flex-row align-items-center px-3 py-1"><i class="mdi mdi-pencil me-2"></i> Edit Account</button>
@@ -144,7 +146,7 @@
     <div class="col-md-12 grid-margin stretch-card d-flex flex-column">
         <div class="row flex-grow">
             <!-- RECENT EVENTS -->
-            <div class="col-md-6 col-lg-6 grid-margin stretch-card">
+            <div class="col-md-12 col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title  card-title-das mb-2h">Recent Events</h4>
@@ -169,73 +171,6 @@
                             <div class="wrapper w-100">
                                 <p class="mb-0">
                                     <a href="<?= base_url() . 'tournament'; ?>" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title  card-title-dash">Recent Events</h4>
-                        <div class="list align-items-center border-bottom py-2">
-                            <div class="wrapper w-100">
-                                <p class="mb-2 font-weight-medium">
-                                    Change in Directors
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                                        <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list align-items-center border-bottom py-2">
-                            <div class="wrapper w-100">
-                                <p class="mb-2 font-weight-medium">
-                                    Other Events
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                                        <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list align-items-center border-bottom py-2">
-                            <div class="wrapper w-100">
-                                <p class="mb-2 font-weight-medium">
-                                    Quarterly Report
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                                        <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list align-items-center border-bottom py-2">
-                            <div class="wrapper w-100">
-                                <p class="mb-2 font-weight-medium">
-                                    Change in Directors
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                                        <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="list align-items-center pt-3">
-                            <div class="wrapper w-100">
-                                <p class="mb-0">
-                                    <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
                                 </p>
                             </div>
                         </div>

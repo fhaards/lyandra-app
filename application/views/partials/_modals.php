@@ -69,7 +69,7 @@
 </div>
 
 <!-- Detail user -->
-<div class="modal fade modal-static" id="detailUserModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="detailUserModalLabel" aria-hidden="true">
+<div class="modal fade modal-static" id="detailUserModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="detailUserModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable user-pages">
         <div class="modal-content detail-header">
             <div class="modal-header">
@@ -86,30 +86,24 @@
                 <div class="detail-header-content my-4">
                     <div class="text-center">
                         <h2 class="page-title tracking-wide fw-bold user-name"></h2>
+                        <p class="m-0 p-0 fw-bold user-contingent"></p>
                     </div>
                 </div>
-
-                <!-- 
-                <div class="row pt-2 px-0 d-flex justify-content-center">
-                    <div class="my-3 col-md-12 col-12 d-flex justify-content-center align-items-center">
-                        <div class="load-photo">
-                            <img src="" class="user-photo" alt="photo">
-                        </div>
-                    </div>
-                    <div class="my-3 col-md-12 col-12 text-center">
-                        <h2 class="page-title tracking-wide user-name fw-bold"></h2>
-                    </div>
-                </div> -->
-
                 <div class="container">
                     <div class="row pt-2 px-0">
                         <div class="col-md-6 form-group d-flex flex-column ">
                             <label class="me-4">Username</label>
                             <p class="m-0 p-0 fw-bold user-username"></p>
                         </div>
+                    </div>
+                    <div class="row pt-2 px-0">
                         <div class="col-md-6 form-group d-flex flex-column">
                             <label class="me-4">Phone</label>
                             <p class="m-0 p-0 fw-bold user-phone"></p>
+                        </div>
+                        <div class="col-md-6 form-group d-flex flex-column">
+                            <label class="me-4">Gender</label>
+                            <p class="m-0 p-0 fw-bold user-gender"></p>
                         </div>
                     </div>
                     <div class="row py-1 px-0">
@@ -120,19 +114,9 @@
                     </div>
                     <div class="row py-1 px-0">
                         <div class="col-md-4 form-group d-flex flex-column">
-                            <label class="me-4">Gender</label>
-                            <p class="m-0 p-0 fw-bold user-gender"></p>
-                        </div>
-                        <div class="col-md-4 form-group d-flex flex-column">
                             <label class="me-4">Belt</label>
                             <p class="m-0 p-0 fw-bold user-belt"></p>
                         </div>
-                        <div class="col-md-4 form-group d-flex flex-column">
-                            <label class="me-4">Class</label>
-                            <p class="m-0 p-0 fw-bold user-class"></p>
-                        </div>
-                    </div>
-                    <div class="row py-1 px-0">
                         <div class="col-md-4 form-group d-flex flex-column">
                             <label class="me-4">Weight</label>
                             <p class="m-0 p-0 fw-bold user-weight"></p>
@@ -142,20 +126,10 @@
                             <p class="m-0 p-0 fw-bold user-height"></p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row py-1 px-0">
-                        <div class="col-md-6 form-group d-flex flex-column">
-                            <label>Contingent</label>
-                            <p class="m-0 p-0 fw-bold user-contingent"></p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-          
+
         </div>
     </div>
 </div>

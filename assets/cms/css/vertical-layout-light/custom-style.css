@@ -163,7 +163,7 @@
 } */
 
 .auth-bg {
-    background: url("../../images/app-img/karate.jpg");
+    background: url("../../../img/public_auth_bg.jpg");
     background-size: cover;
     height: 100vh;
 }
