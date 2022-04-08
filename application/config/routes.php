@@ -39,6 +39,7 @@ $route['tournament/show/(:any)'] = 'Tournament/show/$1';
 $route['tournament/edit/(:any)'] = 'Tournament/edit/$1';
 $route['tournament/update/(:any)'] = 'Tournament/update/$1';
 $route['tournament/update-info/(:any)'] = 'Tournament/updateInfo/$1';
+$route['tournament/update-condition/(:any)'] = 'Tournament/updateCondition/$1';
 $route['tournament/update-file/(:any)'] = 'Tournament/updateFile/$1';
 
 // Tournament Participants

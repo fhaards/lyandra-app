@@ -69,24 +69,24 @@
                                     <?php echo form_open('auth/register'); ?>
                                     <div class="form-group mb-2">
                                         <label>Account</label>
-                                        <input type="text" class="form-control form-control" name="username" placeholder="Username">
+                                        <input type="text" class="form-control form-control-lg" name="username" placeholder="Username">
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="password" class="form-control form-control" name="password" placeholder="Password">
+                                        <input type="password" class="form-control form-control-lg" name="password" placeholder="Password">
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="text" class="form-control form-control" name="name" placeholder="Full Name">
+                                        <input type="text" class="form-control form-control-lg" name="name" placeholder="Full Name">
                                     </div>
                                     <div class="form-group">
                                         <label>Gender</label>
-                                        <select class="form-control" name="gender">
+                                        <select class="form-control form-control-lg" name="gender">
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Contingent</label>
-                                        <select class="form-control" name="contingent_id">
+                                        <select class="form-control form-control-lg" name="contingent_id">
                                             <?php foreach($item as $x) : ?>
                                             <option value="<?= $x['contingent_id']; ?>"><?= $x['contingent_name']; ?></option>
                                             <?php endforeach; ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Apr 2022 pada 23.41
+-- Waktu pembuatan: 08 Apr 2022 pada 23.35
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.7
 
@@ -33,8 +33,6 @@ CREATE TABLE `about` (
   `name` varchar(255) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `address` text DEFAULT NULL,
-  `vision` text DEFAULT NULL,
-  `mission` text DEFAULT NULL,
   `about` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -42,8 +40,8 @@ CREATE TABLE `about` (
 -- Dumping data untuk tabel `about`
 --
 
-INSERT INTO `about` (`id`, `email`, `name`, `phone`, `address`, `vision`, `mission`, `about`) VALUES
-(1, 'lyandra_eo@mail.com', 'Lyandra Project Event Organizer', '+628133115522', 'St. Sudirman kav 32, Jakarta Selatan , Indonesia', '<p>Testimonials</p>', '<p>Testimonials</p>', '&lt;h2 style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem; line-height: 1.2; font-size: 24px; font-family: Nunito, sans-serif; color: #012970;&quot;&gt;Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.&lt;/h2&gt;\r\n&lt;p style=&quot;box-sizing: border-box; margin: 15px 0px 30px; line-height: 24px; color: #444444; font-family: \'Open Sans\', sans-serif; font-size: 16px;&quot;&gt;Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.&lt;/p&gt;');
+INSERT INTO `about` (`id`, `email`, `name`, `phone`, `address`, `about`) VALUES
+(1, 'lyandra_eo@mail.com', 'Lyandra Project Event Organizer', '+628133115522', 'St. Sudirman kav 32, Jakarta Selatan , Indonesia', '<h2 style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem; line-height: 1.2; font-size: 24px; font-family: Nunito, sans-serif; color: #012970;\">Expeditsa voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>\r\n<p style=\"box-sizing: border-box; margin: 15px 0px 30px; line-height: 24px; color: #444444; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.</p>');
 
 -- --------------------------------------------------------
 
@@ -73,44 +71,6 @@ INSERT INTO `contingent` (`contingent_id`, `created_by`, `contingent_createdat`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `requests`
---
-
-CREATE TABLE `requests` (
-  `req_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `uuid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `passport_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address_indonesia` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `passport_img` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `req_status` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `req_status_info` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `extend_at` datetime DEFAULT NULL,
-  `expired_at` datetime DEFAULT NULL,
-  `visa_img` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `requests_type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img_letter` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `requests`
---
-
-INSERT INTO `requests` (`req_id`, `uuid`, `name`, `passport_id`, `email`, `gender`, `phone`, `nationality`, `address_indonesia`, `passport_img`, `req_status`, `req_status_info`, `category`, `created_at`, `updated_at`, `extend_at`, `expired_at`, `visa_img`, `requests_type`, `img_letter`) VALUES
-('ERP-040222-849A', '849a03d5-ec75-4f7a-8bf1-b3bcd10331c0', 'Muhammad Fahmi', '123456789', 'test2@mail.com', 'Male', '081317352815', 'Bangladesh', 'Test', 'ERP-040222-849A-Passport.jpg', 'Waiting', '', 'New', '2022-02-04 22:52:45', '2022-02-04 22:52:45', NULL, NULL, 'ERP-040222-849A-Visa.jpg', 'ERP', NULL),
-('ITK-040222-849A', '849a03d5-ec75-4f7a-8bf1-b3bcd10331c0', 'Muhammad Fahmi', '12345678', 'test2@mail.com', 'Male', '081317352815', 'Bangladesh', 'Jakarta', 'ITK-040222-849A-Passport.jpg', 'Waiting', '', 'New', '2022-02-04 22:04:19', '2022-02-04 22:04:19', NULL, '2022-03-04 22:04:19', 'ITK-040222-849A-Visa.jpg', 'ITK', NULL),
-('KITAS-040222-849A', '849a03d5-ec75-4f7a-8bf1-b3bcd10331c0', 'Muhammad Fahmi', '12345678', 'test2@mail.com', 'Male', '081317352815', 'Bangladesh', 'Test', 'KITAS-040222-849A-Passport.jpg', 'Waiting', '', 'Extend', '2022-02-04 22:03:25', '2022-02-04 22:03:25', '2023-03-05 16:05:32', '2024-03-05 16:05:32', 'KITAS-040222-849A-Visa.jpg', 'KITAS', 'KITAS-040222-849A-Extend.jpg');
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `tournament`
 --
 
@@ -121,10 +81,7 @@ CREATE TABLE `tournament` (
   `regist_date` datetime NOT NULL,
   `closed_date` datetime NOT NULL,
   `created_date` datetime DEFAULT NULL,
-  `logo` text NOT NULL,
-  `banner` text NOT NULL,
   `status` int(1) NOT NULL,
-  `rules` text NOT NULL,
   `description` text NOT NULL,
   `max_participants` int(3) NOT NULL,
   `venue` varchar(100) DEFAULT NULL,
@@ -136,41 +93,50 @@ CREATE TABLE `tournament` (
 -- Dumping data untuk tabel `tournament`
 --
 
-INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `regist_date`, `closed_date`, `created_date`, `logo`, `banner`, `status`, `rules`, `description`, `max_participants`, `venue`, `venue_map`, `bracket`) VALUES
-('TRN070420220128573ST', 'Karateka Matchday Tangcit', '2022-04-30 01:27:00', '2022-04-01 01:28:00', '2022-04-21 01:28:00', '2022-04-07 01:28:57', '2e21735d08c400b032779e9248032369.jpg', 'ced044a9c75c4443b90ae409bf5485a1.jpg', 1, 'dab5716c0d054c32932ad5243cdd0b74.pdf', '<p>Matchday</p>', 8, 'GOR Bulungan', 'https://www.google.com/maps/place/GOR+Bulungan/@-6.2419549,106.7942041,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69f16c6112ce35:0x94daaeefc30aaddc!8m2!3d-6.2419602!4d106.7963928', NULL),
-('TRN0704202202395694F', 'Jakarta Kickbox Matchday', '2022-04-30 02:38:00', '2022-04-01 02:38:00', '2022-04-20 02:38:00', '2022-04-07 02:39:56', '83cd1ab3c9a95e14bfc3b8baf6181d5f.jpg', '447de66c89e2a8815d06fc1957e55a1b.jpg', 1, 'f12016dac792d2f8a4c85b60b3dc0733.pdf', '<p>Jakarta Open Tournaments</p>', 4, 'GOR Jakarta Timur', 'https://www.google.com/maps/place/GOR+Jakarta+Timur/@-6.2349047,106.8656913,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69f3751fb97561:0x48b90b1824e8055e!8m2!3d-6.23491!4d106.86788', 'Jakarta_Kickbox_Matchday_Bracket1.xlsx');
+INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `regist_date`, `closed_date`, `created_date`, `status`, `description`, `max_participants`, `venue`, `venue_map`, `bracket`) VALUES
+('TRN09042022014142NXG', 'Tangerang Selatan Karate Tour', '2022-04-29 01:38:00', '2022-04-01 01:38:00', '2022-04-21 10:38:00', '2022-04-09 01:41:42', 1, '<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\"><span style=\"box-sizing: inherit; font-family: HelveticaNeue-CondensedBold, Arial, Helvetica, sans-serif; font-weight: bolder;\">The city of Konya (Turkey) welcomed representatives of a Karate delegation to evaluate the conditions around the upcoming 2022 World Cadet, Junior &amp; U21 Championships.</span></p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">Headed by WKF Organising Commission chairman Esteban Perez, the official visit was coordinated by Turkish Karate Federation president Aslan Abid Uguz and had members of the local organising team in attendance.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">The official hotels and venue for the event were reviewed while different logistic matters were analysed to ensure that the best conditions for the event are guaranteed.&nbsp;</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">The 2022 edition of the World Underage Championships is scheduled to be held in Konya from October 26 to 30. The last edition of the biggest age-group event for the sport was held in Santiago (Chile) in 2019 with nearly 1500 youngsters from 86 countries participating in the event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">WKF Organising Commission chairman Esteban Perez said:</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">&ldquo;I would like to thank TKF President Aslan Abid Uguz, competition manager Yaser Sahintekin, and the head of the LOC Hikmet Yanartas for their support and hospitality over these past few days. The visit to Konya has been very gratifying and we are ready to organise a memorable event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">&ldquo;We expect over 1500 athletes from 120 countries, with a total tally of 2500 accredited people. The Sport ve Kongre Merkezi sports hall offers the right conditions for the tournament and I am sure that the LOC and the TKF will do their utmost to organise a great celebration of our sport in a few months.&rdquo;&nbsp;</p>', 8, 'GOR Gunung Sindur', 'https://www.google.com/maps/place/GOR+Gunung+Sindur/@-6.3870038,106.6727178,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69e7e39281eaf9:0x6b6d04c4a3ca7a80!8m2!3d-6.3871447!4d106.6748928', NULL),
+('TRN090420220234445kt', 'Bogor Open Karate Tournament', '2022-04-30 00:00:00', '2022-04-01 00:00:00', '2022-04-26 00:00:00', '2022-04-09 02:34:44', 1, '<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\"><span style=\"box-sizing: inherit; font-family: HelveticaNeue-CondensedBold, Arial, Helvetica, sans-serif; font-weight: bolder;\">The city of Konya (Turkey) welcomed representatives of a Karate delegation to evaluate the conditions around the upcoming 2022 World Cadet, Junior &amp; U21 Championships.</span></p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">Headed by WKF Organising Commission chairman Esteban Perez, the official visit was coordinated by Turkish Karate Federation president Aslan Abid Uguz and had members of the local organising team in attendance.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">The official hotels and venue for the event were reviewed while different logistic matters were analysed to ensure that the best conditions for the event are guaranteed.&nbsp;</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">The 2022 edition of the World Underage Championships is scheduled to be held in Konya from October 26 to 30. The last edition of the biggest age-group event for the sport was held in Santiago (Chile) in 2019 with nearly 1500 youngsters from 86 countries participating in the event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">WKF Organising Commission chairman Esteban Perez said:</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">&ldquo;I would like to thank TKF President Aslan Abid Uguz, competition manager Yaser Sahintekin, and the head of the LOC Hikmet Yanartas for their support and hospitality over these past few days. The visit to Konya has been very gratifying and we are ready to organise a memorable event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">&ldquo;We expect over 1500 athletes from 120 countries, with a total tally of 2500 accredited people. The Sport ve Kongre Merkezi sports hall offers the right conditions for the tournament and I am sure that the LOC and the TKF will do their utmost to organise a great celebration of our sport in a few months.&rdquo;&nbsp;</p>', 8, 'GOR Gunung Sindur', 'https://www.google.com/maps/place/GOR+Gunung+Sindur/@-6.3870038,106.6727178,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69e7e39281eaf9:0x6b6d04c4a3ca7a80!8m2!3d-6.3871447!4d106.6748928', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tournament_match`
+-- Struktur dari tabel `tournament_condition`
 --
 
-CREATE TABLE `tournament_match` (
-  `match_id` int(10) NOT NULL,
-  `match_tournament_id` varchar(30) NOT NULL,
-  `match_name` varchar(30) NOT NULL,
-  `match_player_1` int(10) DEFAULT NULL,
-  `match_player_2` int(10) DEFAULT NULL,
-  `match_winner` int(10) DEFAULT NULL,
-  `match_null` text DEFAULT NULL
+CREATE TABLE `tournament_condition` (
+  `tournament_id` varchar(30) NOT NULL,
+  `min_weight` int(10) NOT NULL,
+  `max_weight` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tournament_match`
+-- Dumping data untuk tabel `tournament_condition`
 --
 
-INSERT INTO `tournament_match` (`match_id`, `match_tournament_id`, `match_name`, `match_player_1`, `match_player_2`, `match_winner`, `match_null`) VALUES
-(11, 'TRN070420220128573ST', 'match_round_1', NULL, NULL, NULL, NULL),
-(12, 'TRN070420220128573ST', 'match_round_2', NULL, NULL, NULL, NULL),
-(13, 'TRN070420220128573ST', 'match_round_3', NULL, NULL, NULL, NULL),
-(14, 'TRN070420220128573ST', 'match_round_4', NULL, NULL, NULL, NULL),
-(15, 'TRN070420220128573ST', 'semi_final_1', NULL, NULL, NULL, NULL),
-(16, 'TRN070420220128573ST', 'semi_final_2', NULL, NULL, NULL, NULL),
-(17, 'TRN070420220128573ST', 'grand_final', 20, 21, NULL, NULL),
-(18, 'TRN0704202202395694F', 'match_round_1', 21, 22, NULL, NULL),
-(19, 'TRN0704202202395694F', 'match_round_2', 23, 24, NULL, NULL),
-(20, 'TRN0704202202395694F', 'grand_final', NULL, NULL, NULL, NULL);
+INSERT INTO `tournament_condition` (`tournament_id`, `min_weight`, `max_weight`) VALUES
+('TRN09042022014142NXG', 50, 60),
+('TRN090420220234445kt', 60, 70);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tournament_file`
+--
+
+CREATE TABLE `tournament_file` (
+  `tournament_id` varchar(30) NOT NULL,
+  `rules` text DEFAULT NULL,
+  `logo` text DEFAULT NULL,
+  `banner` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tournament_file`
+--
+
+INSERT INTO `tournament_file` (`tournament_id`, `rules`, `logo`, `banner`) VALUES
+('TRN09042022014142NXG', '0ceb6eb55daaf3b50c30e9f550b1ab8b.pdf', 'c97705b248a212dac495680fa6385ac7.jpg', 'ba6b46938445d0f121f42e4d4f74e9e8.jpg'),
+('TRN090420220234445kt', '94f1479791d2e967487e2f0d28ae6a95.pdf', '04df2dca21a3a5731eefe0f7a90b6de5.jpg', '7c0fabe80d9229f5d161859dcb7cbf97.png');
 
 -- --------------------------------------------------------
 
@@ -191,12 +157,7 @@ CREATE TABLE `tournament_participant` (
 --
 
 INSERT INTO `tournament_participant` (`participant_id`, `participant_tournament`, `participant_user`, `submit_at`, `participant_status`) VALUES
-(6, 'TRN0704202202395694F', 20, '2022-04-07 02:46:44', 0),
-(7, 'TRN0704202202395694F', 21, '2022-04-07 02:47:05', 1),
-(8, 'TRN0704202202395694F', 22, '2022-04-07 02:47:21', 1),
-(9, 'TRN0704202202395694F', 23, '2022-04-07 02:47:37', 1),
-(10, 'TRN0704202202395694F', 24, '2022-04-07 02:48:00', 1),
-(11, 'TRN070420220128573ST', 24, '2022-04-07 02:48:12', 0);
+(15, 'TRN090420220234445kt', 20, '2022-04-09 04:33:25', 0);
 
 -- --------------------------------------------------------
 
@@ -226,7 +187,7 @@ INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_s
 (22, 'Faris Salahuddin', 'lookatmars3', '$2y$10$AKeegLrXrOGD.LRmjHugl..E3FkzqnYryJX2lEP0YHAqYMaNkwY.2', 'user', '2', '2022-04-06 19:40:40', '2022-04-06 19:43:16'),
 (23, 'Ibnu Zakaria', 'lookatmars4', '$2y$10$ptbQeKIpVE3GoWJSwN.K0.4JT3VL16wmqNhaqlLQUnl98fgS5GAc2', 'user', '2', '2022-04-06 19:40:59', '2022-04-06 19:44:35'),
 (24, 'Yayan Majalengka', 'lookatmars5', '$2y$10$6TkNbfah.LeY/MvucctQ3uOrqV903ES27jxib8gjcVy0SNhvrKZ0G', 'user', '2', '2022-04-06 19:41:21', '2022-04-06 19:45:42'),
-(25, 'Galih Purwadadi', 'lookatmars10', '$2y$10$VJp8YSBWw8h7fgyzVUXQZeLY4rIp7NHb21nUJwUeXr9c0QNRacpT2', 'user', '1', '2022-04-07 21:12:32', NULL);
+(25, 'Galih Purwadadi', 'lookatmars10', '$2y$10$VJp8YSBWw8h7fgyzVUXQZeLY4rIp7NHb21nUJwUeXr9c0QNRacpT2', 'user', '2', '2022-04-07 21:12:32', '2022-04-09 05:53:16');
 
 -- --------------------------------------------------------
 
@@ -240,7 +201,7 @@ CREATE TABLE `users_account` (
   `gender` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `class` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `belt` int(1) DEFAULT NULL,
+  `belt` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `weight` int(5) DEFAULT NULL,
   `height` int(5) DEFAULT NULL,
   `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -252,12 +213,12 @@ CREATE TABLE `users_account` (
 --
 
 INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `class`, `belt`, `weight`, `height`, `address`, `photo`) VALUES
-(20, 6, 'Male', '081317352815', 'UFC', 1, 88, 175, 'Perum Bukit Dago A-9 32', 'a4b20194ca92eed0778cf38702ab79f2.jpg'),
-(21, 4, 'Female', '081155669987', 'HeavyWeight', 1, 65, 180, 'Desa Mundak Jaya RT/RW 003/004 , Kecamatan Mundakjaya, Indramayu', '2085b42db22ccc8e7e703467a61229b5.jpg'),
-(22, 5, 'Male', '081388998845', 'Heavy', 1, 56, 180, 'Bogor', '0aacd4ddda414e0503433ba9f7fd5533.jpg'),
-(23, 5, 'Male', '081388998866', 'Heavy', 1, 56, 175, 'Jakarta Selatan', '033f9bb56c79a1bb7dd06df925fc7f47.jpg'),
-(24, 5, 'Male', '081388998841', 'Heavy', 1, 55, 170, 'Serpong', '911b4959efbc6f48642c476460160dca.jpg'),
-(25, 4, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(20, 6, 'Male', '081317352815', 'UFC', 'Blue', 61, 175, 'Perum Bukit Dago A-9 32', 'a4b20194ca92eed0778cf38702ab79f2.jpg'),
+(21, 4, 'Female', '081155669987', 'HeavyWeight', 'Red', 65, 180, 'Desa Mundak Jaya RT/RW 003/004 , Kecamatan Mundakjaya, Indramayu', '2085b42db22ccc8e7e703467a61229b5.jpg'),
+(22, 5, 'Male', '081388998845', 'Heavy', 'Red', 56, 180, 'Bogor', '0aacd4ddda414e0503433ba9f7fd5533.jpg'),
+(23, 5, 'Male', '081388998866', 'Heavy', 'Blue', 56, 175, 'Jakarta Selatan', '033f9bb56c79a1bb7dd06df925fc7f47.jpg'),
+(24, 5, 'Male', '081388998841', 'Heavy', 'Red', 55, 170, 'Serpong', '911b4959efbc6f48642c476460160dca.jpg'),
+(25, 4, 'Male', '081522336655', NULL, 'Red', 60, 180, 'Jakarta Barat', NULL);
 
 --
 -- Indexes for dumped tables
@@ -276,22 +237,22 @@ ALTER TABLE `contingent`
   ADD PRIMARY KEY (`contingent_id`);
 
 --
--- Indeks untuk tabel `requests`
---
-ALTER TABLE `requests`
-  ADD PRIMARY KEY (`req_id`);
-
---
 -- Indeks untuk tabel `tournament`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`tournament_id`);
 
 --
--- Indeks untuk tabel `tournament_match`
+-- Indeks untuk tabel `tournament_condition`
 --
-ALTER TABLE `tournament_match`
-  ADD PRIMARY KEY (`match_id`);
+ALTER TABLE `tournament_condition`
+  ADD PRIMARY KEY (`tournament_id`);
+
+--
+-- Indeks untuk tabel `tournament_file`
+--
+ALTER TABLE `tournament_file`
+  ADD PRIMARY KEY (`tournament_id`);
 
 --
 -- Indeks untuk tabel `tournament_participant`
@@ -329,16 +290,10 @@ ALTER TABLE `contingent`
   MODIFY `contingent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tournament_match`
---
-ALTER TABLE `tournament_match`
-  MODIFY `match_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
 -- AUTO_INCREMENT untuk tabel `tournament_participant`
 --
 ALTER TABLE `tournament_participant`
-  MODIFY `participant_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `participant_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

@@ -27,21 +27,35 @@
                                 </div>
                                 <div class="row mt-4 justify-content-center align-items-center mb-3 py-4 ">
                                     <div class="col-md-12 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="form-group">
+                                        <div class="form-group py-4">
                                             <label class="header-text-label tracking-widest fw-bold">Event Date</label>
                                             <div class="header-text-title tracking-widest fw-bold event-date"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-6 d-flex flex-column justify-content-center align-items-center">
+                                    <div class="col-md-4 col-12 d-flex flex-column justify-content-center align-items-center">
                                         <div class="form-group">
                                             <label class="header-text-label tracking-widest fw-bold">Start</label>
                                             <div class="header-text-title tracking-widest fw-bold start-date"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-6 d-flex flex-column justify-content-center align-items-center">
+                                    <div class="col-md-4 col-12 d-flex flex-column justify-content-center align-items-center">
                                         <div class="form-group">
                                             <label class="header-text-label tracking-widest fw-bold">End</label>
                                             <div class="header-text-title tracking-widest fw-bold end-date"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 gy-4 justify-content-center align-items-center mb-3 py-4 ">
+                                    <div class="col-md-4 d-flex flex-column justify-content-center align-items-center">
+                                        <div class="form-group">
+                                            <label class="header-text-label tracking-widest fw-bold">Min Weight</label>
+                                            <div class="header-text-title tracking-widest fw-bold min-weight"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4  d-flex flex-column justify-content-center align-items-center">
+                                        <div class="form-group">
+                                            <label class="header-text-label tracking-widest fw-bold">Max Weight</label>
+                                            <div class="header-text-title tracking-widest fw-bold max-weight"></div>
                                         </div>
                                     </div>
                                 </div>

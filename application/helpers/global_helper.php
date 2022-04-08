@@ -117,6 +117,17 @@ function myDateInterval($dateToCompare)
     return trim($dateInterval);
 }
 
+function compareDate($date){
+    $date_now = date("Y-m-d H:i:s"); // this format is string comparable
+
+    if ($date_now >= $date) {
+        $result = '2';
+    }else{
+        $result = '1';
+    }
+    return $result;
+}
+
 // PROFILE 
 function loadProfilePhoto($getId, $getValue)
 {
@@ -163,9 +174,9 @@ function setTournStatus($getStatus)
     if ($getStatus == '1') :
         $setStyle = '<span class="text-info fw-bolder">Open Registration</span>';
     elseif ($getStatus == '2') :
-        $setStyle = '<span class="text-primary fw-bolder">Ongoing</span>';
+        $setStyle = '<span class="text-dark fw-bolder">Closed Registration</span>';
     elseif ($getStatus == '3') :
-        $setStyle = '<span class="text-success fw-bolder">Closed/Finish</span>';
+        $setStyle = '<span class="text-success fw-bolder">Finish</span>';
     endif;
     return $setStyle;
 }
@@ -207,6 +218,15 @@ function setParticipantStatus($setStatus)
     else :
     endif;
     return $setStyle;
+}
+
+function checkWeightCondition($min, $max, $value){
+    if(($min <= $value) && ($value <= $max)) :
+        $result = true;
+    else:
+        $result = false;
+    endif;
+    return $result;
 }
 
 // FOR CONTINGENT 

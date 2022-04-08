@@ -9376,10 +9376,10 @@ body {
 
 hr {
   margin: 1rem 0;
-  color: inherit;
-  background-color: currentColor;
+  color: #e5e7eb;
+  background-color: #e5e7eb;
   border: 0;
-  opacity: 0.25;
+  opacity: 1;
 }
 
 hr:not([size]) {

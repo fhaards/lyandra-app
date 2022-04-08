@@ -11,6 +11,8 @@ var endDate = eventDetail.find(".end-date");
 var eventRules = eventDetail.find(".event-rules");
 var eventMap = eventDetail.find(".event-map");
 var eventRegist = eventDetail.find(".event-regist");
+var minWeight = eventDetail.find(".min-weight");
+var maxWeight = eventDetail.find(".max-weight");
 var countdownHandlerId = undefined;
 
 // var eventRegist = eventDetail.find(".event-regist");
@@ -29,10 +31,6 @@ function getEventDetails(param) {
 		data: { id: param },
 		dataType: "json",
 		success: function (response) {
-			// console.log(response.tournament_name);
-			// var imgSource = bannerImg.attr("src");
-			// getEventDate(response.event_date);
-			// eventTitle.html(response[0].tournament_name);
 
 			logoImg.attr("src","uploads/tournaments/" + response.tournament_id + "/" + response.logo);
 			bannerImg.attr("src","uploads/tournaments/" + response.tournament_id + "/" + response.banner);
@@ -41,6 +39,8 @@ function getEventDetails(param) {
 			eventMap.attr("href", response.venue_map);
 			eventTitle.html(response.tournament_name);
 			eventDescript.html(response.description);
+			minWeight.html(response.min_weight);
+			maxWeight.html(response.max_weight);
 
 			eventDate.html(moment(response.event_date).format("LL"));
 			startDate.html(moment(response.regist_date).format("LL"));
@@ -76,9 +76,4 @@ function getEventDetails(param) {
 		},
 	});
 }
-
-// function getEventDate(param){
-	// Set the date we're counting down to
-	// var countDownDate = new Date("Apr 30, 2022 01:00:00").getTime();
-// }
 

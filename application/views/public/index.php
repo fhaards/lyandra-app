@@ -6,7 +6,7 @@
 			<p>Recent Events or Tournament</p>
 		</header>
 
-		<div class="row mt-4 justify-content-center">
+		<div class="row mt-4 g-4 justify-content-center">
 			<?php foreach ($item as $tourItem) : ?>
 				<div class="col-lg-4" data-aos="flip-left">
 					<div class="post-box">

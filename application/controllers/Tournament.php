@@ -6,7 +6,8 @@ class Tournament extends CI_Controller
 
 	protected $table  = 'tournament';
 	protected $table2 = 'tournament_participant';
-	protected $table3 = 'tournament_match';
+	protected $table3 = 'tournament_condition';
+	protected $table4 = 'tournament_file';
 	protected $tbId   = 'tournament_id';
 	protected $tb2Id  = 'participant_id';
 
@@ -33,7 +34,7 @@ class Tournament extends CI_Controller
 		$data['breadcrumb'] = $this->crumbs->output();
 
 		$data['title'] = APP_NAME;
-		$data['item']  = $this->modelApp->read($this->table);
+		$data['item']  = $this->modelTournament->readAll();
 		$data['content'] = 'pages/tournament/index';
 		$this->load->view('master', $data);
 	}
@@ -48,8 +49,7 @@ class Tournament extends CI_Controller
 		$data['item']  = $this->modelApp->read($this->table);
 		$data['content'] = 'pages/tournament/add';
 		$insertData 	 = [];
-		$matchRound 	 = [];
-		$matchSemiFinals = [];
+		$insertCondition = [];
 
 		$this->form_validation->set_rules('tournament_name', 'Tournament Name', 'required');
 		if ($this->form_validation->run() === FALSE) {
@@ -59,12 +59,7 @@ class Tournament extends CI_Controller
 			$setRand = random_string('alnum', 3);
 			$setId   = 'TRN' . $setDate . $setRand;
 
-			$maxPlayer     = $this->input->post('max_participants');
-			$countRound    = intval($maxPlayer) / 2;
-			$forSemiFinals = $countRound / 2;
-
 			$uploadPath = './uploads/tournaments/' . $setId;
-
 			$config = array(
 				'upload_path' => $uploadPath,
 				'allowed_types' => 'jpg|jpeg|gif|png|webp|pdf',
@@ -104,7 +99,7 @@ class Tournament extends CI_Controller
 			$insertData  = array(
 				'tournament_id' => $setId,
 				'tournament_name' => $this->input->post('tournament_name'),
-				'max_participants' => $maxPlayer,
+				'max_participants' => $this->input->post('max_participants'),
 				'event_date' => $this->input->post('event_date'),
 				'regist_date' => $this->input->post('regist_date'),
 				'closed_date' => $this->input->post('closed_date'),
@@ -112,62 +107,33 @@ class Tournament extends CI_Controller
 				'description' => $this->input->post('description'),
 				'venue' => $this->input->post('venue'),
 				'venue_map' => $this->input->post('venue_map'),
-				'logo' => $getProductImage1,
-				'banner' => $getProductImage2,
-				'rules' => $getProductImage3,
 				'status' =>  '1'
 			);
+
+			$insertFile = array(
+				'tournament_id' => $setId,
+				'logo' => $getProductImage1,
+				'banner' => $getProductImage2,
+				'rules' => $getProductImage3
+			);
+
+			$insertCondition = array(
+				'tournament_id' => $setId,
+				'min_weight' => $this->input->post('min_weight'),
+				'max_weight' => $this->input->post('max_weight')
+			);
+
 			$insertTournament = $this->modelApp->insert($this->table, $insertData);
 			if ($insertTournament) { //INSERT TO TABLE TOURNAMENT
-
-				if ($maxPlayer == 4) {
-					for ($i = 1; $i <= $countRound; $i++) {
-						$matchRound[$i] = [
-							'match_tournament_id' => $setId,
-							'match_name' => 'match_round_' . $i
-						];
-					}
-					#FOR TOURNAMENT MATCH
-					$insertMatchRound = $this->modelApp->insertBatch($this->table3, $matchRound);
-					if ($insertMatchRound) { //INSERT TO TABLE TOURNAMENT MATCH
-						$grandFinals = [
-							'match_tournament_id' => $setId,
-							'match_name' => 'grand_final'
-						];
-						$insertGrandFinal = $this->modelApp->insert($this->table3, $grandFinals);
-						if ($insertGrandFinal) { //INSERT TO TABLE TOURNAMENT MATCH
-							$this->session->set_flashdata('successInput', 'Data berhasil ditambahkan');
-							redirect("tournament/show/$setId");
-						}
-					}
-				} else {
-					for ($i = 1; $i <= $countRound; $i++) {
-						$matchRound[$i] = [
-							'match_tournament_id' => $setId,
-							'match_name' => 'match_round_' . $i
-						];
-					}
-					#FOR TOURNAMENT MATCH
-					$insertMatchRound = $this->modelApp->insertBatch($this->table3, $matchRound);
-					if ($insertMatchRound) { //INSERT TO TABLE TOURNAMENT MATCH
-						for ($x = 1; $x <= $forSemiFinals; $x++) {
-							$matchSemiFinals[$x] = [
-								'match_tournament_id' => $setId,
-								'match_name' => 'semi_final_' . $x
-							];
-						}
-						$insertSemiFinal = $this->modelApp->insertBatch($this->table3, $matchSemiFinals);
-						if ($insertSemiFinal) { //INSERT TO TABLE TOURNAMENT MATCH
-							$grandFinals = [
-								'match_tournament_id' => $setId,
-								'match_name' => 'grand_final'
-							];
-							$insertGrandFinal = $this->modelApp->insert($this->table3, $grandFinals);
-							if ($insertGrandFinal) { //INSERT TO TABLE TOURNAMENT MATCH
-								$this->session->set_flashdata('successInput', 'Data berhasil ditambahkan');
-								redirect("tournament/show/$setId");
-							}
-						}
+				$insertConditions = $this->modelApp->insert($this->table3, $insertCondition);
+				if ($insertConditions) {
+					$insertFiles = $this->modelApp->insert($this->table4, $insertFile);
+					if ($insertFiles) {
+						$this->session->set_flashdata('successInput', 'Data berhasil ditambahkan');
+						redirect("tournament/show/$setId");
+					} else {
+						$this->session->set_flashdata('error', 'Data berhasil ditambahkan');
+						redirect("tournament/add");
 					}
 				}
 			}
@@ -183,8 +149,115 @@ class Tournament extends CI_Controller
 			'participant_status' => 0
 		);
 		$this->modelApp->insert($this->table2, $insertData);
-		$this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+		$this->session->set_flashdata('successRegist', 'Data berhasil ditambahkan');
 		redirect('tournament');
+	}
+
+	public function show($id)
+	{
+		$this->crumbs->add('Tournament', base_url() . 'tournament');
+		$this->crumbs->add('Detail', base_url() . '');
+		$data['breadcrumb'] = $this->crumbs->output();
+
+		$data['title'] = APP_NAME;
+		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
+		$data['item2']  = $this->modelApp->getId($this->table3, $this->tbId, $id);
+		$data['item3']  = $this->modelApp->getId($this->table4, $this->tbId, $id);
+		$data['participant']  = $this->modelTournament->readParticipant($id);
+		$data['checkMaxParticipant']  = $this->modelTournament->checkParticipantAsMax($id);
+		$data['content'] = 'pages/tournament/show';
+		$this->load->view('master', $data);
+	}
+
+	public function edit($id)
+	{
+		$this->crumbs->add('Tournament', base_url() . 'tournament');
+		$this->crumbs->add('Edit', base_url() . '');
+		$data['breadcrumb'] = $this->crumbs->output();
+
+		$data['title'] = APP_NAME;
+		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
+		$data['item2']  = $this->modelApp->getId($this->table3, $this->tbId, $id);
+		$data['item3']  = $this->modelApp->getId($this->table4, $this->tbId, $id);
+		$data['content'] = 'pages/tournament/edit';
+		$this->load->view('master', $data);
+	}
+
+	public function uploadBracket($id)
+	{
+		$insertData = [];
+		$tourName = $this->input->post('tournament_name');
+
+		$uploadPath = './uploads/tournaments/' . $id;
+		$newName = $tourName . "Bracket." . pathinfo($_FILES["bracket"]['name'], PATHINFO_EXTENSION);
+		$config = array(
+			'upload_path' => $uploadPath,
+			'allowed_types' => 'xlsx|xls',
+			'max_size' => '5000',
+			'file_name' => $newName,
+		);
+		$this->load->library('upload', $config);
+
+		$bracketFile = $this->input->post('bracket_old');
+
+
+		if ($this->upload->do_upload("bracket")) {
+			unlink($uploadPath . '/' . $bracketFile);
+			$upBracketFile  = array('upload_data' => $this->upload->data());
+			$setBracketFile = $upBracketFile['upload_data']['file_name'];
+		} else {
+			$setBracketFile = $bracketFile;
+		}
+
+		$insertData = [
+			'bracket' => $setBracketFile,
+		];
+
+		$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
+		$this->session->set_flashdata('successEdit', 'Data berhasil ditambahkan');
+		redirect("tournament/show/$id");
+	}
+
+	public function updateInfo($id)
+	{
+		$this->form_validation->set_rules('tournament_name', 'Company Name', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->session->set_flashdata('error', 'Error');;
+			redirect("tournament/edit/$id");
+		} else {
+			$insertData  = array(
+				'tournament_name' => $this->input->post('tournament_name'),
+				'max_participants' => $this->input->post('max_participants'),
+				'event_date' => $this->input->post('event_date'),
+				'regist_date' => $this->input->post('regist_date'),
+				'closed_date' => $this->input->post('closed_date'),
+				'description' => $this->input->post('description'),
+				'venue' => $this->input->post('venue'),
+				'venue_map' => $this->input->post('venue_map')
+			);
+			$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
+			$this->session->set_flashdata('successEdit', 'Success');
+			redirect("tournament/edit/$id");
+		}
+	}
+
+	public function updateCondition($id)
+	{
+		$this->form_validation->set_rules('min_weight', 'Min Weight', 'required');
+		$this->form_validation->set_rules('max_weight', 'Max Weight', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->session->set_flashdata('error', 'Error');;
+			redirect("tournament/edit/$id");
+		} else {
+			$insertData = array(
+				'min_weight' => $this->input->post('min_weight'),
+				'max_weight' => $this->input->post('max_weight')
+			);
+
+			$this->modelApp->update($this->table3, $this->tbId, $id, $insertData);
+			$this->session->set_flashdata('successEdit', 'Success');
+			redirect("tournament/edit/$id");
+		}
 	}
 
 	public function updateFile($id)
@@ -229,141 +302,9 @@ class Tournament extends CI_Controller
 			'rules' => $setImgRules
 		];
 
-		$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
-		$this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
-		redirect("tournament/edit/$id");
-	}
-
-	public function show($id)
-	{
-		$this->crumbs->add('Tournament', base_url() . 'tournament');
-		$this->crumbs->add('Detail', base_url() . '');
-		$data['breadcrumb'] = $this->crumbs->output();
-
-		$data['title'] = APP_NAME;
-		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
-		$data['participant']  = $this->modelTournament->readParticipant($id);
-		$data['checkMaxParticipant']  = $this->modelTournament->checkParticipantAsMax($id);
-		$data['content'] = 'pages/tournament/show';
-		$this->load->view('master', $data);
-	}
-
-	public function showBracket($id)
-	{
-		$this->crumbs->add('Tournament', base_url() . 'tournament');
-		$this->crumbs->add('Bracket', base_url() . '');
-		$data['breadcrumb'] = $this->crumbs->output();
-
-		$data['title'] = APP_NAME;
-		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
-		$data['approved']  = $this->modelTournament->approvedParticipant($id);
-		$data['matchFinal']  = $this->modelTournament->match4Final($this->table3, $id, 'match_name', 'grand_final');
-		$data['matchRound']  = $this->modelTournament->match4Round($this->table3, $id, 'match_name', 'match_round_');
-		// $data['participant']  = $this->modelTournament->readParticipant($id);
-		$data['content'] = 'pages/tournament/show-bracket';
-		$this->load->view('master', $data);
-	}
-
-	public function uploadBracket($id)
-	{
-		$insertData = [];
-		$tourName = $this->input->post('tournament_name');
-
-		$uploadPath = './uploads/tournaments/' . $id;
-		$newName = $tourName."Bracket.".pathinfo($_FILES["bracket"]['name'], PATHINFO_EXTENSION);
-		$config = array(
-			'upload_path' => $uploadPath,
-			'allowed_types' => 'xlsx|xls',
-			'max_size' => '5000',
-			'file_name' => $newName,
-		);
-		$this->load->library('upload', $config);
-
-		$bracketFile = $this->input->post('bracket_old');
-		
-
-		if ($this->upload->do_upload("bracket")) {
-			unlink($uploadPath . '/' . $bracketFile);
-			$upBracketFile  = array('upload_data' => $this->upload->data());
-			$setBracketFile = $upBracketFile['upload_data']['file_name'];
-		} else {
-			$setBracketFile = $bracketFile;
-		}
-
-		$insertData = [
-			'bracket' => $setBracketFile,
-		];
-
-		$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
+		$this->modelApp->update($this->table4, $this->tbId, $id, $insertData);
 		$this->session->set_flashdata('successEdit', 'Data berhasil ditambahkan');
-		redirect("tournament/show/$id");
-	}
-
-
-	public function updateBracketMatchRound()
-	{
-		$tourid  = $this->input->post('match_tournament_id');
-		$getId   = $this->input->post('match_id');
-		$mp1     = $this->input->post('match_player_1');
-		$mp2     = $this->input->post('match_player_2');
-
-		$result  = array();
-		foreach ($getId as $key => $val) {
-			$result[$key]  = array(
-				'match_id' => $getId[$key],
-				'match_player_1' => $mp1[$key],
-				'match_player_2' => $mp2[$key],
-			);
-		}
-
-		// var_dump($result);
-		// exit;
-
-		$update = $this->db->update_batch($this->table3, $result, 'match_id');
-		// $update = $this->modelApp->updateBatch($this->table3, $result, $getId );
-		if ($update) {
-			$this->session->set_flashdata('successEdit', 'Success');
-			redirect("tournament/show-bracket/$tourid");
-		} else {
-			$this->session->set_flashdata('error', 'Error');;
-			redirect("tournament/show-bracket/$tourid");
-		}
-	}
-
-
-	public function edit($id)
-	{
-		$this->crumbs->add('Tournament', base_url() . 'tournament');
-		$this->crumbs->add('Edit', base_url() . '');
-		$data['breadcrumb'] = $this->crumbs->output();
-
-		$data['title'] = APP_NAME;
-		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
-		$data['content'] = 'pages/tournament/edit';
-		$this->load->view('master', $data);
-	}
-
-	public function updateInfo($id)
-	{
-		$this->form_validation->set_rules('tournament_name', 'Company Name', 'required');
-		if ($this->form_validation->run() === FALSE) {
-			$this->session->set_flashdata('error', 'Error');;
-			redirect("tournament/edit/$id");
-		} else {
-			$insertData  = array(
-				'tournament_name' => $this->input->post('tournament_name'),
-				'max_participants' => $this->input->post('max_participants'),
-				'event_date' => $this->input->post('event_date'),
-				'regist_date' => $this->input->post('regist_date'),
-				'closed_date' => $this->input->post('closed_date'),
-				'description' => $this->input->post('description'),
-				'venue' => $this->input->post('venue'),
-				'venue_map' => $this->input->post('venue_map')
-			);
-			$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
-			$this->session->set_flashdata('successEdit', 'Success');
-			redirect("tournament/edit/$id");
-		}
+		redirect("tournament/edit/$id");
 	}
 
 	public function updateParticipant($id, $tourid, $status)
@@ -388,4 +329,44 @@ class Tournament extends CI_Controller
 		$this->session->set_flashdata('successDelete', 'Data tidak berhasil Dihapus');
 		redirect('tournament');
 	}
+
+	// public function updateBracketMatchRound()
+	// {
+	// 	$tourid  = $this->input->post('match_tournament_id');
+	// 	$getId   = $this->input->post('match_id');
+	// 	$mp1     = $this->input->post('match_player_1');
+	// 	$mp2     = $this->input->post('match_player_2');
+	// 	$result  = array();
+	// 	foreach ($getId as $key => $val) {
+	// 		$result[$key]  = array(
+	// 			'match_id' => $getId[$key],
+	// 			'match_player_1' => $mp1[$key],
+	// 			'match_player_2' => $mp2[$key],
+	// 		);
+	// 	}
+	// 	$update = $this->db->update_batch($this->table3, $result, 'match_id');
+	// 	if ($update) {
+	// 		$this->session->set_flashdata('successEdit', 'Success');
+	// 		redirect("tournament/show-bracket/$tourid");
+	// 	} else {
+	// 		$this->session->set_flashdata('error', 'Error');;
+	// 		redirect("tournament/show-bracket/$tourid");
+	// 	}
+	// }
+
+	// public function showBracket($id)
+	// {
+	// 	$this->crumbs->add('Tournament', base_url() . 'tournament');
+	// 	$this->crumbs->add('Bracket', base_url() . '');
+	// 	$data['breadcrumb'] = $this->crumbs->output();
+
+	// 	$data['title'] = APP_NAME;
+	// 	$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
+	// 	$data['approved']  = $this->modelTournament->approvedParticipant($id);
+	// 	$data['matchFinal']  = $this->modelTournament->match4Final($this->table3, $id, 'match_name', 'grand_final');
+	// 	$data['matchRound']  = $this->modelTournament->match4Round($this->table3, $id, 'match_name', 'match_round_');
+	// 	// $data['participant']  = $this->modelTournament->readParticipant($id);
+	// 	$data['content'] = 'pages/tournament/show-bracket';
+	// 	$this->load->view('master', $data);
+	// }
 }

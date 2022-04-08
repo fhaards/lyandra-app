@@ -59,6 +59,19 @@
     </script>
 <?php endif; ?>
 
+<?php if ($this->session->flashdata('successRegist')) : ?>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Registration Success',
+            text: 'Please wait before approved',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
+<?php endif; ?>
+
 <?php if ($this->session->flashdata('successDelete')) : ?>
     <script>
         Swal.fire({

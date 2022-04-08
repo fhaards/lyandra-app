@@ -10,6 +10,7 @@ class HomepagePublic extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('modelApp');
+		$this->load->model('modelTournament');
 		$this->load->helper('form');
 		$this->load->helper('date');
 		$this->load->helper('array');
@@ -23,14 +24,14 @@ class HomepagePublic extends CI_Controller
 	{
 		$data['title'] 	 =  APP_NAME;
 		$data['content'] = 'public/index';
-		$data['item']  = $this->modelApp->read($this->tourTable);
+		$data['item']  = $this->modelTournament->readAll();
 		$this->load->view('master_public', $data);
 	}
 
 	public function show()
 	{
 		$id   = $this->input->post('id');
-		$data = $this->modelApp->getId($this->tourTable, $this->tourId, $id);
+		$data = $this->modelTournament->readAllById($id);
 		echo json_encode($data);
 	}
 }

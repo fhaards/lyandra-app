@@ -38,6 +38,15 @@
           <span class="menu-title">About</span>
         </a>
       </li>
+    <?php elseif (isUser()) : ?>
+      <li class="nav-item nav-category "><span class="tracking-widest">Account</span></li>
+      <li class="nav-item">
+        <a class="nav-link fw-bold" href="<?= base_url() . 'profile'; ?>">
+          <i class="mdi mdi-account menu-icon"></i>
+          <span class="menu-title">My Profile</span>
+        </a>
+      </li>
+
     <?php endif; ?>
 
     <!-- <li class="nav-item" id="settings-trigger">
@@ -47,7 +56,7 @@
       </a>
     </li> -->
 
-    <li class="nav-item nav-category">UI Elements</li>
+    <!-- <li class="nav-item nav-category">UI Elements</li>
     <li class="nav-item">
       <a class="nav-link fw-bold" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -61,7 +70,7 @@
           <li class="nav-item"> <a class="nav-link fw-bold" href="pages/ui-features/typography.html">Typography</a></li>
         </ul>
       </div>
-    </li>
+    </li> -->
 
 
   </ul>

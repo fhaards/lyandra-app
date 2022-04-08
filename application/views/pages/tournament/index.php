@@ -25,6 +25,7 @@
                                 <th>Event Date</th>
                                 <th>Start</th>
                                 <th>End</th>
+                                <th>Condition</th>
                                 <th>Status</th>
                                 <th>Act</th>
                             </tr>
@@ -40,7 +41,12 @@
                                     <td><?= setDate($x['event_date']); ?></td>
                                     <td><?= setDate($x['regist_date']); ?></td>
                                     <td><?= setDate($x['closed_date']); ?></td>
-                                    <td><?= setTournStatus($x['status']); ?></td>
+                                    <td>
+                                        <span class="<?= (checkWeightCondition($x['min_weight'], $x['max_weight'], getUserAccount()['weight']) == false) ? 'text-danger' : ''; ?>">
+                                        <?= "Min " . $x['min_weight'] . "Kg - Max " . $x['max_weight'] . "Kg"; ?>
+                                        </span>
+                                    </td>
+                                    <td><?= setTournStatus(compareDate($x['closed_date'])); ?></td>
                                     <td>
                                         <?php if (isSuperAdmin()) : ?>
                                             <div class="dropdown dropstart" id="act-tourn">
@@ -63,9 +69,24 @@
                                             </div>
                                         <?php else : ?>
                                             <?php if (checkJoinParticipant($x['tournament_id'], getUserData()['user_id']) == 0) : ?>
-                                                <a data-bs-toggle="modal" data-bs-target="#joinTournamentModal" thisuid="" onclick="joinTournamentModal('<?= $x['tournament_id']; ?>','<?= getUserData()['user_id']; ?>')" href="javascript:void(0)" class="btn btn-primary px-2 py-2 <?= (getUserData()['user_status'] == '2' ? '' : 'disabled'); ?> ">
-                                                    <i class="mdi mdi-file-plus"></i> Register
-                                                </a>
+                                                <?php if (compareDate($x['closed_date']) === '1') : ?>
+                                                    <?php if (checkWeightCondition($x['min_weight'], $x['max_weight'], getUserAccount()['weight']) == false) : ?>
+                                                        <button type="button" class="btn btn-dark px-2 py-2 d-flex align-items-center justify-content-center" disabled>
+                                                            <i class="mdi mdi-close"></i>
+                                                            <span>Cannot</span>
+                                                        </button>
+                                                    <?php else : ?>
+                                                        <a data-bs-toggle="modal" data-bs-target="#joinTournamentModal" thisuid="" onclick="joinTournamentModal('<?= $x['tournament_id']; ?>','<?= getUserData()['user_id']; ?>')" href="javascript:void(0)" class="btn btn-primary px-2 py-2 d-flex align-items-center justify-content-center <?= (getUserData()['user_status'] == '2' ? '' : 'disabled'); ?> ">
+                                                            <i class="mdi mdi-file-plus"></i>
+                                                            <span>Register</span>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                <?php else : ?>
+                                                    <button type="button" class="btn btn-dark px-2 py-2 d-flex align-items-center justify-content-center" disabled>
+                                                        <i class="mdi mdi-file-plus"></i>
+                                                        <span> Closed </span>
+                                                    </button>
+                                                <?php endif; ?>
                                             <?php else : ?>
                                                 <?= setParticipantStatus(setParticipantStatusCheck($x['tournament_id'], getUserData()['user_id'])); ?>
                                             <?php endif; ?>
