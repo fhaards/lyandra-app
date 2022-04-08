@@ -2,7 +2,7 @@
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
     <div class="me-3">
       <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
-        <span class="icon-menu"></span>
+        <span class="ti-menu"></span>
       </button>
     </div>
     <div>
@@ -14,9 +14,10 @@
       </a>
     </div>
   </div>
-  <div class="navbar-menu-wrapper d-flex align-items-top">
-    <ul class="navbar-nav ms-auto p-0">
-      <li class="nav-item dropdown d-none d-lg-block">
+  <div class="navbar-menu-wrapper d-flex align-items-center">
+    <ul class="navbar-nav ms-auto p-0 d-flex align-items-center">
+      <!-- Category -->
+      <!-- <li class="nav-item dropdown d-none d-lg-block">
         <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
           Select Category
         </a>
@@ -66,22 +67,20 @@
             </div>
           </a>
         </div>
-      </li>
-      <li class="nav-item d-none d-lg-block">
+      </li> -->
+
+      <!-- Date -->
+      <!-- <li class="nav-item d-none d-lg-block">
         <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
           <span class="input-group-addon input-group-prepend border-right">
             <span class="icon-calendar input-group-text calendar-icon"></span>
           </span>
           <input type="text" class="form-control" />
         </div>
-      </li>
-      <li class="nav-item">
-        <form class="search-form" action="#">
-          <i class="icon-search"></i>
-          <input type="search" class="form-control" placeholder="Search Here" title="Search here" />
-        </form>
-      </li>
-      <li class="nav-item dropdown">
+      </li> -->
+      
+      <!-- Notification -->
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
           <i class="icon-mail"></i>
         </a>
@@ -124,7 +123,17 @@
             </div>
           </a>
         </div>
+      </li> -->
+
+      <!-- Search -->
+      <li class="nav-item">
+        <form class="search-form d-flex align-items-center" action="#">
+          <i class="ti-search"></i>
+          <input type="search" class="form-control" placeholder="Search Here" title="Search here" />
+        </form>
       </li>
+
+
       <li class="nav-item dropdown d-none d-lg-block user-dropdown">
         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
           <?php if (isSuperAdmin()) : ?>

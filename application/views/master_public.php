@@ -15,12 +15,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
 
     <!-- Vendor CSS Files -->
-    <link href="<?php echo base_url() . 'assets/public_assets/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
-    <link href="<?php echo base_url() . 'assets/public_assets/vendor/bootstrap-icons/bootstrap-icons.css'; ?>" rel="stylesheet">
-    <link href="<?php echo base_url() . 'assets/public_assets/vendor/aos/aos.css'; ?>" rel="stylesheet">
-    <link href="<?php echo base_url() . 'assets/public_assets/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
-    <link href="<?php echo base_url() . 'assets/public_assets/vendor/swiper/swiper-bundle.min.css'; ?>" rel="stylesheet">
-    <link href="<?php echo base_url() . 'assets/public_assets/vendor/glightbox/css/glightbox.min.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/vendor/bootstrap-icons/bootstrap-icons.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/vendor/aos/aos.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/vendor/swiper/swiper-bundle.min.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/vendor/glightbox/css/glightbox.min.css'; ?>" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url() . 'assets/public_assets/css/style.css'; ?>" rel="stylesheet">
@@ -43,15 +43,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <?php $this->load->view('public/event_detail.php'); ?>
 
     <!-- Vendor JS Files -->
-    <script src="<?php echo base_url() . 'assets/public_assets/vendor/bootstrap/js/bootstrap.bundle.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/cms/vendors/jquery/jquery.min.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/public_assets/vendor/aos/aos.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/public_assets/vendor/swiper/swiper-bundle.min.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/public_assets/vendor/purecounter/purecounter.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/public_assets/vendor/isotope-layout/isotope.pkgd.min.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/public_assets/vendor/glightbox/js/glightbox.min.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/public_assets/vendor/animejs/anime.min.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/cms/vendors/moment/moment.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/bootstrap/js/bootstrap.bundle.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/jquery/jquery.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/aos/aos.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/swiper/swiper-bundle.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/purecounter/purecounter.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/isotope-layout/isotope.pkgd.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/glightbox/js/glightbox.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/animejs/anime.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/vendor/moment/moment.min.js'; ?>"></script>
 
     <script>
         var BASEURL = '<?php echo base_url() ?>';
