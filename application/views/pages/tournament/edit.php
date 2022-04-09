@@ -181,6 +181,7 @@
                     <div id="flush-collapse3" class="accordion-collapse collapse py-5" aria-labelledby="flush-heading3" data-bs-parent="#accordionEditTournament">
                         <div class="container">
                             <?php echo form_open_multipart("tournament/update-file/" . $item->tournament_id, array('class' => 'form-sample')); ?>
+                            <input type="hidden" name="tournament_name" value="<?= $item->tournament_name; ?>">
                             <table class="mb-5 table table-bordered table-striped">
                                 <thead>
                                     <tr>

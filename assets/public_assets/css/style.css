@@ -258,7 +258,9 @@ section {
 .navbar-scrolled .nav-link:hover {
   color: #1e3a8a !important;
 }
-
+.navbar-scrolled .getstarted{
+  color:#fff !important;
+}
 
 .navbar a,
 .navbar a {
@@ -482,7 +484,7 @@ section {
   transition: 0.3s ease-in;
 }
 
-.hero::before {
+/* .hero::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -495,7 +497,7 @@ section {
   -webkit-backdrop-filter: blur(0px);
   transition: 0.3s;
   transition: 0.3s ease-in;
-}
+} */
 
 .hero .container {
   margin-top: 80px;

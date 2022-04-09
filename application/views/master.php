@@ -81,6 +81,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<script src="<?php echo base_url() . 'assets/cms/js/Chart.roundedBarCharts.js'; ?>"></script>
 	<script src="<?php echo base_url() . 'assets/vendor/sweetalert2/sweetalert2.all.min.js'; ?>"></script>
 	<script src="<?php echo base_url() . 'assets/vendor/tinymce/tinymce.min.js'; ?>"></script>
+	<script src="<?php echo base_url() . 'assets/vendor/tinymce/tinymce.min.js'; ?>"></script>
+	<script src="<?php echo base_url() . 'assets/vendor/purecounter/purecounter.js'; ?>"></script>
 	<script>
 		var BASE_URL = "<?php echo base_url(); ?>";
 		var SITE_URL = "<?php echo site_url(); ?>";

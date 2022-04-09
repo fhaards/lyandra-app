@@ -23,6 +23,14 @@ class ModelApp extends CI_Model
         return $query->row_array();
     }
 
+    function countData($table)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
     function read($table)
     {
         return $this->db->get($table)->result_array();

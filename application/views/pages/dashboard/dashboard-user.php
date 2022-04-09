@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-lg-9 col-md-9 col-12 grid-margin stretch-card">
+    <div class="col-md-9 col-lg-9 col-12 grid-margin stretch-card">
         <div class="card card-rounded">
             <div class="card-body table-responsive">
                 <div class="d-sm-flex justify-content-between align-items-start mb-4">
@@ -11,7 +11,10 @@
                     </div>
                     <?php if (isSuperAdmin()) : ?>
                         <div>
-                            <a href="<?= base_url() . 'tournament/add'; ?>" type="button" class="btn btn-social-icon-text btn-primary"><i class="ti-plus"></i>Add Data</a>
+                            <a href="<?= base_url() . 'tournament/add'; ?>" type="button" class="btn btn-primary d-flex align-items-center text-white">
+                                <i class="ti-plus"></i>
+                                <span> Add New Tournament </span>
+                            </a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -72,7 +75,7 @@
 
                     <div class="wrapper w-100 text-center mt-2">
                         <p class="mb-0">
-                            <a href="<?= base_url().'tournament';?>" class="fw-bold text-primary text-uppercase text-decoration-none"><span>Show all</span> <i class="mdi mdi-arrow-right ms-2"></i></a>
+                            <a href="<?= base_url() . 'tournament'; ?>" class="fw-bold text-primary text-uppercase text-decoration-none"><span>Show all</span> <i class="mdi mdi-arrow-right ms-2"></i></a>
                         </p>
                     </div>
                 </div>
@@ -80,61 +83,30 @@
         </div>
     </div>
 
-    <div class="col-md-3 col-lg-3 grid-margin stretch-card">
+    <div class="col-md-9 col-lg-3 grid-margin stretch-card">
         <div class="card card-rounded">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <h4 class="card-title card-title-dash">Activities</h4>
-                    <p class="mb-0">20 finished, 5 remaining</p>
+                    <!-- <p class="mb-0">20 finished, 5 remaining</p> -->
                 </div>
                 <ul class="bullet-line-list">
-                    <li>
-                        <div class="d-flex justify-content-between">
-                            <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                            <p>Just now</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex justify-content-between">
-                            <div><span class="text-light-green">Oliver Noah</span> assign you a task</div>
-                            <p>1h</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex justify-content-between">
-                            <div><span class="text-light-green">Jack William</span> assign you a task</div>
-                            <p>1h</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex justify-content-between">
-                            <div><span class="text-light-green">Leo Lucas</span> assign you a task</div>
-                            <p>1h</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex justify-content-between">
-                            <div><span class="text-light-green">Thomas Henry</span> assign you a task</div>
-                            <p>1h</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex justify-content-between">
-                            <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                            <p>1h</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex justify-content-between">
-                            <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                            <p>1h</p>
-                        </div>
-                    </li>
+                    <?php foreach ($activities as $ac) : ?>
+                        <li>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <span class="text-light-green"><?= $ac['name']; ?></span> ,
+                                    <?= $ac['activities_type'] . ' ' . $ac['activities_text']; ?>
+                                </div>
+                                <!-- <p><?= myDateInterval($ac['activities_date']); ?></p> -->
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
                 <div class="list align-items-center pt-3">
                     <div class="wrapper w-100">
                         <p class="mb-0">
-                            <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                            <a href="#" class="fw-bold text-primary text-uppercase text-decoration-none"><span>Show all</span> <i class="mdi mdi-arrow-right ms-2"></i></a>
                         </p>
                     </div>
                 </div>

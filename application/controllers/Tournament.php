@@ -134,7 +134,7 @@ class Tournament extends CI_Controller
 						$inActivities = array(
 							'activities_user' => getUserData()['user_id'],
 							'activities_type' => 'Add',
-							'activities_text' => 'New Tournament '.$tournamentName,
+							'activities_text' => 'New Events ' . $tournamentName,
 							'activities_date' => date("Y-m-d h:i:s")
 						);
 						$this->db->insert('activities', $inActivities);
@@ -151,15 +151,27 @@ class Tournament extends CI_Controller
 
 	public function addParticipant()
 	{
+		$getUser 	 = $this->input->post('user_id');
+		$getTourId   = $this->input->post('tournament_id');
 		$insertData  = array(
-			'participant_tournament'  => $this->input->post('tournament_id'),
-			'participant_user'  => $this->input->post('user_id'),
+			'participant_tournament'  => $getTourId,
+			'participant_user'  => $getUser,
 			'submit_at' => date("Y-m-d h:i:s"),
 			'participant_status' => 0
 		);
-		$this->modelApp->insert($this->table2, $insertData);
-		$this->session->set_flashdata('successRegist', 'Data berhasil ditambahkan');
-		redirect('tournament');
+		$inserted = $this->modelApp->insert($this->table2, $insertData);
+		if ($inserted) {
+			$setTourName =  $this->db->get_where('tournament', array($this->tbId => $getTourId))->row_array()['tournament_name'];
+			$inActivities = array(
+				'activities_user' => $getUser,
+				'activities_type' => 'Register',
+				'activities_text' => $setTourName,
+				'activities_date' => date("Y-m-d h:i:s")
+			);
+			$this->db->insert('activities', $inActivities);
+			$this->session->set_flashdata('successRegist', 'Data berhasil ditambahkan');
+			redirect('tournament');
+		}
 	}
 
 	public function show($id)
@@ -168,8 +180,8 @@ class Tournament extends CI_Controller
 		$this->crumbs->add('Detail', base_url() . '');
 		$data['breadcrumb'] = $this->crumbs->output();
 
-		$data['title'] = APP_NAME;
-		$data['item']  = $this->modelApp->getId($this->table, $this->tbId, $id);
+		$data['title']  = APP_NAME;
+		$data['item']   = $this->modelApp->getId($this->table, $this->tbId, $id);
 		$data['item2']  = $this->modelApp->getId($this->table3, $this->tbId, $id);
 		$data['item3']  = $this->modelApp->getId($this->table4, $this->tbId, $id);
 		$data['participant']  = $this->modelTournament->readParticipant($id);
@@ -222,9 +234,19 @@ class Tournament extends CI_Controller
 			'bracket' => $setBracketFile,
 		];
 
-		$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
-		$this->session->set_flashdata('successEdit', 'Data berhasil ditambahkan');
-		redirect("tournament/show/$id");
+
+		$updates = $this->modelApp->update($this->table, $this->tbId, $id, $insertData);
+		if ($updates) {
+			$inActivities = array(
+				'activities_user' => getUserData()['user_id'],
+				'activities_type' => 'Update',
+				'activities_text' => $tourName . ' Bracket',
+				'activities_date' => date("Y-m-d h:i:s")
+			);
+			$this->db->insert('activities', $inActivities);
+			$this->session->set_flashdata('successEdit', 'Data berhasil ditambahkan');
+			redirect("tournament/show/$id");
+		}
 	}
 
 	public function updateInfo($id)
@@ -234,8 +256,9 @@ class Tournament extends CI_Controller
 			$this->session->set_flashdata('error', 'Error');;
 			redirect("tournament/edit/$id");
 		} else {
+			$tourName = $this->input->post('tournament_name');
 			$insertData  = array(
-				'tournament_name' => $this->input->post('tournament_name'),
+				'tournament_name' => $tourName,
 				'type' => $this->input->post('type'),
 				'max_participants' => $this->input->post('max_participants'),
 				'event_date' => $this->input->post('event_date'),
@@ -245,9 +268,19 @@ class Tournament extends CI_Controller
 				'venue' => $this->input->post('venue'),
 				'venue_map' => $this->input->post('venue_map')
 			);
-			$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
-			$this->session->set_flashdata('successEdit', 'Success');
-			redirect("tournament/edit/$id");
+
+			$updates = $this->modelApp->update($this->table, $this->tbId, $id, $insertData);
+			if ($updates) {
+				$inActivities = array(
+					'activities_user' => getUserData()['user_id'],
+					'activities_type' => 'Update',
+					'activities_text' => $tourName . ' Information',
+					'activities_date' => date("Y-m-d h:i:s")
+				);
+				$this->db->insert('activities', $inActivities);
+				$this->session->set_flashdata('successEdit', 'Success');
+				redirect("tournament/edit/$id");
+			}
 		}
 	}
 
@@ -264,9 +297,19 @@ class Tournament extends CI_Controller
 				'max_weight' => $this->input->post('max_weight')
 			);
 
-			$this->modelApp->update($this->table3, $this->tbId, $id, $insertData);
-			$this->session->set_flashdata('successEdit', 'Success');
-			redirect("tournament/edit/$id");
+			$updates = $this->modelApp->update($this->table3, $this->tbId, $id, $insertData);
+			if ($updates) {
+				$setTourName =  $this->db->get_where('tournament', array($this->tbId => $id))->row_array()['tournament_name']; 
+				$inActivities = array(
+					'activities_user' => getUserData()['user_id'],
+					'activities_type' => 'Update',
+					'activities_text' => $setTourName. ' Condition',
+					'activities_date' => date("Y-m-d h:i:s")
+				);
+				$this->db->insert('activities', $inActivities);
+				$this->session->set_flashdata('successEdit', 'Success');
+				redirect("tournament/edit/$id");
+			}
 		}
 	}
 
@@ -281,6 +324,7 @@ class Tournament extends CI_Controller
 		$imgLogoOld = $this->input->post('logo_old');
 		$imgBannerOld = $this->input->post('banner_old');
 		$imgRulesOld = $this->input->post('rules_old');
+		$tourName = $this->input->post('tournament_name');
 
 		if ($this->upload->do_upload("logo")) {
 			unlink($uploadPath . '/' . $imgLogoOld);
@@ -312,9 +356,18 @@ class Tournament extends CI_Controller
 			'rules' => $setImgRules
 		];
 
-		$this->modelApp->update($this->table4, $this->tbId, $id, $insertData);
-		$this->session->set_flashdata('successEdit', 'Data berhasil ditambahkan');
-		redirect("tournament/edit/$id");
+		$updates = $this->modelApp->update($this->table4, $this->tbId, $id, $insertData);
+		if ($updates) {
+			$inActivities = array(
+				'activities_user' => getUserData()['user_id'],
+				'activities_type' => 'Update',
+				'activities_text' =>  $tourName . ' Image or Rules',
+				'activities_date' => date("Y-m-d h:i:s")
+			);
+			$this->db->insert('activities', $inActivities);
+			$this->session->set_flashdata('successEdit', 'Data berhasil ditambahkan');
+			redirect("tournament/edit/$id");
+		}
 	}
 
 	public function updateParticipant($id, $tourid, $status)

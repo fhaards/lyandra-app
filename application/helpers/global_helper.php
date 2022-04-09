@@ -68,6 +68,13 @@ function getCompanyData()
     return $ci->modelApp->findBy('about', 'id', '1');
 }
 
+function countData($table)
+{
+    $ci = &get_instance();
+    $ci->load->model('modelApp');
+    return $ci->modelApp->countData($table);
+}
+
 function setDate($getDates)
 {
     return date('D , d F Y', strtotime($getDates));
@@ -78,10 +85,11 @@ function setTimeDate($getDates)
     return date('d F Y - H:i', strtotime($getDates));
 }
 
-function myDateInterval($dateToCompare)
+
+function myDateInterval($getDate)
 {
     $dateInterval = '';
-    $dateToCompare = new DateTime($dateToCompare);
+    $dateToCompare = new DateTime($getDate);
     $dateNow  = new DateTime(date('Y-m-d H:i:s', time()));
     $interval = $dateToCompare->diff($dateNow);
 
@@ -117,12 +125,13 @@ function myDateInterval($dateToCompare)
     return trim($dateInterval);
 }
 
-function compareDate($date){
+function compareDate($date)
+{
     $date_now = date("Y-m-d H:i:s"); // this format is string comparable
 
     if ($date_now >= $date) {
         $result = '2';
-    }else{
+    } else {
         $result = '1';
     }
     return $result;
@@ -220,10 +229,11 @@ function setParticipantStatus($setStatus)
     return $setStyle;
 }
 
-function checkWeightCondition($min, $max, $value){
-    if(($min <= $value) && ($value <= $max)) :
+function checkWeightCondition($min, $max, $value)
+{
+    if (($min <= $value) && ($value <= $max)) :
         $result = true;
-    else:
+    else :
         $result = false;
     endif;
     return $result;

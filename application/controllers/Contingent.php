@@ -59,6 +59,7 @@ class Contingent extends CI_Controller
 				'created_by' => getUserData()['user_id'],
 				'contingent_createdat' => date("Y-m-d h:i:s")
 			);
+
 			$inActivities = array(
 				'activities_user' => getUserData()['user_id'],
 				'activities_type' => 'Add',
@@ -99,15 +100,26 @@ class Contingent extends CI_Controller
 			$this->session->set_flashdata('error', 'Error');;
 			redirect("contingent/edit/$id");
 		} else {
+			$contName = $this->input->post('contingent_name');
 			$insertData  = array(
-				'contingent_name'  => $this->input->post('contingent_name'),
+				'contingent_name'  => $contName,
 				'contingent_phone' => $this->input->post('contingent_phone'),
 				'contingent_address' => $this->input->post('contingent_address'),
 				'contingent_status' => $this->input->post('contingent_status')
 			);
-			$this->modelApp->update($this->table, $this->tbId, $id, $insertData);
-			$this->session->set_flashdata('successEdit', 'Success');
-			redirect("contingent");
+
+			$updates = $this->modelApp->update($this->table, $this->tbId, $id, $insertData);
+			if ($updates) {
+				$inActivities = array(
+					'activities_user' => getUserData()['user_id'],
+					'activities_type' => 'Update',
+					'activities_text' => 'Contingent '. $contName . ' Changed',
+					'activities_date' => date("Y-m-d h:i:s")
+				);
+				$this->db->insert('activities', $inActivities);
+				$this->session->set_flashdata('successEdit', 'Success');
+				redirect("contingent");
+			}
 		}
 	}
 

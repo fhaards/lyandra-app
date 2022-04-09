@@ -28,7 +28,7 @@
 .img-tour-header {
     z-index: 1;
     position: relative;
-    margin-top:65px !important;
+    margin-top: 65px !important;
 }
 
 .img-tour-banner img {
@@ -53,14 +53,14 @@
     object-fit: cover;
 }
 
-.card-tour-detail .button-information{
-    border:1px solid #e5e7eb;
+.card-tour-detail .button-information {
+    border: 1px solid #e5e7eb;
     background-color: #f9fafb;
 }
 
-.card-tour-detail .button-information:hover{
+.card-tour-detail .button-information:hover {
     background-color: #e5e7eb;
-    color:#1d4ed8;
+    color: #1d4ed8;
 }
 
 .detail-header {
@@ -95,13 +95,13 @@
     z-index: 2;
     object-fit: cover;
     background: #fff;
-    width:150px;
-    height:150px;
+    width: 150px;
+    height: 150px;
 }
 
 .detail-header .detail-photo img {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 9px;
     border: 5px solid #fff;
@@ -138,10 +138,11 @@
 }
 
 /* AUTH */
-#auth-forms .auth-form{
+#auth-forms .auth-form {
     max-height: 100vh;
     overflow-y: auto;
 }
+
 #auth-forms .divider {
     width: 100%;
     text-align: center;
@@ -169,6 +170,42 @@
 }
 
 /* DATATABLES */
-.dataTables_wrapper .row{
-    margin-bottom:20px !important;
+.dataTables_wrapper .row {
+    margin-bottom: 20px !important;
+}
+
+/*--------------------------------------------------------------
+# Counts
+--------------------------------------------------------------*/
+
+
+.counts .count-box {
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+}
+
+.counts .count-box i {
+    font-size: 48px;
+    line-height: 0;
+    margin-right: 20px;
+    color: #4154f1;
+    margin-top:-10px;
+}
+
+.counts .count-box span {
+    font-size: 48px;
+    display: block;
+    font-weight: 800;
+    color: #475569;
+}
+
+.counts .count-box p {
+    padding: 0;
+    margin: 0;
+    font-family: "Nunito", sans-serif;
+    font-size: 15px;
 }
