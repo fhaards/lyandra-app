@@ -58,6 +58,7 @@ class Tournament extends CI_Controller
 			$setDate = date('dmYhis');
 			$setRand = random_string('alnum', 3);
 			$setId   = 'TRN' . $setDate . $setRand;
+			$tournamentName = $this->input->post('tournament_name');
 
 			$uploadPath = './uploads/tournaments/' . $setId;
 			$config = array(
@@ -98,7 +99,8 @@ class Tournament extends CI_Controller
 
 			$insertData  = array(
 				'tournament_id' => $setId,
-				'tournament_name' => $this->input->post('tournament_name'),
+				'tournament_name' => $tournamentName,
+				'type' => $this->input->post('type'),
 				'max_participants' => $this->input->post('max_participants'),
 				'event_date' => $this->input->post('event_date'),
 				'regist_date' => $this->input->post('regist_date'),
@@ -129,6 +131,13 @@ class Tournament extends CI_Controller
 				if ($insertConditions) {
 					$insertFiles = $this->modelApp->insert($this->table4, $insertFile);
 					if ($insertFiles) {
+						$inActivities = array(
+							'activities_user' => getUserData()['user_id'],
+							'activities_type' => 'Add',
+							'activities_text' => 'New Tournament '.$tournamentName,
+							'activities_date' => date("Y-m-d h:i:s")
+						);
+						$this->db->insert('activities', $inActivities);
 						$this->session->set_flashdata('successInput', 'Data berhasil ditambahkan');
 						redirect("tournament/show/$setId");
 					} else {
@@ -227,6 +236,7 @@ class Tournament extends CI_Controller
 		} else {
 			$insertData  = array(
 				'tournament_name' => $this->input->post('tournament_name'),
+				'type' => $this->input->post('type'),
 				'max_participants' => $this->input->post('max_participants'),
 				'event_date' => $this->input->post('event_date'),
 				'regist_date' => $this->input->post('regist_date'),

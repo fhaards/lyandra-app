@@ -18,40 +18,49 @@
                     </div>
                     <div class="col-sm-4 my-0 text-center">
                         <div class="form-group">
-                            <label>Event Date : </label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Event Date : </label>
                             <p class="p-0 fw-bold m-0"><?= setDate($item->event_date); ?></p>
                         </div>
                     </div>
                     <div class="col-sm-4 my-0 text-center">
                         <div class="form-group">
-                            <label>Start :</label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Start :</label>
                             <p class="p-0 fw-bold m-0"><?= setDate($item->regist_date); ?></p>
                         </div>
                     </div>
                     <div class="col-sm-4 my-0 text-center">
                         <div class="form-group">
-                            <label>End :</label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">End :</label>
                             <p class="p-0 fw-bold m-0"><?= setDate($item->closed_date); ?></p>
                         </div>
                     </div>
+
                     <div class="col-sm-4 my-0 text-center">
                         <div class="form-group">
-                            <label>Max Participants: </label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Max Participants: </label>
                             <p class="p-0 fw-bold m-0"><?= $item->max_participants; ?></p>
                         </div>
                     </div>
                     <div class="col-sm-4 my-0 text-center">
                         <div class="form-group">
-                            <label>Venue:</label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Type: </label>
+                            <p class="p-0 fw-bold m-0"><?= $item->type; ?> Elemination</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 my-0 text-center">
+                        <div class="form-group">
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Venue:</label>
                             <p class="p-0 fw-bold m-0"><?= $item->venue; ?></p>
                         </div>
                     </div>
+
                     <div class="col-12 col-sm-12 my-0">
                         <hr>
                         <p class="card-description fw-bold text-uppercase tracking-widest text-primary text-center">
                             Condition
                         </p>
                     </div>
+                    <?php if(isUser()):?>
                     <div class="col-sm-12 my-0 text-center">
                         <div class="form-group text-center">
                             <?php if (checkWeightCondition($item2->min_weight, $item2->max_weight, getUserAccount()['weight']) == false) : ?>
@@ -71,15 +80,16 @@
                             <?php endif; ?>
                         </div>
                     </div>
+                    <?php endif;?>
                     <div class="col-sm-4 my-0 text-center">
                         <div class="form-group">
-                            <label>Min Weight: </label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Min Weight: </label>
                             <p class="p-0 fw-bold m-0"><?= $item2->min_weight; ?> Kg</p>
                         </div>
                     </div>
                     <div class="col-sm-4 my-0 text-center">
                         <div class="form-group">
-                            <label>Max Weight:</label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Max Weight:</label>
                             <p class="p-0 fw-bold m-0"><?= $item2->max_weight; ?> Kg</p>
                         </div>
                     </div>
@@ -159,7 +169,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Description : </label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Description : </label>
                             <?= $item->description; ?>
                         </div>
                     </div>

@@ -70,41 +70,6 @@
                     </form>
                 </div>
 
-                <!-- <div class="row mb-4 d-flex align-items-center justify-content-center text-center">
-                    <div class="col-md-12">
-                        <p>Grand Finals </p>
-                    </div>
-                    <?php foreach ($matchFinal as $final) : ?>
-                        <div class="col-md-3">
-                            <div class="card m-0 p-0">
-                                <div class="card-body p-3 m-0">
-                                    <div class="d-flex flex-column">
-                                        <div class="form-group my-0">
-                                            <label>P1</label>
-                                            <select class="form-control">
-                                                <?php foreach ($approved as $a) : ?>
-                                                    <option><?= $a['name']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                        <div class="">
-                                            <hr>
-                                        </div>
-                                        <div class="form-group my-0">
-                                            <label>P2</label>
-                                            <select class="form-control">
-                                                <?php foreach ($approved as $b) : ?>
-                                                    <option><?= $b['name']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div> -->
 
             </div>
         </div>

@@ -42,9 +42,13 @@
                                     <td><?= setDate($x['regist_date']); ?></td>
                                     <td><?= setDate($x['closed_date']); ?></td>
                                     <td>
-                                        <span class="<?= (checkWeightCondition($x['min_weight'], $x['max_weight'], getUserAccount()['weight']) == false) ? 'text-danger' : ''; ?>">
-                                        <?= "Min " . $x['min_weight'] . "Kg - Max " . $x['max_weight'] . "Kg"; ?>
-                                        </span>
+                                        <?php if (isUser()) : ?>
+                                            <span class="<?= (checkWeightCondition($x['min_weight'], $x['max_weight'], getUserAccount()['weight']) == false) ? 'text-danger' : ''; ?>">
+                                                <?= "Min " . $x['min_weight'] . "Kg - Max " . $x['max_weight'] . "Kg"; ?>
+                                            </span>
+                                        <?php else : ?>
+                                            <?= "Min " . $x['min_weight'] . "Kg - Max " . $x['max_weight'] . "Kg"; ?>
+                                        <?php endif; ?>
                                     </td>
                                     <td><?= setTournStatus(compareDate($x['closed_date'])); ?></td>
                                     <td>

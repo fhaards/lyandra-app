@@ -13,6 +13,8 @@ var eventMap = eventDetail.find(".event-map");
 var eventRegist = eventDetail.find(".event-regist");
 var minWeight = eventDetail.find(".min-weight");
 var maxWeight = eventDetail.find(".max-weight");
+var eventType = eventDetail.find(".type");
+
 var countdownHandlerId = undefined;
 
 // var eventRegist = eventDetail.find(".event-regist");
@@ -41,6 +43,7 @@ function getEventDetails(param) {
 			eventDescript.html(response.description);
 			minWeight.html(response.min_weight);
 			maxWeight.html(response.max_weight);
+			eventType.html(response.type + " Elemination");
 
 			eventDate.html(moment(response.event_date).format("LL"));
 			startDate.html(moment(response.regist_date).format("LL"));

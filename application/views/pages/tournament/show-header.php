@@ -35,14 +35,19 @@
             <?php if (isSuperAdmin()) : ?>
                 <div class="container">
                     <div class="row d-flex flex-row justify-content-center align-items-center border-top pt-3 upload-bracket-info">
-                        <div class="col-md-12 d-flex justify-content-center mb-3">
-                            <h5 class="text-uppercase fw-bold tracking-widest text-secondary">Bracket</h5>
+                        <div class="col-md-12 d-inline-flex justify-content-center align-items-center mb-3">
+                            <?php if ($item->bracket === null) : ?>
+                                <i class="mdi mdi-close-circle text-danger mdi-16px me-2"></i>
+                            <?php else : ?>
+                                <i class="mdi mdi-check-circle text-success mdi-16px me-2"></i>
+                            <?php endif; ?>
+                            <p class="h5 text-dark text-uppercase fw-bold tracking-widest">Bracket</p>
                         </div>
                         <div class="col-md-12 d-flex justify-content-center">
                             <div class="home-tab">
                                 <div class="btn-wrapper">
                                     <?php if ($item->bracket === null) : ?>
-                                        <a href="<?= base_url() . "uploads/bracket/single/" . $item->max_participants . "-team-templates.xlsx"; ?>" class="btn btn-outline-primary btn-sm m-0 rounded-2">
+                                        <a href="<?= base_url() . "uploads/bracket/" . $item->type . "/" . $item->max_participants . "-team-templates.xlsx"; ?>" class="btn btn-outline-primary btn-sm m-0 rounded-2">
                                             <i class="icon-download"></i> Download Template
                                         </a>
                                     <?php else : ?>

@@ -21,11 +21,24 @@
                             <?php echo validation_errors(); ?>
                             <?php echo form_open("tournament/update-info/" . $item->tournament_id, array('class' => 'form-sample')); ?>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="form-group row">
                                         <label>Name</label>
                                         <div>
                                             <input type="text" class="form-control" name="tournament_name" value="<?= $item->tournament_name; ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group row">
+                                        <label>Type</label>
+                                        <div>
+                                            <?php $typ = ['Single' => 'Single Elemination', 'Double' => 'Double Elemination']; ?>
+                                            <select name="type" class="form-control" required>
+                                                <?php foreach ($typ as $ktyp => $vtyp) : ?>
+                                                    <option value="<?= $ktyp; ?>" <?= ($ktyp == $item->type) ? 'selected' : ''; ?>><?= $vtyp;?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +194,7 @@
                                         <td>Rules</td>
                                         <td>
                                             <input type="hidden" name="rules_old" value="<?= $item3->rules; ?>">
-                                            <a class="<?= (is_null($item3->rules)) ? 'btn disabled' : '' ;?>" href='<?= base_url() . 'uploads/tournaments/' . $item3->tournament_id . '/' . $item3->rules; ?>'> Check Files</a>
+                                            <a class="<?= (is_null($item3->rules)) ? 'btn disabled' : ''; ?>" href='<?= base_url() . 'uploads/tournaments/' . $item3->tournament_id . '/' . $item3->rules; ?>'> Check Files</a>
                                         </td>
                                         <td>
                                             <div class="form-group p-0 m-0">

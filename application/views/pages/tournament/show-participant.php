@@ -36,17 +36,15 @@
                     <td class="py-2"><?= setTimeDate($tr['submit_at']); ?></td>
                     <td class="py-2"><?= setParticipantStatus($tr['participant_status']); ?></td>
                     <td>
-                        <div class="btn-wrapper">
-                            <?php if ($tr['participant_status'] == 0) : ?>
-                                <a data-bs-toggle="modal" data-bs-target="#updateParticipantModal" href="javascript:void(0)" class="btn btn-success rounded-full <?= ($checkMaxParticipant == '0') ? 'disabled' : ''; ?>" onclick="updateParticipants('<?= site_url('tournament/participant-update/' . $tr['participant_id'] . '/' . $tr['participant_tournament'] . '/1') ?>')">
-                                    <i class="mdi mdi-check"></i>
-                                </a>
-                            <?php else : ?>
-                                <a data-bs-toggle="modal" data-bs-target="#updateParticipantModal" href="javascript:void(0)" class="btn btn-danger btn-icon" onclick="updateParticipants('<?= site_url('tournament/participant-update/' . $tr['participant_id'] . '/'  . $tr['participant_tournament'] . '/0') ?>')">
-                                    <i class="mdi mdi-close"></i>
-                                </a>
-                            <?php endif; ?>
-                        </div>
+                        <?php if ($tr['participant_status'] == 0) : ?>
+                            <a data-bs-toggle="modal" data-bs-target="#updateParticipantModal" href="javascript:void(0)" class="btn btn-success d-inline-flex px-2 py-1 justify-content-center <?= ($checkMaxParticipant == '0') ? 'disabled' : ''; ?>" onclick="updateParticipants('<?= site_url('tournament/participant-update/' . $tr['participant_id'] . '/' . $tr['participant_tournament'] . '/1') ?>')">
+                                <i class="mdi mdi-check p-0 m-0"></i>
+                            </a>
+                        <?php else : ?>
+                            <a data-bs-toggle="modal" data-bs-target="#updateParticipantModal" href="javascript:void(0)" class="btn btn-danger d-inline-flex px-2 py-1 justify-content-center" onclick="updateParticipants('<?= site_url('tournament/participant-update/' . $tr['participant_id'] . '/'  . $tr['participant_tournament'] . '/0') ?>')">
+                                <i class="mdi mdi-close p-0 m-0"></i>
+                            </a>
+                        <?php endif; ?>
                         <!-- <div class="btn-wrapper justify-content-center d-flex">
                             <button class="btn btn-success btn-sm rounded-2 py-1 px-1 fw-bolder d-flex flex-row align-items-center" data-bs-toggle="modal" type="button" data-bs-target="#updateParticipantModal" onclick="updateParticipant('<?php echo site_url('tournament/participant-update/' . $tr['participant_id']) ?>', '<?= $tr['participant_tournament']; ?> ')">
                                 <i class="mdi mdi-refresh"></i> <span class="m-0 p-0"> Update </span>

@@ -23,6 +23,7 @@
                                 <div class="row mt-4 justify-content-center align-items-center mb-5">
                                     <div class="col-md-10 d-flex flex-column justify-content-center align-items-center">
                                         <p class="h2 title tracking-wide"></p>
+                                        <span class="h6 mt-3 text-uppercase tracking-widest type"></span>
                                     </div>
                                 </div>
                                 <div class="row mt-4 justify-content-center align-items-center mb-3 py-4 ">
@@ -113,7 +114,7 @@
                                                 <?php endif; ?>
                                                 <i class="ri-file-add-line icon mb-4"></i>
                                                 <h3 class="m-0">
-                                                    <div class="read-more tracking-wide"><span>Regist</span></div>
+                                                    <div class="read-more tracking-wide"><span>Register</span></div>
                                                 </h3>
                                             </a>
 

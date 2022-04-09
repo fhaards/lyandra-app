@@ -50,14 +50,22 @@ class Contingent extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('master', $data);
 		} else {
+			$contName = $this->input->post('contingent_name');
 			$insertData  = array(
-				'contingent_name'  => $this->input->post('contingent_name'),
+				'contingent_name'  => $contName,
 				'contingent_phone' => $this->input->post('contingent_phone'),
 				'contingent_address' => $this->input->post('contingent_address'),
 				'contingent_status' => 1,
 				'created_by' => getUserData()['user_id'],
 				'contingent_createdat' => date("Y-m-d h:i:s")
 			);
+			$inActivities = array(
+				'activities_user' => getUserData()['user_id'],
+				'activities_type' => 'Add',
+				'activities_text' => 'New Contingent ' . $contName,
+				'activities_date' => date("Y-m-d h:i:s")
+			);
+			$this->db->insert('activities', $inActivities);
 			$this->modelApp->insert($this->table, $insertData);
 			$this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
 			redirect('contingent');

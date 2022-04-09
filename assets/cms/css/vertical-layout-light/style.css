@@ -15412,7 +15412,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 
 /* Handle */
 .modal::-webkit-scrollbar-thumb {
-  background: red;
+  background: transparent;
   width:5px;
   border-radius: 10px;
 }

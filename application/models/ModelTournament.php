@@ -20,6 +20,17 @@ class ModelTournament extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    function readAllOrderLimit()
+    {
+        $this->db->select('*');
+        $this->db->from('tournament');
+        $this->db->join('tournament_file', 'tournament.tournament_id = tournament_file.tournament_id','INNER');
+        $this->db->join('tournament_condition', 'tournament.tournament_id = tournament_condition.tournament_id','INNER');
+        $this->db->order_by('created_date', 'desc');
+        $this->db->limit(5);
+        return $this->db->get()->result_array();
+    }
+
     function readAllById($id)
     {
         $array = array('tournament.tournament_id' => $id);

@@ -25,8 +25,7 @@
 							<?= $tourItem['tournament_name']; ?>
 						</h3>
 						<!-- Button trigger modal -->
-						<a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" 
-							class="stretched-link mt-auto readmore-event-trigger d-flex gx-2 align-items-center" data-bs-toggle="modal" data-bs-target="#eventDetailModal">
+						<a href="javscript:void(0)" atid="<?= $tourItem['tournament_id']; ?>" class="stretched-link mt-auto readmore-event-trigger d-flex gx-2 align-items-center" data-bs-toggle="modal" data-bs-target="#eventDetailModal">
 							<span class="me-2">Read More</span>
 							<i class="bi bi-arrow-right"></i>
 						</a>
@@ -53,29 +52,25 @@
 					<div class="col-md-4" data-aos="fade-down" data-aos-easing="ease-in-back" data-aos-delay="200" data-aos-offset="0">
 						<div class="info-box d-flex flex-row justify-content-center">
 							<div class="col-10 row">
-								<div class="col-lg-4">
+								<div class="col-lg-2 col-2">
 									<i class="bi bi-geo-alt"></i>
 								</div>
-								<div class="col-lg-8">
-									<div>
-										<h3>Address</h3>
-										<p><?= getCompanyData()['address']; ?></p>
-									</div>
+								<div class="col-lg-10 col-10">
+									<h3>Address</h3>
+									<p><?= getCompanyData()['address']; ?></p>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="400" data-aos-offset="0">
 						<div class="info-box d-flex flex-row justify-content-center">
-							<div class="col-10 row">
-								<div class="col-lg-4">
+							<div class="col-10 row ">
+								<div class="col-lg-2 col-2">
 									<i class="bi bi-telephone"></i>
 								</div>
-								<div class="col-lg-8">
-									<div>
-										<h3>Call Us</h3>
-										<p><?= getCompanyData()['phone']; ?></p>
-									</div>
+								<div class="col-lg-10 col-10">
+									<h3>Call Us</h3>
+									<p><?= getCompanyData()['phone']; ?></p>
 								</div>
 							</div>
 						</div>
@@ -83,14 +78,12 @@
 					<div class="col-md-4" data-aos="fade-down" data-aos-easing="ease-in-back" data-aos-delay="600" data-aos-offset="0">
 						<div class="info-box row d-flex flex-row justify-content-center">
 							<div class="col-10 row">
-								<div class="col-lg-4">
+								<div class="col-lg-2 col-2">
 									<i class="bi bi-envelope"></i>
 								</div>
-								<div class="col-lg-8">
-									<div>
-										<h3>Email Us</h3>
-										<p><?= getCompanyData()['email']; ?></p>
-									</div>
+								<div class="col-lg-10 col-10">
+									<h3>Email Us</h3>
+									<p><?= getCompanyData()['email']; ?></p>
 								</div>
 							</div>
 						</div>
@@ -111,7 +104,7 @@
 					<div class="col-lg-8 text-center">
 						<h3>Who We Are</h3>
 						<h2 class="pt-5">
-							<?= htmlspecialchars_decode(getCompanyData()['about']);?> 
+							<?= htmlspecialchars_decode(getCompanyData()['about']); ?>
 						</h2>
 					</div>
 
@@ -130,5 +123,3 @@
 		</div>
 	</div>
 </section>
-
-

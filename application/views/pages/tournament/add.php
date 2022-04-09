@@ -7,11 +7,22 @@
                 <?php echo form_open_multipart('tournament/add', array('class' => 'form-sample')); ?>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="form-group row">
                             <label>Name</label>
                             <div>
                                 <input type="text" class="form-control" name="tournament_name" placeholder="Input Tournament Name" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label>Type</label>
+                            <div>
+                                <select name="type" class="form-control" required>
+                                    <option value="Single">Single Elemination</option>
+                                    <option value="Double">Double Elemination</option>
+                                </select>
                             </div>
                         </div>
                     </div>

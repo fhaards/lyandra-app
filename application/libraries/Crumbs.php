@@ -42,7 +42,7 @@ class Crumbs
     {
         if ($this->breadcrumbs) {
             $output = $this->start;
-            $output .= '<li class="me-2"><a href="' . base_url('dashboard') . '" class="breadcrumb-item btn-link text-decoration-none tracking-wide d-flex flex-row align-items-center"><i class="icon-home px-1"></i> <span> Dashboard </span></a></li>';
+            $output .= '<li class="me-2"><a href="' . base_url('dashboard') . '" class="breadcrumb-item btn-link text-decoration-none tracking-wide d-flex flex-row align-items-center"><i class="mdi mdi-view-dashboard-outline menu-icon me-1"></i> <span> Dashboard </span></a></li>';
             // if (isAdmin()) {
             //     $output .= '<li><a href="' . base_url() . 'dashboard" class="hover:text-gray-700 hover:underline"> Dashboard  </a></li>';
             // }

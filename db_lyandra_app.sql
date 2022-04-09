@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Apr 2022 pada 23.35
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 8.0.7
+-- Generation Time: Apr 09, 2022 at 04:28 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `about`
+-- Table structure for table `about`
 --
 
 CREATE TABLE `about` (
@@ -37,7 +37,7 @@ CREATE TABLE `about` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `about`
+-- Dumping data for table `about`
 --
 
 INSERT INTO `about` (`id`, `email`, `name`, `phone`, `address`, `about`) VALUES
@@ -46,7 +46,30 @@ INSERT INTO `about` (`id`, `email`, `name`, `phone`, `address`, `about`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `contingent`
+-- Table structure for table `activities`
+--
+
+CREATE TABLE `activities` (
+  `id_activities` int(30) NOT NULL,
+  `activities_user` int(10) NOT NULL,
+  `activities_type` varchar(10) NOT NULL,
+  `activities_text` text DEFAULT NULL,
+  `activities_date` datetime DEFAULT NULL,
+  `activities_link` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`id_activities`, `activities_user`, `activities_type`, `activities_text`, `activities_date`, `activities_link`) VALUES
+(1, 27, 'Register', 'New Account', '2022-04-09 09:21:04', NULL),
+(2, 1, 'Add', 'New Contingent Dago Kickboxing', '2022-04-09 09:27:37', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contingent`
 --
 
 CREATE TABLE `contingent` (
@@ -60,23 +83,25 @@ CREATE TABLE `contingent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `contingent`
+-- Dumping data for table `contingent`
 --
 
 INSERT INTO `contingent` (`contingent_id`, `created_by`, `contingent_createdat`, `contingent_name`, `contingent_phone`, `contingent_address`, `contingent_status`) VALUES
 (4, 1, '2022-04-05 01:43:58', 'Tiger Boxer', '081255668845', 'Tangerang Selatan', 1),
 (5, 1, '2022-04-05 01:44:56', 'Tangsel Karate Club', '081255669845', 'Tangerang Selatan', 1),
-(6, 1, '2022-04-05 01:46:09', 'Bogor Boxer ', '081365698877', 'Bogor', 1);
+(6, 1, '2022-04-05 01:46:09', 'Bogor Boxer ', '081365698877', 'Bogor', 1),
+(7, 1, '2022-04-09 09:27:37', 'Dago Kickboxing', '081122334455', 'Bukit Dago, Bgor', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tournament`
+-- Table structure for table `tournament`
 --
 
 CREATE TABLE `tournament` (
   `tournament_id` varchar(30) NOT NULL,
   `tournament_name` varchar(100) NOT NULL,
+  `type` varchar(10) NOT NULL,
   `event_date` datetime NOT NULL,
   `regist_date` datetime NOT NULL,
   `closed_date` datetime NOT NULL,
@@ -90,17 +115,17 @@ CREATE TABLE `tournament` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tournament`
+-- Dumping data for table `tournament`
 --
 
-INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `event_date`, `regist_date`, `closed_date`, `created_date`, `status`, `description`, `max_participants`, `venue`, `venue_map`, `bracket`) VALUES
-('TRN09042022014142NXG', 'Tangerang Selatan Karate Tour', '2022-04-29 01:38:00', '2022-04-01 01:38:00', '2022-04-21 10:38:00', '2022-04-09 01:41:42', 1, '<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\"><span style=\"box-sizing: inherit; font-family: HelveticaNeue-CondensedBold, Arial, Helvetica, sans-serif; font-weight: bolder;\">The city of Konya (Turkey) welcomed representatives of a Karate delegation to evaluate the conditions around the upcoming 2022 World Cadet, Junior &amp; U21 Championships.</span></p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">Headed by WKF Organising Commission chairman Esteban Perez, the official visit was coordinated by Turkish Karate Federation president Aslan Abid Uguz and had members of the local organising team in attendance.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">The official hotels and venue for the event were reviewed while different logistic matters were analysed to ensure that the best conditions for the event are guaranteed.&nbsp;</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">The 2022 edition of the World Underage Championships is scheduled to be held in Konya from October 26 to 30. The last edition of the biggest age-group event for the sport was held in Santiago (Chile) in 2019 with nearly 1500 youngsters from 86 countries participating in the event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">WKF Organising Commission chairman Esteban Perez said:</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">&ldquo;I would like to thank TKF President Aslan Abid Uguz, competition manager Yaser Sahintekin, and the head of the LOC Hikmet Yanartas for their support and hospitality over these past few days. The visit to Konya has been very gratifying and we are ready to organise a memorable event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">&ldquo;We expect over 1500 athletes from 120 countries, with a total tally of 2500 accredited people. The Sport ve Kongre Merkezi sports hall offers the right conditions for the tournament and I am sure that the LOC and the TKF will do their utmost to organise a great celebration of our sport in a few months.&rdquo;&nbsp;</p>', 8, 'GOR Gunung Sindur', 'https://www.google.com/maps/place/GOR+Gunung+Sindur/@-6.3870038,106.6727178,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69e7e39281eaf9:0x6b6d04c4a3ca7a80!8m2!3d-6.3871447!4d106.6748928', NULL),
-('TRN090420220234445kt', 'Bogor Open Karate Tournament', '2022-04-30 00:00:00', '2022-04-01 00:00:00', '2022-04-26 00:00:00', '2022-04-09 02:34:44', 1, '<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\"><span style=\"box-sizing: inherit; font-family: HelveticaNeue-CondensedBold, Arial, Helvetica, sans-serif; font-weight: bolder;\">The city of Konya (Turkey) welcomed representatives of a Karate delegation to evaluate the conditions around the upcoming 2022 World Cadet, Junior &amp; U21 Championships.</span></p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">Headed by WKF Organising Commission chairman Esteban Perez, the official visit was coordinated by Turkish Karate Federation president Aslan Abid Uguz and had members of the local organising team in attendance.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">The official hotels and venue for the event were reviewed while different logistic matters were analysed to ensure that the best conditions for the event are guaranteed.&nbsp;</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">The 2022 edition of the World Underage Championships is scheduled to be held in Konya from October 26 to 30. The last edition of the biggest age-group event for the sport was held in Santiago (Chile) in 2019 with nearly 1500 youngsters from 86 countries participating in the event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">WKF Organising Commission chairman Esteban Perez said:</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">&ldquo;I would like to thank TKF President Aslan Abid Uguz, competition manager Yaser Sahintekin, and the head of the LOC Hikmet Yanartas for their support and hospitality over these past few days. The visit to Konya has been very gratifying and we are ready to organise a memorable event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">&ldquo;We expect over 1500 athletes from 120 countries, with a total tally of 2500 accredited people. The Sport ve Kongre Merkezi sports hall offers the right conditions for the tournament and I am sure that the LOC and the TKF will do their utmost to organise a great celebration of our sport in a few months.&rdquo;&nbsp;</p>', 8, 'GOR Gunung Sindur', 'https://www.google.com/maps/place/GOR+Gunung+Sindur/@-6.3870038,106.6727178,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69e7e39281eaf9:0x6b6d04c4a3ca7a80!8m2!3d-6.3871447!4d106.6748928', NULL);
+INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `type`, `event_date`, `regist_date`, `closed_date`, `created_date`, `status`, `description`, `max_participants`, `venue`, `venue_map`, `bracket`) VALUES
+('TRN09042022014142NXG', 'Tangerang Selatan Karate Tour', 'Double', '2022-04-29 01:38:00', '2022-04-01 01:38:00', '2022-04-21 10:38:00', '2022-04-09 01:41:42', 1, '<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\"><span style=\"box-sizing: inherit; font-family: HelveticaNeue-CondensedBold, Arial, Helvetica, sans-serif; font-weight: bolder;\">The city of Konya (Turkey) welcomed representatives of a Karate delegation to evaluate the conditions around the upcoming 2022 World Cadet, Junior &amp; U21 Championships.</span></p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">Headed by WKF Organising Commission chairman Esteban Perez, the official visit was coordinated by Turkish Karate Federation president Aslan Abid Uguz and had members of the local organising team in attendance.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">The official hotels and venue for the event were reviewed while different logistic matters were analysed to ensure that the best conditions for the event are guaranteed.&nbsp;</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">The 2022 edition of the World Underage Championships is scheduled to be held in Konya from October 26 to 30. The last edition of the biggest age-group event for the sport was held in Santiago (Chile) in 2019 with nearly 1500 youngsters from 86 countries participating in the event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">WKF Organising Commission chairman Esteban Perez said:</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">&ldquo;I would like to thank TKF President Aslan Abid Uguz, competition manager Yaser Sahintekin, and the head of the LOC Hikmet Yanartas for their support and hospitality over these past few days. The visit to Konya has been very gratifying and we are ready to organise a memorable event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px; text-align: justify;\">&ldquo;We expect over 1500 athletes from 120 countries, with a total tally of 2500 accredited people. The Sport ve Kongre Merkezi sports hall offers the right conditions for the tournament and I am sure that the LOC and the TKF will do their utmost to organise a great celebration of our sport in a few months.&rdquo;&nbsp;</p>', 8, 'GOR Gunung Sindur', 'https://www.google.com/maps/place/GOR+Gunung+Sindur/@-6.3870038,106.6727178,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69e7e39281eaf9:0x6b6d04c4a3ca7a80!8m2!3d-6.3871447!4d106.6748928', 'Tangerang_Selatan_Karate_TourBracket.xlsx'),
+('TRN090420220234445kt', 'Bogor Open Karate Tournament', 'Single', '2022-04-30 00:00:00', '2022-04-01 00:00:00', '2022-04-26 00:00:00', '2022-04-09 02:34:44', 1, '<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\"><span style=\"box-sizing: inherit; font-family: HelveticaNeue-CondensedBold, Arial, Helvetica, sans-serif; font-weight: bolder;\">The city of Konya (Turkey) welcomed representatives of a Karate delegation to evaluate the conditions around the upcoming 2022 World Cadet, Junior &amp; U21 Championships.</span></p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">Headed by WKF Organising Commission chairman Esteban Perez, the official visit was coordinated by Turkish Karate Federation president Aslan Abid Uguz and had members of the local organising team in attendance.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">The official hotels and venue for the event were reviewed while different logistic matters were analysed to ensure that the best conditions for the event are guaranteed.&nbsp;</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">The 2022 edition of the World Underage Championships is scheduled to be held in Konya from October 26 to 30. The last edition of the biggest age-group event for the sport was held in Santiago (Chile) in 2019 with nearly 1500 youngsters from 86 countries participating in the event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">WKF Organising Commission chairman Esteban Perez said:</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">&ldquo;I would like to thank TKF President Aslan Abid Uguz, competition manager Yaser Sahintekin, and the head of the LOC Hikmet Yanartas for their support and hospitality over these past few days. The visit to Konya has been very gratifying and we are ready to organise a memorable event.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1rem; padding: 0px; font-family: HelveticaNeue, Arial, Helvetica, sans-serif; font-size: 14px;\">&ldquo;We expect over 1500 athletes from 120 countries, with a total tally of 2500 accredited people. The Sport ve Kongre Merkezi sports hall offers the right conditions for the tournament and I am sure that the LOC and the TKF will do their utmost to organise a great celebration of our sport in a few months.&rdquo;&nbsp;</p>', 8, 'GOR Gunung Sindur', 'https://www.google.com/maps/place/GOR+Gunung+Sindur/@-6.3870038,106.6727178,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69e7e39281eaf9:0x6b6d04c4a3ca7a80!8m2!3d-6.3871447!4d106.6748928', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tournament_condition`
+-- Table structure for table `tournament_condition`
 --
 
 CREATE TABLE `tournament_condition` (
@@ -110,7 +135,7 @@ CREATE TABLE `tournament_condition` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tournament_condition`
+-- Dumping data for table `tournament_condition`
 --
 
 INSERT INTO `tournament_condition` (`tournament_id`, `min_weight`, `max_weight`) VALUES
@@ -120,7 +145,7 @@ INSERT INTO `tournament_condition` (`tournament_id`, `min_weight`, `max_weight`)
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tournament_file`
+-- Table structure for table `tournament_file`
 --
 
 CREATE TABLE `tournament_file` (
@@ -131,7 +156,7 @@ CREATE TABLE `tournament_file` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tournament_file`
+-- Dumping data for table `tournament_file`
 --
 
 INSERT INTO `tournament_file` (`tournament_id`, `rules`, `logo`, `banner`) VALUES
@@ -141,7 +166,7 @@ INSERT INTO `tournament_file` (`tournament_id`, `rules`, `logo`, `banner`) VALUE
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tournament_participant`
+-- Table structure for table `tournament_participant`
 --
 
 CREATE TABLE `tournament_participant` (
@@ -153,7 +178,7 @@ CREATE TABLE `tournament_participant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tournament_participant`
+-- Dumping data for table `tournament_participant`
 --
 
 INSERT INTO `tournament_participant` (`participant_id`, `participant_tournament`, `participant_user`, `submit_at`, `participant_status`) VALUES
@@ -162,7 +187,7 @@ INSERT INTO `tournament_participant` (`participant_id`, `participant_tournament`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -177,7 +202,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_status`, `created_at`, `updated_at`) VALUES
@@ -187,12 +212,13 @@ INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_s
 (22, 'Faris Salahuddin', 'lookatmars3', '$2y$10$AKeegLrXrOGD.LRmjHugl..E3FkzqnYryJX2lEP0YHAqYMaNkwY.2', 'user', '2', '2022-04-06 19:40:40', '2022-04-06 19:43:16'),
 (23, 'Ibnu Zakaria', 'lookatmars4', '$2y$10$ptbQeKIpVE3GoWJSwN.K0.4JT3VL16wmqNhaqlLQUnl98fgS5GAc2', 'user', '2', '2022-04-06 19:40:59', '2022-04-06 19:44:35'),
 (24, 'Yayan Majalengka', 'lookatmars5', '$2y$10$6TkNbfah.LeY/MvucctQ3uOrqV903ES27jxib8gjcVy0SNhvrKZ0G', 'user', '2', '2022-04-06 19:41:21', '2022-04-06 19:45:42'),
-(25, 'Galih Purwadadi', 'lookatmars10', '$2y$10$VJp8YSBWw8h7fgyzVUXQZeLY4rIp7NHb21nUJwUeXr9c0QNRacpT2', 'user', '2', '2022-04-07 21:12:32', '2022-04-09 05:53:16');
+(25, 'Galih Purwadadi', 'lookatmars10', '$2y$10$VJp8YSBWw8h7fgyzVUXQZeLY4rIp7NHb21nUJwUeXr9c0QNRacpT2', 'user', '2', '2022-04-07 21:12:32', '2022-04-09 05:53:16'),
+(27, 'Ihsan', 'isan1', '$2y$10$fkEqAgcpdlfIPC8qVE33BOroFo7azA2zZreN4WJNHqPJ1J8qHqV/G', 'user', '1', '2022-04-09 02:21:04', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users_account`
+-- Table structure for table `users_account`
 --
 
 CREATE TABLE `users_account` (
@@ -209,7 +235,7 @@ CREATE TABLE `users_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users_account`
+-- Dumping data for table `users_account`
 --
 
 INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `class`, `belt`, `weight`, `height`, `address`, `photo`) VALUES
@@ -218,88 +244,101 @@ INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `cla
 (22, 5, 'Male', '081388998845', 'Heavy', 'Red', 56, 180, 'Bogor', '0aacd4ddda414e0503433ba9f7fd5533.jpg'),
 (23, 5, 'Male', '081388998866', 'Heavy', 'Blue', 56, 175, 'Jakarta Selatan', '033f9bb56c79a1bb7dd06df925fc7f47.jpg'),
 (24, 5, 'Male', '081388998841', 'Heavy', 'Red', 55, 170, 'Serpong', '911b4959efbc6f48642c476460160dca.jpg'),
-(25, 4, 'Male', '081522336655', NULL, 'Red', 60, 180, 'Jakarta Barat', NULL);
+(25, 4, 'Male', '081522336655', NULL, 'Red', 60, 180, 'Jakarta Barat', NULL),
+(27, 4, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `about`
+-- Indexes for table `about`
 --
 ALTER TABLE `about`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `contingent`
+-- Indexes for table `activities`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`id_activities`);
+
+--
+-- Indexes for table `contingent`
 --
 ALTER TABLE `contingent`
   ADD PRIMARY KEY (`contingent_id`);
 
 --
--- Indeks untuk tabel `tournament`
+-- Indexes for table `tournament`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`tournament_id`);
 
 --
--- Indeks untuk tabel `tournament_condition`
+-- Indexes for table `tournament_condition`
 --
 ALTER TABLE `tournament_condition`
   ADD PRIMARY KEY (`tournament_id`);
 
 --
--- Indeks untuk tabel `tournament_file`
+-- Indexes for table `tournament_file`
 --
 ALTER TABLE `tournament_file`
   ADD PRIMARY KEY (`tournament_id`);
 
 --
--- Indeks untuk tabel `tournament_participant`
+-- Indexes for table `tournament_participant`
 --
 ALTER TABLE `tournament_participant`
   ADD PRIMARY KEY (`participant_id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `users_email_unique` (`username`);
 
 --
--- Indeks untuk tabel `users_account`
+-- Indexes for table `users_account`
 --
 ALTER TABLE `users_account`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `about`
+-- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `contingent`
+-- AUTO_INCREMENT for table `activities`
 --
-ALTER TABLE `contingent`
-  MODIFY `contingent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `activities`
+  MODIFY `id_activities` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `tournament_participant`
+-- AUTO_INCREMENT for table `contingent`
+--
+ALTER TABLE `contingent`
+  MODIFY `contingent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tournament_participant`
 --
 ALTER TABLE `tournament_participant`
   MODIFY `participant_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

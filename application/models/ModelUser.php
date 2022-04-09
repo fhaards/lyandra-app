@@ -26,7 +26,7 @@ class ModelUser extends CI_Model
         $this->db->select('users.user_id as uid,users.username,users.name,users.user_status,users_account.*,contingent.contingent_id,contingent.contingent_name,contingent.contingent_address');
         $this->db->from($table);
         $this->db->join('users_account', 'users.user_id = users_account.user_id', 'INNER');
-        $this->db->join('contingent', 'users_account.contingent_id = contingent.contingent_id','INNER');
+        $this->db->join('contingent', 'users_account.contingent_id = contingent.contingent_id', 'INNER');
         $this->db->where('users.user_id', $id);
         return $this->db->get()->row_array();
     }
@@ -58,7 +58,16 @@ class ModelUser extends CI_Model
                 'gender' => $gender
             );
             $query2 = $this->db->insert('users_account', $data2);
-            return $query2;
+            if ($query2) {
+                $inActivities = array(
+                    'activities_user' => $getIdRecents,
+                    'activities_type' => 'Register',
+                    'activities_text' => 'New Account',
+                    'activities_date' => date("Y-m-d h:i:s")
+                );
+                $query3 = $this->db->insert('activities', $inActivities);
+                return $query3;
+            }
         } else {
             return false;
         }
@@ -158,6 +167,4 @@ class ModelUser extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
-
-
 }

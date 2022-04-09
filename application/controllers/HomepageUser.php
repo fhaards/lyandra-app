@@ -7,9 +7,7 @@ class HomepageUser extends CI_Controller
 	{
 		parent::__construct();
 		redirectIfNotLogin();
-		// $this->load->model('m_homepage');
-		// $this->load->model('m_produk');
-		// $this->load->model('m_produkNa');
+		$this->load->model('modelTournament');
 		$this->load->helper('form');
 		$this->load->helper('date');
 		$this->load->helper('array');
@@ -21,7 +19,7 @@ class HomepageUser extends CI_Controller
 	{
 		// $this->crumbs->add('Dashboard', base_url() . 'settings/about');
 		$data['breadcrumb'] = $this->crumbs->output();
-
+		$data['item']  = $this->modelTournament->readAllOrderLimit();
 		$data['title'] 	 =  APP_NAME;
 		$data['content'] = 'dashboard';
 		$this->load->view('master', $data);
