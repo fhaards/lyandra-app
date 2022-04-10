@@ -7,11 +7,13 @@
                         <h4 class="pb-3">User
                             <span class="card-description">List </span>
                         </h4>
+                        <div>
+                            <a href="<?= base_url() . 'reports/user'; ?>" type="button" class="btn btn-social-icon-text btn-dark"><i class="ti-printer"></i>Print</a>
+                        </div>
                     </div>
-
                 </div>
 
-                <div class="table-responsive">
+                <div class="table-responsive my-5">
                     <table class="table table-striped dataTable" id="dataTable">
                         <thead>
                             <tr>
@@ -26,8 +28,7 @@
                             <?php foreach ($item as $x) : ?>
                                 <tr>
                                     <td width="30%">
-                                        <a href="javascript:void(0)" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#detailUserModal" 
-                                            onclick="detailUser(<?= $x['user_id']; ?>)">
+                                        <a href="javascript:void(0)" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#detailUserModal" onclick="detailUser(<?= $x['user_id']; ?>)">
                                             <?= $x['username']; ?>
                                         </a>
                                     </td>

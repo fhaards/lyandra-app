@@ -39,6 +39,24 @@ class Tournament extends CI_Controller
 		$this->load->view('master', $data);
 	}
 
+	public function printCard($id, $userId)
+	{
+		$this->load->library('pdf');
+		$getContingent     =  $this->db->get_where('users_account', array('user_id' => $userId))->row_array()['contingent_id'];
+		$data['title_pdf'] = 'ID CARD';
+		$data['item']      =  $this->modelTournament->checkParticipantDetails($id);
+		$data['item3']     = $this->modelApp->getId($this->table4, $this->tbId, $id);
+		$data['user']      = $this->modelApp->getId('users', 'user_id', $userId);
+		$data['userAcc']   = $this->modelApp->getId('users_account', 'user_id', $userId);
+		$data['contingent']   = $this->modelApp->getId('contingent', 'contingent_id', $getContingent);
+		$this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->setFileName = "laporan-petanikode.pdf";
+		$this->pdf->loadView('pages/tournament/show-printcard', $data);
+
+		// $html = $this->load->view('pages/tournament/show-printcard', $this->data, true);
+		// $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+	}
+
 	public function add()
 	{
 		$this->crumbs->add('Tournament', base_url() . 'tournament');
@@ -299,11 +317,11 @@ class Tournament extends CI_Controller
 
 			$updates = $this->modelApp->update($this->table3, $this->tbId, $id, $insertData);
 			if ($updates) {
-				$setTourName =  $this->db->get_where('tournament', array($this->tbId => $id))->row_array()['tournament_name']; 
+				$setTourName =  $this->db->get_where('tournament', array($this->tbId => $id))->row_array()['tournament_name'];
 				$inActivities = array(
 					'activities_user' => getUserData()['user_id'],
 					'activities_type' => 'Update',
-					'activities_text' => $setTourName. ' Condition',
+					'activities_text' => $setTourName . ' Condition',
 					'activities_date' => date("Y-m-d h:i:s")
 				);
 				$this->db->insert('activities', $inActivities);

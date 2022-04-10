@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Apr 2022 pada 23.39
+-- Waktu pembuatan: 10 Apr 2022 pada 23.53
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.7
 
@@ -190,7 +190,7 @@ CREATE TABLE `tournament_participant` (
 
 INSERT INTO `tournament_participant` (`participant_id`, `participant_tournament`, `participant_user`, `submit_at`, `participant_status`) VALUES
 (15, 'TRN090420220234445kt', 20, '2022-04-09 04:33:25', 0),
-(18, 'TRN090420220234445kt', 21, '2022-04-10 04:11:13', 0);
+(18, 'TRN090420220234445kt', 21, '2022-04-10 04:11:13', 1);
 
 -- --------------------------------------------------------
 

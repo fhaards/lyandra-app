@@ -22,13 +22,25 @@ class ModelUser extends CI_Model
 
     function readAccount($table, $id)
     {
-
         $this->db->select('users.user_id as uid,users.username,users.name,users.user_status,users_account.*,contingent.contingent_id,contingent.contingent_name,contingent.contingent_address');
         $this->db->from($table);
         $this->db->join('users_account', 'users.user_id = users_account.user_id', 'INNER');
         $this->db->join('contingent', 'users_account.contingent_id = contingent.contingent_id', 'INNER');
         $this->db->where('users.user_id', $id);
         return $this->db->get()->row_array();
+    }
+
+    function readAccountAll()
+    {
+        $this->db->select('users.user_id as uid,users.username,users.name,users.user_status,users.level,users.created_at,
+                        users_account.*,
+                        contingent.contingent_id,contingent.contingent_name,contingent.contingent_address');
+        $this->db->from('users');
+        $this->db->join('users_account', 'users.user_id = users_account.user_id', 'INNER');
+        $this->db->join('contingent', 'users_account.contingent_id = contingent.contingent_id', 'INNER');
+        $this->db->where_not_in('users.level', 'superadmin');
+        $this->db->order_by('created_at','desc');
+        return $this->db->get()->result_array();
     }
 
     public function add()

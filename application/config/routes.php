@@ -45,6 +45,7 @@ $route['tournament/update-file/(:any)'] = 'Tournament/updateFile/$1';
 // Tournament Participants
 $route['tournament/add-participant'] = 'Tournament/addParticipant';
 $route['tournament/participant-update/(:any)/(:any)/(:any)'] = 'Tournament/updateParticipant/$1/$2/$3';
+$route['tournament/participant-printcard/(:any)/(:any)'] = 'Tournament/printCard/$1/$2';
 
 // Tournament Bracket
 $route['tournament/upload-bracket/(:any)'] = 'Tournament/uploadBracket/$1';
@@ -60,3 +61,8 @@ $route['contingent/edit/(:any)'] = 'Contingent/edit/$1';
 $route['contingent/update/(:any)'] = 'Contingent/update/$1';
 $route['contingent/update-info/(:any)'] = 'Contingent/updateInfo/$1';
 $route['contingent/update-file/(:any)'] = 'Contingent/updateFile/$1';
+
+//Reports
+$route['reports/tournament'] = 'Reports/reportTournament';
+$route['reports/contingent'] = 'Reports/reportContingent';
+$route['reports/user'] = 'Reports/reportUser';

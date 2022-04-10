@@ -10,7 +10,8 @@
                             </p>
                         </h4>
                         <div>
-                            <a href="<?= base_url() . 'contingent/add'; ?>" type="button" class="btn btn-social-icon-text btn-primary"><i class="ti-plus"></i>Add Data</a>
+                            <a href="<?= base_url() . 'contingent/add'; ?>" type="button" class="btn btn-social-icon-text btn-primary me-2"><i class="ti-plus"></i>Add Data</a>
+                            <a href="<?= base_url() . 'reports/contingent'; ?>" type="button" class="btn btn-social-icon-text btn-dark"><i class="ti-printer"></i>Print</a>
                         </div>
                     </div>
 

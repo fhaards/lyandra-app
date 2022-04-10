@@ -60,27 +60,27 @@
                             Condition
                         </p>
                     </div>
-                    <?php if(isUser()):?>
-                    <div class="col-sm-12 my-0 text-center">
-                        <div class="form-group text-center">
-                            <?php if (checkWeightCondition($item2->min_weight, $item2->max_weight, getUserAccount()['weight']) == false) : ?>
-                                <div class="badge badge-danger text-danger fw-bold py-2 px-4">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <i class="mdi mdi-close mdi-18px me-2"></i>
-                                        <span> Your weight doesn't match the tournament requirements </span>
+                    <?php if (isUser()) : ?>
+                        <div class="col-sm-12 my-0 text-center">
+                            <div class="form-group text-center">
+                                <?php if (checkWeightCondition($item2->min_weight, $item2->max_weight, getUserAccount()['weight']) == false) : ?>
+                                    <div class="badge badge-danger text-danger fw-bold py-2 px-4">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <i class="mdi mdi-close mdi-18px me-2"></i>
+                                            <span> Your weight doesn't match the tournament requirements </span>
+                                        </div>
                                     </div>
-                                </div>
-                            <?php else : ?>
-                                <div class="badge badge-opacity-success text-success fw-bold py-2 px-4">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <i class="mdi mdi-check mdi-18px me-2"></i>
-                                        <span> Your weight is match the tournament requirements </span>
+                                <?php else : ?>
+                                    <div class="badge badge-opacity-success text-success fw-bold py-2 px-4">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <i class="mdi mdi-check mdi-18px me-2"></i>
+                                            <span> Your weight is match the tournament requirements </span>
+                                        </div>
                                     </div>
-                                </div>
-                            <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                    </div>
-                    <?php endif;?>
+                    <?php endif; ?>
                     <div class="col-sm-4 my-0 text-center">
                         <div class="form-group">
                             <label class="fw-bold text-secondary tracking-wide p-0 m-0">Min Weight: </label>
@@ -101,22 +101,22 @@
                             Shortcut
                         </p>
                     </div>
-                    <div class="col-sm-3 my-0">
+                    <div class="col-sm-2 my-0">
                         <a href="<?= base_url() . 'uploads/tournaments/' . $item3->tournament_id . '/' . $item3->rules; ?>" target="_blank" class="button-information btn btn-light text-primary d-flex flex-column align-items-center justify-content-center <?= (is_null($item3->rules)) ? 'btn disabled' : ''; ?>">
                             <i class="mdi mdi-printer mdi-48px"></i>
                             <div class=" text-uppercase tracking-wide mt-2"><strong>Rules</strong></div>
                         </a>
                     </div>
-                    <div class="col-sm-3 my-0">
+                    <div class="col-sm-2 my-0">
                         <a href="<?= $item->venue_map; ?>" target="_blank" class="button-information btn btn-light text-success d-flex flex-column align-items-center justify-content-center">
                             <i class="mdi mdi-map-marker mdi-48px"></i>
                             <div class=" text-uppercase tracking-wide mt-2"><strong>Maps</strong></div>
                         </a>
                     </div>
                     <?php if (isUser()) : ?>
-                        <div class="col-sm-3 my-0">
-                            <?php if (checkJoinParticipant($item->tournament_id, getUserData()['user_id']) == 0) : ?>
 
+                        <?php if (checkJoinParticipant($item->tournament_id, getUserData()['user_id']) == 0) : ?>
+                            <div class="col-sm-2 my-0">
                                 <?php
                                 if (getUserData()['user_status'] == '2') :
                                     if (compareDate($item->closed_date) == '2') :
@@ -136,22 +136,58 @@
                                     <i class="mdi mdi-file-plus mdi-48px"></i>
                                     <div class=" text-uppercase tracking-wide mt-2"><strong>Register</strong></div>
                                 </a>
-                            <?php else : ?>
-                                <a href="javascript:void(0)" class="button-information btn btn-light text-secondary d-flex flex-column align-items-center justify-content-center disabled">
-                                    <i class="mdi mdi-clock mdi-48px"></i>
-                                    <div class=" text-uppercase tracking-wide mt-2"><strong>Pending</strong></div>
-                                </a>
-                            <?php endif; ?>
-                        </div>
+                            </div>
+                        <?php else : ?>
+                            <?php if (setParticipantStatusCheck($item->tournament_id, getUserData()['user_id']) == 0) : ?>
+                                <div class="col-sm-2 my-0">
+                                    <a href="javascript:void(0)" class="button-information btn btn-light text-secondary d-flex flex-column align-items-center justify-content-center disabled">
+                                        <i class="mdi mdi-clock mdi-48px"></i>
+                                        <div class=" text-uppercase tracking-wide mt-2"><strong>Pending</strong></div>
 
-                        <div class="col-sm-3 my-0">
-                            <a <?php if ($item->bracket === null) : ?> href="javscript:void(0)" class="button-information btn btn-light text-dark border-1 d-flex flex-column align-items-center justify-content-center" <?php else : ?> href="<?= base_url() . 'uploads/tournaments/' . $item->tournament_id . '/' . $item->bracket; ?>" class="button-information btn btn-light text-dark border-1 d-flex flex-column align-items-center justify-content-center" <?php endif; ?>>
+                                    </a>
+                                </div>
+                            <?php else : ?>
+                                <div class="col-sm-2 my-0">
+                                    <a href="javascript:void(0)" class="button-information btn btn-light text-success d-flex flex-column align-items-center justify-content-center disabled">
+                                        <i class="mdi mdi-check mdi-48px"></i>
+                                        <div class=" text-uppercase tracking-wide mt-2"><strong>Approved</strong></div>
+                                    </a>
+                                </div>
+                                <?php
+                                if (compareDate($item->closed_date) == '1') :
+                                    $disbtn2 = "disabled";
+                                    $cText = "<small>Waiting Closed</small>";
+                                else :
+                                    $disbtn2 = "";
+                                    $cText = "Pint Card";
+                                endif;
+                                ?>
+                                <div class="col-sm-2 my-0">
+                                    <a href="<?= base_url() . 'tournament/participant-printcard/' . $item->tournament_id . '/' . getUserData()['user_id']; ?>" target="_blank" 
+                                    class="button-information btn btn-light text-info border-1 d-flex flex-column align-items-center justify-content-center <?= $disbtn2; ?>">
+                                        <i class="mdi mdi-card-text-outline mdi-48px"></i>
+                                        <div class="text-uppercase tracking-widest mt-2">
+                                            <strong><?= $cText; ?></strong>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <div class="col-sm-2 my-0">
+                            <a <?php if ($item->bracket === null) : ?> href="javscript:void(0)" 
+                                class="button-information btn btn-light text-dark border-1 d-flex flex-column align-items-center justify-content-center" 
+                            <?php else : ?> 
+                                href="<?= base_url() . 'uploads/tournaments/' . $item->tournament_id . '/' . $item->bracket; ?>" 
+                                class="button-information btn btn-light text-dark border-1 d-flex flex-column align-items-center justify-content-center" 
+                            <?php endif; ?>>
                                 <i class="mdi mdi-tournament mdi-48px"></i>
                                 <div class="text-uppercase tracking-widest mt-2">
                                     <strong>Bracket</strong>
                                 </div>
                             </a>
                         </div>
+
                     <?php else : ?>
                         <div class="col-sm-3 my-0">
                             <a href="" class="button-information btn btn-light text-dark border-1 d-flex flex-column align-items-center justify-content-center" data-bs-toggle="collapse" data-bs-target="#flush-collapse2">

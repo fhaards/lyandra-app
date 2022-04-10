@@ -42,6 +42,16 @@ class ModelTournament extends CI_Model
         return $this->db->get()->row();
     }
 
+    function checkParticipantDetails($id)
+    {
+        $array = array('tournament.tournament_id' => $id);
+        $this->db->select('*');
+        $this->db->from('tournament');
+        $this->db->join('tournament_file', 'tournament.tournament_id = tournament_file.tournament_id','INNER');
+        $this->db->where($array);
+        return $this->db->get()->row();
+    }
+
     function checkParticipant($tourId, $userId)
     {
         $array = array('participant_tournament' => $tourId, 'participant_user' => $userId);

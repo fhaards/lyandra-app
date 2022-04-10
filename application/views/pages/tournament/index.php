@@ -10,7 +10,8 @@
                         </h4>
                         <?php if (isSuperAdmin()) : ?>
                             <div>
-                                <a href="<?= base_url() . 'tournament/add'; ?>" type="button" class="btn btn-social-icon-text btn-primary"><i class="ti-plus"></i>Add Data</a>
+                                <a href="<?= base_url() . 'tournament/add'; ?>" type="button" class="btn btn-social-icon-text btn-primary me-3"><i class="ti-plus"></i>Add Data</a>
+                                <a href="<?= base_url() . 'reports/tournament'; ?>" type="button" class="btn btn-social-icon-text btn-dark"><i class="ti-printer"></i>Print</a>
                             </div>
                         <?php endif; ?>
                     </div>
