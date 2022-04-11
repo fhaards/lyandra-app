@@ -1,0 +1,3 @@
+db name  : lyandra_app  , id18768451_lyandra_app
+db user  : lyandra_events , id18768451_lyandra_events
+db pw    : YnE8U%vb!YUKa/Mn

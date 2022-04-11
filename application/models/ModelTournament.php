@@ -100,6 +100,7 @@ class ModelTournament extends CI_Model
         $this->db->join('users_account', 'tournament_participant.participant_user = users_account.user_id','INNER');
         $this->db->join('contingent', 'users_account.contingent_id = contingent.contingent_id','INNER');
         $this->db->where('participant_tournament', $id);
+        $this->db->order_by('participant_status', 'desc');
         return $this->db->get()->result_array();
     }
 

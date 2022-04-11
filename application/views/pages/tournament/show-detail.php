@@ -5,6 +5,7 @@
             <div class="home-tab">
                 <div class="btn-wrapper">
                     <a href="<?= base_url() . "tournament/edit/" . $item->tournament_id; ?>" class="btn btn-outline-primary btn-sm m-0 rounded-2"><i class="icon-pencil"></i> Edit</a>
+                    <a href="<?= base_url() . "reports/tournament-detail/" . $item->tournament_id; ?>" class="btn btn-outline-primary btn-sm m-0 rounded-2"><i class="icon-printer"></i> Print</a>
                 </div>
             </div>
         </div>
@@ -189,7 +190,7 @@
                         </div>
 
                     <?php else : ?>
-                        <div class="col-sm-3 my-0">
+                        <div class="col-sm-2 my-0">
                             <a href="" class="button-information btn btn-light text-dark border-1 d-flex flex-column align-items-center justify-content-center" data-bs-toggle="collapse" data-bs-target="#flush-collapse2">
                                 <i class="mdi mdi-account mdi-48px"></i>
                                 <div class="text-uppercase tracking-widest mt-2">
@@ -199,13 +200,15 @@
                         </div>
                     <?php endif; ?>
                 </div>
-                <div class="row py-0 mx-0 gy-4 gx-4 align-items-center">
+                <div class="row py-0 mx-0 gy-4 gx-4 align-items-center justify-content-center">
                     <div class="col-12 col-sm-12 my-0">
                         <hr>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-10">
                         <div class="form-group">
-                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Description : </label>
+                            <label class="fw-bold text-secondary tracking-wide p-0 m-0">Description : </label> 
+                            <br>
+                            <br>
                             <?= $item->description; ?>
                         </div>
                     </div>

@@ -64,5 +64,6 @@ $route['contingent/update-file/(:any)'] = 'Contingent/updateFile/$1';
 
 //Reports
 $route['reports/tournament'] = 'Reports/reportTournament';
+$route['reports/tournament-detail/(:any)'] = 'Reports/reportTournamentDetail/$1';
 $route['reports/contingent'] = 'Reports/reportContingent';
 $route['reports/user'] = 'Reports/reportUser';

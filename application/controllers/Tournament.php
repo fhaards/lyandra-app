@@ -42,9 +42,9 @@ class Tournament extends CI_Controller
 	public function printCard($id, $userId)
 	{
 		$this->load->library('pdf');
-		$getContingent     =  $this->db->get_where('users_account', array('user_id' => $userId))->row_array()['contingent_id'];
+		$getContingent     = $this->db->get_where('users_account', array('user_id' => $userId))->row_array()['contingent_id'];
 		$data['title_pdf'] = 'ID CARD';
-		$data['item']      =  $this->modelTournament->checkParticipantDetails($id);
+		$data['item']      = $this->modelTournament->checkParticipantDetails($id);
 		$data['item3']     = $this->modelApp->getId($this->table4, $this->tbId, $id);
 		$data['user']      = $this->modelApp->getId('users', 'user_id', $userId);
 		$data['userAcc']   = $this->modelApp->getId('users_account', 'user_id', $userId);
@@ -406,9 +406,32 @@ class Tournament extends CI_Controller
 
 	public function delete($id)
 	{
-		$this->modelApp->delete($this->table, $this->tbId, $id);
-		$this->session->set_flashdata('successDelete', 'Data tidak berhasil Dihapus');
-		redirect('tournament');
+		$retrieveId = $id;
+		$path = $this->config->base_url() . 'uploads/tournaments/' . $retrieveId;
+		$uploadPath = './uploads/tournaments/' . $retrieveId;
+		chmod($uploadPath, 0644);
+		if (rmdir($uploadPath)) {
+			// $this->modelApp->delete($this->table,  $this->tbId, $retrieveId);
+			// $this->modelApp->delete($this->table2, 'participant_tournament', $retrieveId);
+			// $this->modelApp->delete($this->table3, $this->tbId, $retrieveId);
+			// $this->modelApp->delete($this->table4, $this->tbId, $retrieveId);
+			$this->session->set_flashdata('successDelete', 'Data tidak berhasil Dihapus');
+			redirect('tournament');
+		} else {
+			$this->session->set_flashdata('error', 'Data tidak berhasil Dihapus');
+			redirect('tournament');
+		}
+		// if ($deleteFile) {
+		// 	$this->modelApp->delete($this->table,  $this->tbId, $retrieveId);
+		// 	$this->modelApp->delete($this->table2, 'participant_tournament', $retrieveId);
+		// 	$this->modelApp->delete($this->table3, $this->tbId, $retrieveId);
+		// 	$this->modelApp->delete($this->table4, $this->tbId, $retrieveId);
+		// 	$this->session->set_flashdata('successDelete', 'Data tidak berhasil Dihapus');
+		// 	redirect('tournament');
+		// } else {
+		// 	$this->session->set_flashdata('error', 'Data tidak berhasil Dihapus');
+		// 	redirect('tournament');
+		// }
 	}
 
 	// public function updateBracketMatchRound()
