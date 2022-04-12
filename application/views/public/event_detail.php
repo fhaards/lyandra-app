@@ -3,10 +3,10 @@
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content p-0 m-0">
 
-            <!-- <div class="modal-header">
-                <h5 class="modal-title" id="eventDetailModalLabel">Modal title</h5>
+            <div class="modal-header">
+                <h5 class="modal-title" id="eventDetailModalLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div> -->
+            </div>
 
             <div class="modal-body p-0 m-0">
 
@@ -17,6 +17,7 @@
                         <div class="section-banner"><img src="" class="banner-img"></div>
                         <div class="section-header-title">
                             <div class="container">
+
                                 <div class="row d-flex justify-content-center align-items-center">
                                     <div class="col-md-4 logo p-0"><img class="logo-img"></div>
                                 </div>
@@ -26,37 +27,73 @@
                                         <span class="h6 mt-3 text-uppercase tracking-widest type"></span>
                                     </div>
                                 </div>
-                                <div class="row mt-4 justify-content-center align-items-center mb-3 py-4 ">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                                            <div class="timeline-step">
+                                                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                                                    <div class="inner-circle"></div>
+                                                    <div class="form-group">
+                                                        <div class="header-text-title fw-bold mt-3 mb-1 start-date"></div>
+                                                        <label class="header-text-label tracking-widest fw-bold text-muted mb-0 mb-lg-0">Start Date</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-step">
+                                                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                                                    <div class="inner-circle"></div>
+                                                    <div class="form-group">
+                                                        <div class="header-text-title fw-bold mt-3 mb-1 end-date"></div>
+                                                        <label class="header-text-label tracking-widest fw-bold text-muted mb-0 mb-lg-0">End Date</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-step mb-0">
+                                                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2020">
+                                                    <div class="inner-circle inner-last"></div>
+                                                    <div class="form-group">
+                                                        <div class="header-text-title fw-bold mt-3 mb-1 event-date  text-primary"></div>
+                                                        <label class="header-text-label tracking-widest fw-bold mb-0 mb-lg-0">Event Date</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="row mt-4 justify-content-center align-items-center mb-3 py-4 ">
                                     <div class="col-md-12 d-flex flex-column justify-content-center align-items-center">
                                         <div class="form-group py-4">
                                             <label class="header-text-label tracking-widest fw-bold">Event Date</label>
-                                            <div class="header-text-title tracking-widest fw-bold event-date"></div>
+                                            <div class="header-text-title tracking-widest fw-bold"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12 d-flex flex-column justify-content-center align-items-center">
                                         <div class="form-group">
                                             <label class="header-text-label tracking-widest fw-bold">Start</label>
-                                            <div class="header-text-title tracking-widest fw-bold start-date"></div>
+                                            <div class="header-text-title tracking-widest fw-bold"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12 d-flex flex-column justify-content-center align-items-center">
                                         <div class="form-group">
                                             <label class="header-text-label tracking-widest fw-bold">End</label>
-                                            <div class="header-text-title tracking-widest fw-bold end-date"></div>
+                                            <div class="header-text-title tracking-widest fw-bold"></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+
                                 <div class="row mt-4 gy-4 justify-content-center align-items-center mb-3 py-4 ">
                                     <div class="col-md-4 d-flex flex-column justify-content-center align-items-center">
                                         <div class="form-group">
-                                            <label class="header-text-label tracking-widest fw-bold">Min Weight</label>
-                                            <div class="header-text-title tracking-widest fw-bold min-weight"></div>
+                                            <label class="header-text-label tracking-widest fw-bold">Age</label>
+                                            <div class="header-text-title tracking-widest fw-bold condtition-age"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-4  d-flex flex-column justify-content-center align-items-center">
                                         <div class="form-group">
-                                            <label class="header-text-label tracking-widest fw-bold">Max Weight</label>
-                                            <div class="header-text-title tracking-widest fw-bold max-weight"></div>
+                                            <label class="header-text-label tracking-widest fw-bold">Weight</label>
+                                            <div class="header-text-title tracking-widest fw-bold condtition-weight"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +145,7 @@
                                                 $cls = "";
                                             endif;
                                             ?>
-                                            <a href="" class="m-0 p-0 <?= $cls?>">
+                                            <a href="" class="m-0 p-0 <?= $cls ?>">
                                             <?php else : ?>
                                                 <a href="<?= base_url() . 'auth'; ?>" class="m-0 p-0">
                                                 <?php endif; ?>
@@ -116,7 +153,7 @@
                                                 <h3 class="m-0">
                                                     <div class="read-more tracking-wide"><span>Register</span></div>
                                                 </h3>
-                                            </a>
+                                                </a>
 
                                     </div>
                                 </div>
@@ -139,10 +176,9 @@
                 </div>
 
             </div>
-            <div class="modal-footer border-0">
+            <!-- <div class="modal-footer border-0">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi-x-lg"></i></button>
-                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

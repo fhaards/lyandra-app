@@ -26,13 +26,19 @@
                                 <th>Event Date</th>
                                 <th>Start</th>
                                 <th>End</th>
-                                <th>Condition</th>
+                                <th>Condition </th>
                                 <th>Status</th>
                                 <th>Act</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($item as $x) : ?>
+                                <?php
+                                $mina = $x['min_age'];
+                                $maxa = $x['max_age'];
+                                $minw = $x['min_weight'];
+                                $maxw = $x['max_weight'];
+                                ?>
                                 <tr>
                                     <td>
                                         <a class="btn btn-link" href="<?= base_url() . "tournament/show/" . $x['tournament_id']; ?>">
@@ -44,11 +50,18 @@
                                     <td><?= setDate($x['closed_date']); ?></td>
                                     <td>
                                         <?php if (isUser()) : ?>
-                                            <span class="<?= (checkWeightCondition($x['min_weight'], $x['max_weight'], getUserAccount()['weight']) == false) ? 'text-danger' : ''; ?>">
-                                                <?= "Min " . $x['min_weight'] . "Kg - Max " . $x['max_weight'] . "Kg"; ?>
+                                            <span class="<?= (checkCondition($mina, $maxa, getAge(), $minw, $maxw, getUserAccount()['weight']) == false) ? 'text-danger' : ''; ?>">
+                                                <p>
+                                                    Weight : <?= $x['min_weight']; ?> - <?= $x['max_weight']; ?> Kg <br>
+                                                    Age : <?= $x['min_age']; ?> - <?= $x['max_age']; ?>
+                                                </p>
                                             </span>
                                         <?php else : ?>
-                                            <?= "Min " . $x['min_weight'] . "Kg - Max " . $x['max_weight'] . "Kg"; ?>
+                                            <p>
+                                                Weight : <?= $x['min_weight']; ?> - <?= $x['max_weight']; ?> Kg <br>
+                                                Age : <?= $x['min_age']; ?> - <?= $x['max_age']; ?>
+                                            </p>
+                                            <!-- <?= "Min " . $x['min_weight'] . "Kg - Max " . $x['max_weight'] . "Kg"; ?> -->
                                         <?php endif; ?>
                                     </td>
                                     <td><?= setTournStatus(compareDate($x['closed_date'])); ?></td>
@@ -75,7 +88,7 @@
                                         <?php else : ?>
                                             <?php if (checkJoinParticipant($x['tournament_id'], getUserData()['user_id']) == 0) : ?>
                                                 <?php if (compareDate($x['closed_date']) === '1') : ?>
-                                                    <?php if (checkWeightCondition($x['min_weight'], $x['max_weight'], getUserAccount()['weight']) == false) : ?>
+                                                    <?php if (checkCondition($mina, $maxa, getAge(), $minw, $maxw, getUserAccount()['weight']) == false) : ?>
                                                         <button type="button" class="btn btn-dark px-2 py-2 d-flex align-items-center justify-content-center" disabled>
                                                             <i class="mdi mdi-close"></i>
                                                             <span>Cannot</span>

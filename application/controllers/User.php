@@ -46,7 +46,7 @@ class User extends CI_Controller
             $this->session->set_flashdata('successEdit', 'Success');
             redirect("user");
         } else {
-            $this->session->set_flashdata('error', 'Error');;
+            $this->session->set_flashdata('error', 'Error');
             redirect("user");
         }
     }

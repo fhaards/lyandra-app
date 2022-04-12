@@ -312,7 +312,9 @@ class Tournament extends CI_Controller
 		} else {
 			$insertData = array(
 				'min_weight' => $this->input->post('min_weight'),
-				'max_weight' => $this->input->post('max_weight')
+				'max_weight' => $this->input->post('max_weight'),
+				'min_age' => $this->input->post('min_age'),
+				'max_age' => $this->input->post('max_age')
 			);
 
 			$updates = $this->modelApp->update($this->table3, $this->tbId, $id, $insertData);
@@ -394,8 +396,29 @@ class Tournament extends CI_Controller
 		$insertData  = array(
 			'participant_status' => $status
 		);
+		$notifText = "";
+
 		$update = $this->modelApp->update($this->table2, $this->tb2Id, $id, $insertData);
 		if ($update) {
+			$getToName   = $this->db->get_where('tournament_participant', array($this->tb2Id => $id))->row_array()['participant_user'];
+			$getTourName = $this->db->get_where('tournament', array($this->tbId => $tourid))->row_array()['tournament_name'];
+			$getLinks    = base_url() . 'tournament/show/' . $tourid;
+			if ($status == 1) {
+				$notifText = "Approved";
+			} else {
+				$notifText = "Canceled";
+			}
+
+			$insertNotif = array(
+				'notif_from' => getUserData()['user_id'],
+				'notif_to' => $getToName,
+				'notif_title' => 'Registration '. $notifText,
+				'notif_msg' => $getTourName,
+				'notif_url' => $getLinks,
+				'notif_date' => date("Y-m-d h:i:s"),
+				'notif_status' => 0
+			);
+			$this->db->insert('notification', $insertNotif);
 			$this->session->set_flashdata('successEdit', 'Success');
 			redirect("tournament/show/$tourid");
 		} else {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Apr 2022 pada 20.57
+-- Waktu pembuatan: 12 Apr 2022 pada 23.53
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.7
 
@@ -71,7 +71,9 @@ INSERT INTO `activities` (`id_activities`, `activities_user`, `activities_type`,
 (6, 1, 'Update', 'Bogor Open Karate Tournament Information', '2022-04-10 03:52:23', NULL, NULL),
 (9, 1, 'Update', 'Bogor Open Karate Tournament Image or Rules', '2022-04-10 03:59:06', NULL, NULL),
 (11, 21, 'Register', 'Bogor Open Karate Tournament', '2022-04-10 04:11:13', NULL, NULL),
-(13, 1, 'Update', 'Bogor Open Karate Tournament Condition', '2022-04-10 04:21:55', NULL, NULL);
+(13, 1, 'Update', 'Bogor Open Karate Tournament Condition', '2022-04-10 04:21:55', NULL, NULL),
+(14, 1, 'Update', 'Bogor Open Karate Tournament Condition', '2022-04-13 12:42:24', NULL, NULL),
+(15, 21, 'Register', 'Bogor Open Karate Tournament', '2022-04-13 01:19:49', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -98,6 +100,23 @@ INSERT INTO `contingent` (`contingent_id`, `created_by`, `contingent_createdat`,
 (5, 1, '2022-04-05 01:44:56', 'Tangsel Karate Club', '081255669845', 'Tangerang Selatan', 1),
 (6, 1, '2022-04-05 01:46:09', 'Bogor Boxer ', '081365698872', 'Bogor', 1),
 (7, 1, '2022-04-09 09:27:37', 'Dago Kickboxing', '081122334455', 'Bukit Dago, Bgor', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `notification`
+--
+
+CREATE TABLE `notification` (
+  `notif_id` int(10) NOT NULL,
+  `notif_from` int(10) NOT NULL,
+  `notif_to` int(10) NOT NULL,
+  `notif_title` varchar(20) NOT NULL,
+  `notif_msg` varchar(100) DEFAULT NULL,
+  `notif_url` text DEFAULT NULL,
+  `notif_date` datetime DEFAULT NULL,
+  `notif_status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -137,15 +156,17 @@ INSERT INTO `tournament` (`tournament_id`, `tournament_name`, `type`, `event_dat
 CREATE TABLE `tournament_condition` (
   `tournament_id` varchar(30) NOT NULL,
   `min_weight` int(10) NOT NULL,
-  `max_weight` int(10) NOT NULL
+  `max_weight` int(10) NOT NULL,
+  `min_age` int(11) DEFAULT NULL,
+  `max_age` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tournament_condition`
 --
 
-INSERT INTO `tournament_condition` (`tournament_id`, `min_weight`, `max_weight`) VALUES
-('TRN090420220234445kt', 60, 70);
+INSERT INTO `tournament_condition` (`tournament_id`, `min_weight`, `max_weight`, `min_age`, `max_age`) VALUES
+('TRN090420220234445kt', 60, 70, 20, 23);
 
 -- --------------------------------------------------------
 
@@ -181,14 +202,6 @@ CREATE TABLE `tournament_participant` (
   `participant_status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `tournament_participant`
---
-
-INSERT INTO `tournament_participant` (`participant_id`, `participant_tournament`, `participant_user`, `submit_at`, `participant_status`) VALUES
-(15, 'TRN090420220234445kt', 20, '2022-04-09 04:33:25', 0),
-(18, 'TRN090420220234445kt', 21, '2022-04-10 04:11:13', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -213,7 +226,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `level`, `user_status`, `created_at`, `updated_at`) VALUES
 (1, 'Administrator', 'superadmin', '$2y$10$Gc1cmaDA/9PT.6cRdXON2uivHMWF.CyD8E21ZD87Ne6tlOEIcJo3m', 'superadmin', '1', '2021-12-22 08:37:27', '2021-12-22 08:37:27'),
 (20, 'Muhammad Fahmi', 'lookatmars1', '$2y$10$GHgRFNhyTDRN0Zyt9Xkuu.R3mHPhSgGwA29l1dJvnOh7ECLiuTJ1G', 'user', '2', '2022-04-04 18:51:57', '2022-04-04 19:02:11'),
-(21, 'Lia Hermawati', 'lookatmars2', '$2y$10$e9543sF8Phv2wh0Vf9oPeO0hPo1ax9i5Kyg5R2.nEBQmvovAN1jsS', 'user', '2', '2022-04-04 19:57:08', '2022-04-04 21:44:21'),
+(21, 'Lia Hermawati', 'lookatmars2', '$2y$10$e9543sF8Phv2wh0Vf9oPeO0hPo1ax9i5Kyg5R2.nEBQmvovAN1jsS', 'user', '2', '2022-04-04 19:57:08', '2022-04-12 18:04:28'),
 (22, 'Faris Salahuddin', 'lookatmars3', '$2y$10$AKeegLrXrOGD.LRmjHugl..E3FkzqnYryJX2lEP0YHAqYMaNkwY.2', 'user', '2', '2022-04-06 19:40:40', '2022-04-06 19:43:16'),
 (23, 'Ibnu Zakaria', 'lookatmars4', '$2y$10$ptbQeKIpVE3GoWJSwN.K0.4JT3VL16wmqNhaqlLQUnl98fgS5GAc2', 'user', '2', '2022-04-06 19:40:59', '2022-04-06 19:44:35'),
 (24, 'Yayan Majalengka', 'lookatmars5', '$2y$10$6TkNbfah.LeY/MvucctQ3uOrqV903ES27jxib8gjcVy0SNhvrKZ0G', 'user', '2', '2022-04-06 19:41:21', '2022-04-06 19:45:42'),
@@ -230,6 +243,7 @@ CREATE TABLE `users_account` (
   `user_id` int(10) NOT NULL,
   `contingent_id` int(10) DEFAULT NULL,
   `gender` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `born_date` date DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `class` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `belt` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -243,14 +257,14 @@ CREATE TABLE `users_account` (
 -- Dumping data untuk tabel `users_account`
 --
 
-INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `phone`, `class`, `belt`, `weight`, `height`, `address`, `photo`) VALUES
-(20, 6, 'Male', '081317352815', 'UFC', 'Blue', 61, 175, 'Perum Bukit Dago A-9 32', 'a4b20194ca92eed0778cf38702ab79f2.jpg'),
-(21, 4, 'Female', '081155669987', 'HeavyWeight', 'Red', 65, 180, 'Desa Mundak Jaya RT/RW 003/004 , Kecamatan Mundakjaya, Indramayu', '2085b42db22ccc8e7e703467a61229b5.jpg'),
-(22, 5, 'Male', '081388998845', 'Heavy', 'Red', 56, 180, 'Bogor', '0aacd4ddda414e0503433ba9f7fd5533.jpg'),
-(23, 5, 'Male', '081388998866', 'Heavy', 'Blue', 56, 175, 'Jakarta Selatan', '033f9bb56c79a1bb7dd06df925fc7f47.jpg'),
-(24, 5, 'Male', '081388998841', 'Heavy', 'Red', 55, 170, 'Serpong', '911b4959efbc6f48642c476460160dca.jpg'),
-(25, 4, 'Male', '081522336655', NULL, 'Red', 60, 180, 'Jakarta Barat', NULL),
-(27, 4, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users_account` (`user_id`, `contingent_id`, `gender`, `born_date`, `phone`, `class`, `belt`, `weight`, `height`, `address`, `photo`) VALUES
+(20, 6, 'Male', NULL, '081317352815', 'UFC', 'Blue', 61, 175, 'Perum Bukit Dago A-9 32', 'a4b20194ca92eed0778cf38702ab79f2.jpg'),
+(21, 4, 'Female', '2000-04-14', '081155669987', 'HeavyWeight', 'Red', 65, 180, 'Desa Mundak Jaya RT/RW 003/004 , Kecamatan Mundakjaya, Indramayu', '2085b42db22ccc8e7e703467a61229b5.jpg'),
+(22, 5, 'Male', NULL, '081388998845', 'Heavy', 'Red', 56, 180, 'Bogor', '0aacd4ddda414e0503433ba9f7fd5533.jpg'),
+(23, 5, 'Male', NULL, '081388998866', 'Heavy', 'Blue', 56, 175, 'Jakarta Selatan', '033f9bb56c79a1bb7dd06df925fc7f47.jpg'),
+(24, 5, 'Male', NULL, '081388998841', 'Heavy', 'Red', 55, 170, 'Serpong', '911b4959efbc6f48642c476460160dca.jpg'),
+(25, 4, 'Male', NULL, '081522336655', NULL, 'Red', 60, 180, 'Jakarta Barat', NULL),
+(27, 4, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -273,6 +287,12 @@ ALTER TABLE `activities`
 --
 ALTER TABLE `contingent`
   ADD PRIMARY KEY (`contingent_id`);
+
+--
+-- Indeks untuk tabel `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`notif_id`);
 
 --
 -- Indeks untuk tabel `tournament`
@@ -325,7 +345,7 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT untuk tabel `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id_activities` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_activities` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `contingent`
@@ -334,10 +354,16 @@ ALTER TABLE `contingent`
   MODIFY `contingent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT untuk tabel `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `notif_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `tournament_participant`
 --
 ALTER TABLE `tournament_participant`
-  MODIFY `participant_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `participant_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

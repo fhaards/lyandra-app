@@ -34,4 +34,5 @@ class HomepagePublic extends CI_Controller
 		$data = $this->modelTournament->readAllById($id);
 		echo json_encode($data);
 	}
+
 }

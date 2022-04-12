@@ -139,7 +139,7 @@
                                 <p class="card-description fw-bold text-uppercase tracking-widest text-dark">
                                     Condition
                                 </p>
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <div class="form-group row">
                                         <label>Min Weight (Kg)</label>
                                         <div>
@@ -147,7 +147,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <div class="form-group row">
                                         <label>Min Weight (Kg)</label>
                                         <div>
@@ -156,6 +156,22 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2">
+                                    <div class="form-group row">
+                                        <label>Min Age</label>
+                                        <div>
+                                            <input type="number" class="form-control" name="min_age" min="1" value="<?= $item2->min_age; ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group row">
+                                        <label>Max Age</label>
+                                        <div>
+                                            <input type="number" class="form-control" name="max_age" min="1" value="<?= $item2->max_age; ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center justify-content-end">
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                                 </div>
                             </div>

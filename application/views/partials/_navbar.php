@@ -1,4 +1,4 @@
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row" id="navbars">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
     <div class="me-3">
       <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
@@ -78,30 +78,21 @@
           <input type="text" class="form-control" />
         </div>
       </li> -->
-      
+
       <!-- Notification -->
       <li class="nav-item dropdown">
-        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+        <a class="nav-link count-indicator click-notif" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
           <i class="icon-bell"></i>
+          <div class="notification-bell d-none"></div>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
           <a class="dropdown-item py-3 border-bottom">
             <p class="mb-0 font-weight-medium float-left">
-              You have 4 new notifications
+              You have <span class="notif-count"></span> new notifications
             </p>
-            <span class="badge badge-pill badge-primary float-right">View all</span>
           </a>
-          <a class="dropdown-item preview-item py-3">
-            <div class="preview-thumbnail">
-              <i class="mdi mdi-check-circle m-auto text-primary"></i>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject fw-normal text-dark mb-1">
-                Application Error
-              </h6>
-              <p class="fw-light small-text mb-0">Just now</p>
-            </div>
-          </a>
+          <div class="notif-list">
+          </div>
         </div>
       </li>
 
@@ -127,7 +118,7 @@
             <?php if (isSuperAdmin()) : ?>
               <img class="img-lg rounded-2" src="<?= base_url() . 'uploads/profile/default.png'; ?>" width="80px" alt="logo" />
             <?php else : ?>
-              <img class="img-lg rounded-2" src="<?= base_url() . 'uploads/profile/' .loadProfilePhoto(getUserData()['user_id'], getUserAccount()['photo']); ?>" alt="Profile image">
+              <img class="img-lg rounded-2" src="<?= base_url() . 'uploads/profile/' . loadProfilePhoto(getUserData()['user_id'], getUserAccount()['photo']); ?>" alt="Profile image">
             <?php endif; ?>
 
             <p class="mt-3 font-weight-semibold">

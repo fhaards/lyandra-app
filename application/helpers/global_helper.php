@@ -137,6 +137,15 @@ function compareDate($date)
     return $result;
 }
 
+function getAge()
+{
+    $bod = getUserAccount()['born_date'];
+    $from = new DateTime($bod);
+    $to   = new DateTime('today');
+    return $from->diff($to)->y;
+}
+
+
 // PROFILE 
 function loadProfilePhoto($getId, $getValue)
 {
@@ -165,11 +174,11 @@ function checkUserStatus($getStatus)
     }
 
     if ($setStatus == 0) :
-        $setStyle = '<span class="badge badge-pill badge-danger fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-exclamation me-2"></i> <span> Inactive </span> <span> ' . $checkLevel . '</span> ';
+        $setStyle = '<span class="px-3 badge badge-pill badge-danger fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-exclamation me-2"></i> <span> Uncomplete Profile</span>';
     elseif ($setStatus == 1) :
-        $setStyle = '<span class="badge badge-pill badge-secondary text-dark fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-clock me-2"></i> <span> Pending </span> <span> ' . $checkLevel . '</span> ';
+        $setStyle = '<span class="px-3 badge badge-pill badge-secondary text-dark fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-clock me-2"></i> <span> Pending Profile</span> ';
     else :
-        $setStyle = '<span class="badge badge-opacity-primary fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-check me-2"></i>  <span> Active </span> <span>' . $checkLevel . '</span>';
+        $setStyle = '<span class="px-3 badge badge-opacity-success fw-bold d-inline-flex align-items-center justify-content-center"><i class="mdi mdi-check me-2"></i>  <span> Complete Profile</span>';
     endif;
     return $setStyle;
 }
@@ -227,6 +236,16 @@ function setParticipantStatus($setStatus)
     else :
     endif;
     return $setStyle;
+}
+
+function checkCondition($minAge, $maxAge, $valueAge, $minW, $maxW, $valW)
+{
+    if ((($minAge <= $valueAge) && ($valueAge <= $maxAge)) && (($minW <= $valW) && ($valW <= $maxW))) :
+        $result = true;
+    else :
+        $result = false;
+    endif;
+    return $result;
 }
 
 function checkWeightCondition($min, $max, $value)

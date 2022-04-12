@@ -185,6 +185,7 @@ class Profile extends CI_Controller
 			$insertData  = array(
 				'phone' => $this->input->post('phone'),
 				'gender' => $this->input->post('gender'),
+				'born_date' => $this->input->post('born_date'),
 				'address' => $this->input->post('address'),
 				'belt' => $this->input->post('belt'),
 				'weight' => $this->input->post('weight'),

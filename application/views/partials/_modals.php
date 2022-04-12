@@ -134,7 +134,6 @@
     </div>
 </div>
 
-
 <!-- Join Tournaments -->
 <div class="modal fade" id="joinTournamentModal" tabindex="-1" aria-labelledby="joinTournamentModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -161,3 +160,4 @@
         </form>
     </div>
 </div>
+

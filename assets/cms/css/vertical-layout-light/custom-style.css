@@ -209,3 +209,18 @@
     font-family: "Nunito", sans-serif;
     font-size: 15px;
 }
+
+/*--------------------------------------------------------------
+# Notification
+--------------------------------------------------------------*/
+.notification-bell::after{
+    content:"";
+    background-color: #dc2626;
+    border:2px solid #fff;
+    width:10px;
+    height:10px;
+    position:absolute;
+    border-radius:10px;
+    top:0;
+    right:-2px;
+}

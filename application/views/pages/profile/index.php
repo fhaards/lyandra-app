@@ -5,7 +5,6 @@
                 <div class="detail-banner"></div>
                 <div class="card-title detail-header-title d-flex flex-row justify-content-between align-items-center">
                     <h4>My <span class="card-description">Profile</span></h4>
-                    <!-- <a href="" class="btn btn-light btn-sm btn-edit d-flex flex-row align-items-center"><i class="mdi mdi-pencil me-4"></i> Edit </a> -->
                 </div>
                 <div class="d-flex justify-content-center align-items-center p-0">
                     <div class="detail-photo">
@@ -19,14 +18,14 @@
                     </div>
                 </div>
 
-                <div class="container row justify-content-center my-3 mx-auto">
+                <div class="row justify-content-center my-3 mx-auto">
 
                     <div class="">
                         <hr>
                     </div>
 
                     <div class="row px-0 pb-0 mb-0">
-                        <div class="col-md-12 py-0 mb-0 form-group d-flex justify-content-between">
+                        <div class="col-md-12 py-0 mb-0 form-group d-flex flex-md-row flex-column justify-content-between">
                             <label> User Status </label>
                             <?= checkUserStatus(getUserData()['user_status']); ?>
                         </div>
@@ -89,11 +88,20 @@
                         <div class="row py-1 px-0">
                             <div class="col-md-12 form-group d-flex flex-column">
                                 <label class=" me-4">Address</label>
-                                <input type="text" class="form-control" name="address" value="<?= $item->address; ?>" placeholder="Input Address"/>
+                                <input type="text" class="form-control" name="address" value="<?= $item->address; ?>" placeholder="Input Address" />
                             </div>
                         </div>
                         <div class="row py-1 px-0">
-                            <div class="col-md-4 form-group d-flex flex-column">
+                            <div class="col-md-4 col-8 form-group d-flex flex-column">
+                                <label class="me-4">Born Date </label>
+                                <input type="date" class="form-control born-date" name="born_date"  value="<?= $item->born_date; ?>" />
+                            </div>
+                            <div class="col-md-2 col-4 form-group d-flex flex-column">
+                                <label class="me-4">Age </label>
+                                <h5 class="text-lg my-2"><strong><span class="profile-age">-</span></strong> y/o</h5>
+                                <!-- <input type="number" class="form-control" min="1" name="weight" placeholder="Input Weight" value="<?= $item->weight; ?>" /> -->
+                            </div>
+                            <div class="col-md-2 form-group d-flex flex-column">
                                 <label class="me-4">Belt</label>
                                 <?php $bArr = ['Red', 'Blue']; ?>
                                 <select class="form-control" name="belt">
@@ -102,12 +110,12 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="col-md-4 form-group d-flex flex-column">
-                                <label class="me-4">Weight <strong>( cm )</strong> </label>
+                            <div class="col-md-2 form-group d-flex flex-column">
+                                <label class="me-4">Weight <strong>( kg )</strong> </label>
                                 <input type="number" class="form-control" min="1" name="weight" placeholder="Input Weight" value="<?= $item->weight; ?>" />
                             </div>
-                            <div class="col-md-4 form-group d-flex flex-column">
-                                <label class="me-4">Height <strong>( kg )</strong></label>
+                            <div class="col-md-2 form-group d-flex flex-column">
+                                <label class="me-4">Height <strong>( cm )</strong></label>
                                 <input type="number" class="form-control" min="1" name="height" placeholder="Input Height" value="<?= $item->height; ?>" />
                             </div>
                         </div>

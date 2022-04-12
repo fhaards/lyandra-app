@@ -11,8 +11,8 @@ var endDate = eventDetail.find(".end-date");
 var eventRules = eventDetail.find(".event-rules");
 var eventMap = eventDetail.find(".event-map");
 var eventRegist = eventDetail.find(".event-regist");
-var minWeight = eventDetail.find(".min-weight");
-var maxWeight = eventDetail.find(".max-weight");
+var condWeight = eventDetail.find(".condtition-weight");
+var condAge = eventDetail.find(".condtition-age");
 var eventType = eventDetail.find(".type");
 
 var countdownHandlerId = undefined;
@@ -41,8 +41,8 @@ function getEventDetails(param) {
 			eventMap.attr("href", response.venue_map);
 			eventTitle.html(response.tournament_name);
 			eventDescript.html(response.description);
-			minWeight.html(response.min_weight);
-			maxWeight.html(response.max_weight);
+			condWeight.html(response.min_weight + '-' + response.max_weight + ' Kg');
+			condAge.html(response.min_age + '-' + response.max_age);
 			eventType.html(response.type + " Elemination");
 
 			eventDate.html(moment(response.event_date).format("LL"));

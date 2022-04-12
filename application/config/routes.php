@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-$route['default_controller'] = 'homepagepublic';
+$route['default_controller'] = 'HomepagePublic';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -67,3 +67,7 @@ $route['reports/tournament'] = 'Reports/reportTournament';
 $route['reports/tournament-detail/(:any)'] = 'Reports/reportTournamentDetail/$1';
 $route['reports/contingent'] = 'Reports/reportContingent';
 $route['reports/user'] = 'Reports/reportUser';
+
+
+//Notification
+$route['notification/minimal/(:any)'] = 'HomepageUser/readNotification/$1';

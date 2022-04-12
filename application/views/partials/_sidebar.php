@@ -47,7 +47,15 @@
         </a>
       </li>
 
+
     <?php endif; ?>
+
+    <li class="nav-item d-md-none d-block">
+        <a class="nav-link fw-bold" href="<?= base_url() . 'profile'; ?>">
+          <i class="mdi mdi-power menu-icon"></i>
+          <span class="menu-title">Logout</span>
+        </a>
+      </li>
 
     <!-- <li class="nav-item" id="settings-trigger">
       <a class="nav-link fw-bold" href="javascript:void(0)" >

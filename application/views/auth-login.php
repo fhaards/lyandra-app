@@ -87,12 +87,12 @@
                                     <div class="form-group">
                                         <label>Contingent</label>
                                         <select class="form-control form-control-lg" name="contingent_id">
-                                            <?php foreach($item as $x) : ?>
-                                            <option value="<?= $x['contingent_id']; ?>"><?= $x['contingent_name']; ?></option>
+                                            <?php foreach ($item as $x) : ?>
+                                                <option value="<?= $x['contingent_id']; ?>"><?= $x['contingent_name']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
-                                    <div class="mt-3 d-flex justify-content-end">
+                                    <div class="mt-3 mb-5 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-dark btn-icon-text fw-bold d-flex align-items-center">
                                             <i class="mdi mdi-login-variant btn-icon-prepend"></i>
                                             <span class="tracking-widest">REGISTER</span>
@@ -101,6 +101,9 @@
                                     <?php echo form_close(); ?>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-12 col-12 my-5">
+
                         </div>
                     </div>
                 </div>

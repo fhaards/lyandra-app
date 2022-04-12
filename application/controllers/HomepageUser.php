@@ -9,6 +9,7 @@ class HomepageUser extends CI_Controller
 		redirectIfNotLogin();
 		$this->load->model('modelTournament');
 		$this->load->model('modelDashboard');
+		$this->load->model('modelNotification');
 		$this->load->helper('form');
 		$this->load->helper('date');
 		$this->load->helper('array');
@@ -25,5 +26,12 @@ class HomepageUser extends CI_Controller
 		$data['title'] 	 =  APP_NAME;
 		$data['content'] = 'dashboard';
 		$this->load->view('master', $data);
+	}
+
+	
+	public function readNotification($id)
+	{
+		$data = $this->modelNotification->read($id);
+		echo json_encode($data);
 	}
 }

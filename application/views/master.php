@@ -83,11 +83,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<script src="<?php echo base_url() . 'assets/vendor/tinymce/tinymce.min.js'; ?>"></script>
 	<script src="<?php echo base_url() . 'assets/vendor/tinymce/tinymce.min.js'; ?>"></script>
 	<script src="<?php echo base_url() . 'assets/vendor/purecounter/purecounter.js'; ?>"></script>
+	<script src="<?php echo base_url() . 'assets/vendor/moment/moment.min.js'; ?>"></script>
+
 	<script>
 		var BASE_URL = "<?php echo base_url(); ?>";
 		var SITE_URL = "<?php echo site_url(); ?>";
 	</script>
 	<script src="<?php echo base_url() . 'src/app.js'; ?>"></script>
+	<script>
+		var sessId = '<?= getUserData()['user_id'] ?>';
+	</script>
+	<script src="<?php echo base_url() . 'src/app-notif.js'; ?>"></script>
 	<?php $this->load->view('partials/_alerts'); ?>
 	<?php $this->load->view('partials/_src_js_stack.php'); ?>
 </body>
